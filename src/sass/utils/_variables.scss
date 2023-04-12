@@ -1,0 +1,82 @@
+/* Сюди вписуємо всі стилі, які залишаються сталими при обох варіантах сторінки. 
+Кольори, які дублюються із тими, що згадуються в стилях для тем, 
+але застосовуються в інших стилях, потрібно прописати під іншою назвою
+і в загальних стилях згадувати цю назву. */
+:root {
+  /* COLORS */
+  /* Header: logo;
+    Library: accent-text, see-more-btn-border;*/
+  --accent-color: #4f2ee8;
+
+  /* Shopping-list navigation: forward-btn-background */
+  --second-accent: #eac645;
+
+  /* Caritas: text */
+  --caritas-txt: #ffffff;
+
+  /* Library: text-above-card, author;
+  Shopping-list: categorie, author; 
+  Placeholder: author*/
+  --alternative-text: #b4afaf;
+
+  /* Shopping-list: border */
+  --shopping-list-border: rgba(79, 46, 232, 0.4);
+}
+
+/* Сюди вписуємо кольори, які застосовуються при світлій темі.
+УВАГА!!! Навіть якщо потрібний колір згаданий у переліку вище, 
+або в цьому переліку, тільки із іншою "темною" парою,
+для позначення змінного кольору його треба продублювати, але під іншою назвою, 
+і застосовувати в стилях тем нову назву. */
+:root[data-theme='light'] {
+  /* Header: border, close-btn, burger-menu; 
+  Library: text, book-title, see-more-btn;
+  Shopping-list: book-title, about;
+  Shopping-list navigation: active-page-btn-background, non-active-btn-border,
+  points-in-btn;
+  Placeholder-card: border, close-btn, title, about
+   */
+  --main-color: #111111;
+
+  /* Header: background;
+  Shopping-list: background;
+  
+   */
+  --card-background: #ffffff;
+
+  /* text-in-logo */
+  --text-in-logo: #000000;
+
+  /* Body background */
+  --body-background: #f6f6f6;
+
+  /* Categories */
+  --categories-main: rgba(17, 17, 17, 0.6);
+  --categories-accent: #4f2ee8;
+  --categories-scrollbar: #e0e0e0;
+
+  /* Shopping-list-nav */
+  --back-btn-background: #111111;
+  --back-btn-non-active: #b4afaf;
+  --active-btn-txt: #ffffff;
+  --non-active-btn-txt: #000000;
+
+  /* Placeholder */
+  --placeholder-card-background: #ffffff;
+}
+
+/* Сюди вписуємо кольори-антиподи, але під тими самими назвами! */
+:root[data-theme='dark'] {
+  --main-color: #ffffff;
+  --card-background: #111111;
+  --text-in-logo: #f3f3f3;
+  --body-background: #202024;
+  --categories-main: rgba(255, 255, 255, 0.6);
+  --categories-accent: #eac645;
+  --categories-scrollbar: rgba(17, 17, 17, 0.6);
+  --back-btn-background: #000000;
+  --back-btn-non-active: #ffffff;
+  --active-btn-txt: #000000;
+  --non-active-btn-txt: #ffffff;
+  --placeholder-card-background: #202024;
+}

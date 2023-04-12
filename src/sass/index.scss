@@ -1,2 +1,16 @@
 @import './common';
-@import './example';
+
+// utils
+@import './utils/module';
+
+// base
+@import './base/module';
+
+// components
+@import './conponents/module';
+
+// layot
+@import './layouts/module';
+
+// pages
+@import './pages/module';
