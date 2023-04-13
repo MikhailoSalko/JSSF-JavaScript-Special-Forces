@@ -1,0 +1,63 @@
+<div class="backdrop backdrop__modal backdrop--is-hidden js-products">
+  <div class="modal book-card__modal scrollable">
+    <button class="modal-close__btn js-btn-close">
+      <svg class="close__icon">
+        <use href=""></use>
+      </svg>
+    </button>
+    <div>
+      <div class="book-card__thumb">
+        <img class="book-card__img" src="../" alt="book_image" loading="lazy" />
+      </div>
+      <div class="book-description">
+        <h2 class="book-title">${title}</h2>
+        <h3 class="book-author">${author}</h3>
+        <p class="text-description">${description}</p>
+        <ul class="shops-list list">
+          <li class="shops-item">
+            <a
+              class="buy-links"
+              href="${buy-links-url}"
+              aria-label="amazon icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg class="book-shop__icon" width="32" height="32">
+                <use href=""></use></svg
+              >amazon icon</a
+            >
+          </li>
+          <li class="shops-item">
+            <a
+              class="buy-links"
+              href="${buy-links-url}"
+              aria-label="apple-book icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg class="book-shop__icon" width="32" height="32">
+                <use href=""></use></svg
+              >apple-book icon</a
+            >
+          </li>
+          <li class="shops-item">
+            <a
+              class="buy-links"
+              href="${buy-links-url}"
+              aria-label="bookshop icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg class="book-shop__icon" width="32" height="32">
+                <use href=""></use></svg
+              >book-shop__icon</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="book-card__btn">
+      <button class="card__btn btn">add to shop list</button>
+    </div>
+  </div>
+</div>
