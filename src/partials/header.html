@@ -1,9 +1,12 @@
 <header class="header">
   <div class="container header__container">
-    <a class="logo" href="./index.html"
-      ><div class="logo__icon"></div>
-      <div class="logo__book-icon">Book</div></a
-    >
+    <a class="logo" href="./index.html">
+      <svg class="logo__icon" width="25" height="25">
+        <use href="./images/icons.svg#logo"></use>
+      </svg>
+      <svg class="logo__text" width="53" height="17">
+        <use href="./images/icons.svg#logo-text"></use></svg
+    ></a>
 
     <nav class="nav">
       <ul class="nav__list">
@@ -16,12 +19,7 @@
       </ul>
     </nav>
 
-    <input
-      type="checkbox"
-      name="theme-mode-checkbox"
-      id="theme-mode-checkbox"
-      class="theme-toggle-js"
-    />
+    <input type="checkbox" name="theme-mode-checkbox" class="theme-toggle-js" />
     <button class="mobile-menu__burger">a</button>
   </div>
 </header>

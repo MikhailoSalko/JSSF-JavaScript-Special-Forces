@@ -30,14 +30,11 @@
 
 .logo {
   display: flex;
+  align-items: center;
   gap: 8px;
 
-  //delete next line
-  @extend %link;
-  &__icon {
-    width: 22px;
-    height: 22px;
-    background-color: violet;
+  &__text {
+    fill: var(--text-in-logo);
   }
 }
 
@@ -99,7 +96,7 @@
   }
 }
 
-#theme-mode-checkbox {
+.theme-toggle-js {
   position: relative;
 
   margin-left: auto;
