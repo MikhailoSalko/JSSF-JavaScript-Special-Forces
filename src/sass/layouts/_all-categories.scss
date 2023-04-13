@@ -1,0 +1,36 @@
+.categories {
+  overflow-y: scroll;
+  // delete if in section
+  width: 335px;
+  max-height: 228px;
+  margin-left: auto;
+  margin-right: auto;
+
+  //   check in variables
+}
+
+//check fonts
+.category {
+  font-size: 16px;
+  line-height: 1.12;
+
+  letter-spacing: -0.02em;
+
+  color: var(--categories-main);
+
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  &.checked-category {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 1.12;
+
+    letter-spacing: -0.02em;
+    color: var(--categories-accent);
+  }
+}
