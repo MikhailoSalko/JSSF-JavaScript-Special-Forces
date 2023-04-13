@@ -10,35 +10,27 @@ export class FetchBooks {
   fetchCategoryList() {
     return axios
       .get(`${this.#BASE_URL}/category-list`)
-      .then(response => {
-        response.json();
-      })
+      .then(response => response)
       .catch(console.error);
   }
 
   fetchTopBooks() {
     return axios
       .get(`${this.#BASE_URL}/top-books`)
-      .then(response => {
-        response.json();
-      })
+      .then(response => response)
       .catch(console.error);
   }
   fetchBookId() {
     return axios
       .get(`${this.#BASE_URL}${this.bookId}`)
-      .then(response => {
-        response.json();
-      })
+      .then(response => response)
       .catch(console.error);
   }
 
   fetchCategoryOfBooks() {
     return axios
       .get(`${this.#BASE_URL}${this.category}`)
-      .then(response => {
-        response.json();
-      })
+      .then(response => response)
       .catch(console.error);
   }
 }
