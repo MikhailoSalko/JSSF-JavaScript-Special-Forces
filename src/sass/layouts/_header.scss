@@ -61,12 +61,16 @@ body {
 
   &__list {
     display: none;
+    @extend %list;
 
     @media screen and (min-width: 768px) {
       display: flex;
-      list-style: none;
+      align-items: center;
       gap: 16px;
-      //24
+
+      @include desktop {
+        gap: 24px;
+      }
     }
   }
 
