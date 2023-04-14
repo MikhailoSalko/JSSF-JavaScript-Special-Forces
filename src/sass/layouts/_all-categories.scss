@@ -1,29 +1,58 @@
 .categories {
-  overflow-y: scroll;
-  // delete if in section
+  // change on 100%, if it`s setting in sections
   width: 335px;
+  // delete, if it`s in the flexbox
   max-height: 228px;
+  // control margins in a tablet and a desktop
   margin-left: auto;
   margin-right: auto;
+  padding-right: 28px;
 
-  //   check in variables
+  overflow-y: scroll;
+
+  //see instructions upper
+  @include tablet {
+    width: 337px;
+    max-height: 472px;
+  }
+
+  //see instructions upper
+  @include desktop {
+    width: 356px;
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include tablet {
+      gap: 32px;
+    }
+  }
 
   // Scrollbar
   &::-webkit-scrollbar {
     width: 8px;
+
     &-track {
       background: var(--body-background);
     }
+
     &-thumb {
       width: 100%;
       height: 114px;
       border-radius: 12px;
       background: var(--categories-scrollbar);
+
+      @include tablet {
+        height: 167px;
+      }
     }
   }
 }
 
-//check fonts
+//To equal fonts with the basic styles
 .category {
   font-size: 16px;
   line-height: 1.12;
@@ -34,17 +63,29 @@
 
   cursor: pointer;
 
-  &:not(:last-child) {
-    margin-bottom: 24px;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-property: font-size, color;
+
+  @include tablet {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  //delete if bed)
+  &:hover,
+  &:focus {
+    font-size: 17px;
+    color: var(--main-color);
+
+    @include tablet {
+      font-size: 19px;
+    }
   }
 
   &.checked-category {
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 16px;
-    line-height: 1.12;
-
-    letter-spacing: -0.02em;
     color: var(--categories-accent);
   }
 }
