@@ -21,7 +21,7 @@ function changeCategoryStyle(event) {
       checkedEl.classList.remove('checked-category');
       event.target.classList.add('checked-category');
     }
-  } else console.log('not');
+  }
 }
 
 function renderList(categories) {
