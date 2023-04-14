@@ -175,13 +175,16 @@
 
 .user {
   display: none;
-  &__button {
-    width: 37px;
-    height: 37px;
-    border: none;
-    border-radius: 50%;
-    background-color: #f6f6f6;
+
+  width: 37px;
+  height: 37px;
+  border: none;
+  border-radius: 50%;
+  background-color: #f6f6f6;
+
+  @include tablet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  // &icon {
-  // }
 }
