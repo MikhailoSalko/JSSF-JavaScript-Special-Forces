@@ -1,6 +1,8 @@
 import { renderCategories } from './js/categories';
 import { changeTheme } from './js/theme-toggle';
 
+import './js/support-ukraine';
+
 const pageEl = document.querySelector('html');
 
 // На цей слухач кліків можна вішати всі кліки, що відбуваються на сторінці.
