@@ -156,11 +156,20 @@
 .mobile-menu {
   &__button {
     border: none;
-    // background-color: transparent;
-  }
+    background-color: transparent;
+    stroke: var(--main-color);
 
-  &__icon {
-    fill: var(--main-color);
+    transition-property: stroke;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transition-timing-function);
+
+    &:hover {
+      stroke: var(--accent-color);
+    }
+
+    @include tablet {
+      display: none;
+    }
   }
 }
 
