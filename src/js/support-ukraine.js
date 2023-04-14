@@ -52,11 +52,6 @@ function findEndIndex (value) {
 // console.log(window.innerWidth);
 // console.log(window.innerHeight);
 
-const imgEl = document.querySelector('.support__img-js');
-imgEl.src = new URL('../images/shopping-list/books-link_1x.png', import.meta.url);
-imgEl.alt = "123";
-
-// ./src/images/support-ukraine/save_the_children_@1x.png
 
 
 
