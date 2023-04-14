@@ -1,4 +1,4 @@
-export { setTheme, activateThemeToggle };
+export { setTheme, activateThemeToggle, changeTheme };
 
 const toggleClass = 'theme-toggle-js';
 
