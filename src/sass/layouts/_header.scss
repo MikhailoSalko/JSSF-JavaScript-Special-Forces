@@ -153,7 +153,19 @@
   }
 }
 
+.mobile-menu {
+  &__button {
+    border: none;
+    // background-color: transparent;
+  }
+
+  &__icon {
+    fill: var(--main-color);
+  }
+}
+
 .user {
+  display: none;
   &__button {
     width: 37px;
     height: 37px;
