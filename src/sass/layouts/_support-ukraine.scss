@@ -1,0 +1,61 @@
+.support__container {
+  background-image: linear-gradient(
+    to bottom,
+    #4F2EE8,
+    #B8ABF6 
+  );
+  padding: 24px 40px 20px 40px;
+  box-shadow: 0px 10px 10px rgba(245, 245, 247, 0.1);
+  border-radius: 16px;
+  max-width: 335px;
+  height: 352px;
+  // overflow-y: scroll;
+
+  @include tablet {
+      height: 472px;
+      padding-bottom: 14px;
+  }
+
+  @include desktop {
+      max-width: 356px;
+      height: 490px;
+      padding-bottom: 24px;
+  }
+
+
+}
+
+.support__header{
+  display: inline-flex;
+  margin-bottom: 40px;
+}
+
+.support__icon {
+  margin-left: 12px;
+}
+
+.support__list {
+  margin-bottom: 16px;
+
+  @include tablet {
+      margin-bottom: 32px;
+  }
+
+  @include desktop {
+      margin-bottom: 40px;
+  }
+}
+
+.support__btn {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  border-radius: 50%;
+  background-color: #120808;
+  padding: 6px;
+
+  @include tablet {
+      padding: 8px;
+  }
+}
