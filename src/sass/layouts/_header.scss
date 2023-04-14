@@ -80,6 +80,15 @@
       color: var(--second-accent);
     }
 
+    &:hover .nav__icon {
+      fill: var(--second-accent);
+    }
+
+    &.shop-link {
+      display: flex;
+      align-items: center;
+    }
+
     &.current-page {
       color: var(--main-color);
       background-color: #fec700;
@@ -91,6 +100,10 @@
       &:hover {
         color: var(--nav-link-hovered);
         background-color: #e4b300;
+      }
+
+      &:hover .nav__icon {
+        fill: var(--nav-link-hovered);
       }
     }
   }
