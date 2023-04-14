@@ -10,10 +10,9 @@ const markup = supportUkraineItems.map(({ img, title, url }, index) => {
     // console.log(img);
     
     return `<li class="support__item"><a href="${url}" class="support__link" aria-label="${title}" target="_blank" rel="noopener norefferer nofollow">
-    <p class="support__number">${number}</p><img class="support__img" src="./images/support-ukraine/${img}" alt="${title}"></img></a></li>`
-
+    <p class="support__number">${number}</p><img class="support__img" src="../images/support-ukraine/${img}" alt="${title}"></a></li>`
 });
-   console.log(markup);
+//    console.log(markup);
 
 let startIndex = 0;
 
@@ -24,10 +23,18 @@ function renderMarkup (arr, itemsCountStart, itemsCountEnd) {
     startIndex = findEndIndex(startIndex);
     // supportListEl.innerHTML = markupToRender;
    supportListEl.insertAdjacentHTML('beforeend', markupToRender);
+
+   if (markup.length <= itemsCountEnd) {
+        supportBtnEl.style.display = 'none';
+        return
+    }
+
 };
 
 function renderMoreFoundations () {
     renderMarkup(markup, startIndex, findEndIndex(startIndex));
+  
+    // supportListEl.style.overflow = 'scroll';
 }
 
 function findEndIndex (value) {
