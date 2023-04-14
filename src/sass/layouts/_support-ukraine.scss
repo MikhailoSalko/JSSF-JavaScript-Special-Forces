@@ -9,8 +9,8 @@
   box-shadow: 0px 10px 10px rgba(245, 245, 247, 0.1);
   border-radius: 16px;
   max-width: 335px;
-  // height: 352px;
-  // overflow-y: scroll;
+  height: 352px;
+  overflow-y: scroll;
 
   @include tablet {
       height: 472px;

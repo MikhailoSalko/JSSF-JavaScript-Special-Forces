@@ -7,12 +7,15 @@ supportBtnEl.addEventListener('click', renderMoreFoundations);
 
 const markup = supportUkraineItems.map(({ img, title, url }, index) => {
     const number = (index + 1).toString().padStart(2, '0');
+    // const src = new URL(`../images/support-ukraine/projech_hope_@1x.png`, import.meta.url);
+    // console.log(src)
+    // console.log(import.meta.url)
     // console.log(img);
     
     return `<li class="support__item"><a href="${url}" class="support__link" aria-label="${title}" target="_blank" rel="noopener norefferer nofollow">
-    <p class="support__number">${number}</p><img class="support__img" src="../images/support-ukraine/${img}" alt="${title}"></a></li>`
+    <p class="support__number">${number}</p><img class="support__img" src= ${img} alt="${title}"/></a></li>`
 });
-//    console.log(markup);
+   console.log(markup);
 
 let startIndex = 0;
 
@@ -48,3 +51,12 @@ function findEndIndex (value) {
 
 // console.log(window.innerWidth);
 // console.log(window.innerHeight);
+
+const imgEl = document.querySelector('.support__img-js');
+imgEl.src = new URL('../images/shopping-list/books-link_1x.png', import.meta.url);
+imgEl.alt = "123";
+
+// ./src/images/support-ukraine/save_the_children_@1x.png
+
+
+
