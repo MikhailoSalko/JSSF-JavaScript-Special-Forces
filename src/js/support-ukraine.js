@@ -9,8 +9,8 @@ const markup = supportUkraineItems.map(({ img, title, url }, index) => {
     const number = (index + 1).toString().padStart(2, '0');
     // console.log(img);
     
-    return `<li><a href="${url}" class="support__link" aria-label="${title}" target="_blank" rel="noopener norefferer nofollow">
-    <p>${number}</p><img class="support__img" src="./images/support-ukraine/${img}" alt="${title}"></img></a></li>`
+    return `<li class="support__item"><a href="${url}" class="support__link" aria-label="${title}" target="_blank" rel="noopener norefferer nofollow">
+    <p class="support__number">${number}</p><img class="support__img" src="./images/support-ukraine/${img}" alt="${title}"></img></a></li>`
 
 });
    console.log(markup);
