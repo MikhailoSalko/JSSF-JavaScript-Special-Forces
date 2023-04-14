@@ -179,6 +179,7 @@ const renderBooks = (arr) => {
             <use href=""></use>
           </svg>
         </button>
+        <div class="shoplist-book-card-top">
         <div><img class="shoplist-book-cover" src=${book.book_image} alt="" width=${book.book_image_width} height=${book.book_image_height}/>
         <p>${book.author}</p></div>
         <div><p>${book.title}</p>
@@ -191,7 +192,7 @@ const renderBooks = (arr) => {
         </a>
         <a href=${book.buy_links[4].url} class="shoplist-buy-link link" target="_blank" rel="noopener noreferrer" aria-label="Bookshop">
         <img src="" alt="Bookshop" />
-        </a></div>
+        </a></div></div>
         <p>${book.description}</p>
       </div>`
   }).join("");
