@@ -3,6 +3,7 @@ import { renderCategories, changeCategoryStyle } from './js/categories';
 import { activateThemeToggle } from './js/theme-toggle';
 import { changeTheme } from "./js/theme-toggle";
 import { currentPageSwitcher } from "./js/current-page-switcher";
+import './js/support-ukraine';
 
 
 const pageEl = document.querySelector("html");
@@ -26,8 +27,7 @@ pageEl.addEventListener("click", event => {
     changeTheme(pageEl, checkboxEl);
   } else console.log("don`t turget"); //delete else block
 });
-
-
   // change categories styles
   changeCategoryStyle(event);
 });
+
