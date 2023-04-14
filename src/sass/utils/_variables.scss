@@ -35,7 +35,7 @@
 або в цьому переліку, тільки із іншою "темною" парою,
 для позначення змінного кольору його треба продублювати, але під іншою назвою, 
 і застосовувати в стилях тем нову назву. */
-:root[data-theme='light'] {
+:root[data-theme="light"] {
   /* Header: border, close-btn, burger-menu; 
   Library: text, book-title, see-more-btn;
   Shopping-list: book-title, about;
@@ -53,6 +53,9 @@
 
   /* text-in-logo */
   --text-in-logo: #000000;
+
+  /*Navigation*/
+  --nav-link-hovered: #ffffff;
 
   /* Body background */
   --body-background: #f6f6f6;
@@ -73,10 +76,11 @@
 }
 
 /* Сюди вписуємо кольори-антиподи, але під тими самими назвами! */
-:root[data-theme='dark'] {
+:root[data-theme="dark"] {
   --main-color: #ffffff;
   --card-background: #111111;
   --text-in-logo: #f3f3f3;
+  --nav-link-hovered: #111111;
   --body-background: #202024;
   --categories-main: rgba(255, 255, 255, 0.6);
   --categories-accent: #eac645;
