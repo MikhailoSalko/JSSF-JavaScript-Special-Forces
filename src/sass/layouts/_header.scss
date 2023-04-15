@@ -172,6 +172,7 @@
 
 .mobile-menu {
   z-index: 10;
+  margin-top: 64px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -231,10 +232,27 @@
       }
     }
 
+
     @include tablet {
       display: none;
     }
   }
+.content {
+  height: 50%;
+
+  .nav {
+    margin-left: 0;
+    height: 100%;
+
+    &__list {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+}
 }
 
 .user {
