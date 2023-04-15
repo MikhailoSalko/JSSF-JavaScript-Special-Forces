@@ -7,35 +7,38 @@
     margin-left: auto;
     margin-right: auto;
 
-    @media screen and (min-width: 375px) {
+    @include mobile {
         width: 335px;
         padding: 20px;
     }
 
-    @media screen and (min-width: 768px) {
+    @include tablet {
         width: 704px;
         padding: 24px;
     }
 
-    @media screen and (min-width: 1200px) {
+    @include desktop {
         width: 996px;
+        margin-right: 0;
     }
 }
 
 .shoplist-book-card-top {
     display: flex;
     gap: 20px;
+    margin-bottom: 20px;
 }
 
 .shoplist-book-cover {
     border-radius: 8px;
+    margin-bottom: 4px;
 
-    @media screen and (min-width: 375px) {
+    @include mobile {
         width: 98px;
         height: 139px;
     }
 
-    @media screen and (min-width: 768px) {
+    @include tablet {
         width: 116px;
         height: 165px;
     }
@@ -50,4 +53,42 @@
     width: 28px;
     height: 28px;
     border-radius: 50%;
+    cursor: pointer;
+        border: none;
+}
+
+.book-author {
+    color: #B4AFAF;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: calc(14/12);
+    letter-spacing: -0.04em;
+}
+
+.book-title {
+    color: #111111;
+    font-weight: 700;
+        font-size: 16px;
+        line-height: calc(18/16);
+        letter-spacing: -0.04em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+}
+
+.book-category {
+    font-weight: 400;
+        font-size: 12px;
+        line-height: calc(14/12);
+        color: #B4AFAF;
+        letter-spacing: 0.03em;
+        margin-bottom: 24px;
+}
+
+.book-description {
+    font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        color: #111111;
+        letter-spacing: -0.04em;
 }
