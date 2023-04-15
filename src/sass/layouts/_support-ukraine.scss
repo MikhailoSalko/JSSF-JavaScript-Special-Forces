@@ -1,0 +1,95 @@
+.support__container {
+  // margin: 0 auto;
+  padding: 24px 40px 20px 40px;
+  box-shadow: 0px 10px 10px rgba(245, 245, 247, 0.1);
+  border-radius: 16px;
+  max-width: 335px;
+  // height: 352px;
+  height: 100%;
+  overflow-y: scroll;
+  background-image: linear-gradient(
+    to bottom,
+    var(--accent-color),
+    #B8ABF6 
+  );
+
+  @include tablet {
+      // height: 472px;
+      padding-bottom: 14px;
+  }
+
+  @include desktop {
+      max-width: 356px;
+      // height: 490px;
+      padding-bottom: 24px;
+  }
+}
+
+.support__header{
+  display: inline-flex;
+  margin-bottom: 40px;
+  color: var(--caritas-txt);
+  font-size: 28px;
+  letter-spacing: -0.04em;
+}
+
+.support__icon {
+  margin-left: 12px;
+}
+
+.support__list {
+  margin-bottom: 16px;
+
+  @include tablet {
+      margin-bottom: 32px;
+  }
+
+  @include desktop {
+      margin-bottom: 40px;
+  }
+}
+
+.support__link {
+  display: flex;
+  align-items: center;
+}
+
+.support__item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.support__number {
+  margin-right: 16px;
+font-size: 14px;
+line-height: 18px;
+letter-spacing: -0.04em;
+color: var(--caritas-txt);
+}
+
+.support__img {
+    filter: grayscale(100%) brightness(0) invert(100%);
+}
+
+.support__btn {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--caritas-txt);
+  padding: 6px;
+
+  @include tablet {
+      padding: 8px;
+  }
+}
+
+.support__btn_icon {
+  width: 20px;
+  height: 20px;
+
+  @include tablet {
+    width: 22px;
+  height: 22px;
+}
+}
