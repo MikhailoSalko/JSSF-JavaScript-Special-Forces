@@ -20,6 +20,7 @@ export class FetchBooks {
       .then(response => response)
       .catch(console.error);
   }
+
   fetchBookId() {
     return axios
       .get(`${this.#BASE_URL}${this.bookId}`)
