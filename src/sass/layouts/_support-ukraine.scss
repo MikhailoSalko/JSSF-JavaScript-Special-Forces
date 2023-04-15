@@ -3,11 +3,20 @@
   padding: 24px 40px 20px 40px;
   box-shadow: 0px 10px 10px rgba(245, 245, 247, 0.1);
   border-radius: 16px;
-  max-width: 335px;
+  // max-width: 335px;
   // height: 352px;
   height: 100%;
-  overflow-y: scroll;
+  // overflow-y: scroll;
+  overflow-y: hidden;
   background-image: linear-gradient(to bottom, var(--accent-color), #b8abf6);
+
+  @include small-mobile {
+    max-width: 335px;
+  }
+
+  @include mobile {
+    width: 335px;
+  }
 
   @include tablet {
     // height: 472px;
@@ -15,7 +24,8 @@
   }
 
   @include desktop {
-    max-width: 356px;
+    // max-width: 356px;
+    width: 356px;
     // height: 490px;
     padding-bottom: 24px;
   }

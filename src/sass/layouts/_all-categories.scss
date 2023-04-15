@@ -1,25 +1,63 @@
 .categories {
-  max-width: 335px;
-  // delete, if it`s in the flexbox
-  max-height: 228px;
-  // control margins in a tablet and a desktop
-  padding-right: 28px;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  padding-left: 10px;
+  padding-right: 10px;
 
-  @include small-mobile {
-    padding-right: 18px;
+  @include mobile {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
-  //see instructions upper
   @include tablet {
-    width: 337px;
-    max-height: 472px;
+    padding-left: 0;
+    padding-right: 0;
   }
 
-  //see instructions upper
-  @include desktop {
-    width: 356px;
+  &__container {
+    // delete, if it`s in the flexbox
+    max-height: 228px;
+    padding-right: 28px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    @include small-mobile {
+      max-width: 335px;
+      padding-right: 18px;
+    }
+
+    @include mobile {
+      width: 335px;
+    }
+
+    //see instructions upper
+    @include tablet {
+      width: 337px;
+      max-height: 472px;
+    }
+
+    //see instructions upper
+    @include desktop {
+      width: 356px;
+    }
+
+    // Scrollbar
+    &::-webkit-scrollbar {
+      width: 8px;
+
+      &-track {
+        background: var(--body-background);
+      }
+
+      &-thumb {
+        width: 100%;
+        height: 114px;
+        border-radius: 12px;
+        background: var(--categories-scrollbar);
+
+        @include tablet {
+          height: 167px;
+        }
+      }
+    }
   }
 
   &-list {
@@ -29,26 +67,6 @@
 
     @include tablet {
       gap: 32px;
-    }
-  }
-
-  // Scrollbar
-  &::-webkit-scrollbar {
-    width: 8px;
-
-    &-track {
-      background: var(--body-background);
-    }
-
-    &-thumb {
-      width: 100%;
-      height: 114px;
-      border-radius: 12px;
-      background: var(--categories-scrollbar);
-
-      @include tablet {
-        height: 167px;
-      }
     }
   }
 }
