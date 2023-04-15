@@ -1,0 +1,53 @@
+.shoplist-book-card {
+    position: relative;
+    background-color: #fff;
+    border: 2px solid rgba(79, 46, 232, 0.4);
+    border-radius: 16px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media screen and (min-width: 375px) {
+        width: 335px;
+        padding: 20px;
+    }
+
+    @media screen and (min-width: 768px) {
+        width: 704px;
+        padding: 24px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        width: 996px;
+    }
+}
+
+.shoplist-book-card-top {
+    display: flex;
+    gap: 20px;
+}
+
+.shoplist-book-cover {
+    border-radius: 8px;
+
+    @media screen and (min-width: 375px) {
+        width: 98px;
+        height: 139px;
+    }
+
+    @media screen and (min-width: 768px) {
+        width: 116px;
+        height: 165px;
+    }
+
+}
+
+.shoplist-delete-book {
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    background: #4F2EE8;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
