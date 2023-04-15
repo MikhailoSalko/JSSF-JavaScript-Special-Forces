@@ -1,0 +1,16 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 18px 0;
+  color: var(--main-color);
+
+  background-color: var(--card-background);
+  border: 1.5px solid var(--main-color);
+  border-radius: 8px 8px 0px 0px;
+
+  & .team-name {
+    text-align: center;
+  }
+}

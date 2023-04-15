@@ -1,14 +1,15 @@
 .categories {
-  // change on 100%, if it`s setting in sections
-  width: 335px;
+  max-width: 335px;
   // delete, if it`s in the flexbox
   max-height: 228px;
   // control margins in a tablet and a desktop
-  margin-left: auto;
-  margin-right: auto;
   padding-right: 28px;
-
   overflow-y: scroll;
+  overflow-x: hidden;
+
+  @include small-mobile {
+    padding-right: 18px;
+  }
 
   //see instructions upper
   @include tablet {

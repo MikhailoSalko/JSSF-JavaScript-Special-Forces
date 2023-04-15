@@ -7,3 +7,58 @@ body {
 
   background-color: var(--body-background);
 }
+
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 0;
+  padding-top: 104px;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+
+  & .header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  & .desktop-layout {
+    @include desktop {
+      display: flex;
+      flex-direction: row;
+      gap: 40px;
+    }
+  }
+
+  & .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 40px;
+
+    @include tablet {
+      flex-direction: row;
+      gap: 32px;
+      margin-bottom: 100px;
+    }
+
+    @include desktop {
+      flex-direction: column;
+      gap: 86px;
+    }
+
+    &__in-shop-list {
+      display: none;
+    }
+  }
+
+  & .footer {
+    margin-top: 40px;
+  }
+}
