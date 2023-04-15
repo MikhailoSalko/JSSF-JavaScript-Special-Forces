@@ -1,0 +1,70 @@
+.preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    /* фоновый цвет */
+    background: #D0D0D0;
+    z-index: 1001;
+
+    padding: 20px;
+    outline: none;
+    border: none;
+    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #233fa4;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.loaded_hiding .preloader {
+    transition: 0.3s opacity;
+    opacity: 0;
+}
+
+.loaded .preloader {
+    display: none;
+}
+
+.loading .preloader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.loader {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: inline-block;
+    border-top: 4px solid #fff;
+    border-right: 4px solid transparent;
+    animation: rotation 1s linear infinite;
+
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        border-left: 4px solid var(--accent-color);
+        border-bottom: 4px solid transparent;
+        animation: rotation 0.5s linear infinite reverse;
+    }
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+
