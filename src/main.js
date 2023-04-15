@@ -19,12 +19,6 @@ pageEl.addEventListener('click', event => {
   //   activate theme-toggle
   activateThemeToggle(event, pageEl);
 
-  const isInput = event.target.classList.contains('theme-toggle-js');
-  if (isInput) {
-    const checkboxEl = event.target;
-    changeTheme(pageEl, checkboxEl);
-  } else console.log('don`t turget'); //delete else block
+  // change categories styles
+  changeCategoryStyle(event);
 });
-// change categories styles
-//   changeCategoryStyle(event);
-// });
