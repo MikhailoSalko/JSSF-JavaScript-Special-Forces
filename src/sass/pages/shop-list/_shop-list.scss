@@ -1,7 +1,7 @@
 .shoplist-book-card {
     position: relative;
-    background-color: #fff;
-    border: 2px solid rgba(79, 46, 232, 0.4);
+    background-color: var(--card-background);
+    border: 2px solid var(--shopping-list-border);
     border-radius: 16px;
     margin-bottom: 20px;
     margin-left: auto;
@@ -49,16 +49,15 @@
     position: absolute;
     right: 14px;
     top: 14px;
-    background: #4F2EE8;
+    background: var(--accent-color);
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    cursor: pointer;
-        border: none;
+    border: none;
 }
 
 .book-author {
-    color: #B4AFAF;
+    color: var(--alternative-text);
     font-style: italic;
     font-weight: 400;
     font-size: 12px;
@@ -67,7 +66,7 @@
 }
 
 .book-title {
-    color: #111111;
+    color: var(--main-color);
     font-weight: 700;
         font-size: 16px;
         line-height: calc(18/16);
@@ -89,7 +88,7 @@
     font-weight: 400;
         font-size: 14px;
         line-height: 18px;
-        color: #111111;
+        color: var(--main-color);
         letter-spacing: -0.04em;
 }
 
@@ -99,4 +98,9 @@
 
 .shoplist-delete-book-icon {
     fill: #fff;
+}
+
+.shops-logo {
+    display: flex;
+    align-items: center;
 }

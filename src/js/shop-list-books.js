@@ -188,7 +188,7 @@ const bookListEl = document.querySelector(".shoplist-main")
 
 const renderBooks = (arr) => {
   const markup = arr.map(book => {
-    return `<li></li><div class="shoplist-book-card" id=${book._id}>
+    return `<li><div class="shoplist-book-card" id=${book._id}>
         <button type="button" class="shoplist-delete-book">
           <svg class="shoplist-delete-book-icon" width="12" height="12">
             <use href="../images/icons.svg#shopping-list"></use>
@@ -199,15 +199,15 @@ const renderBooks = (arr) => {
         <p class="book-author">${book.author}</p></div>
         <div><p class="book-title">${book.title}</p>
         <p class="book-category">${book.list_name}</p>
-        <a href=${book.buy_links[0].url} class="shoplist-buy-link" target="_blank" rel="noopener noreferrer" aria-label="Amazon">
-        <img src=${new URL("../images/shopping-list/amaxon-link_1x.png", import.meta.url)} class="shop-logo" alt="Amazon" />
+        <div class="shops-logo"><a href=${book.buy_links[0].url} class="shoplist-buy-link" target="_blank" rel="noopener noreferrer" aria-label="Amazon">
+        <img src=${new URL("../images/shopping-list/amazon-link_1x.png", import.meta.url)} class="shop-logo" alt="Amazon" />
         </a>
         <a href=${book.buy_links[1].url} class="shoplist-buy-link" target="_blank" rel="noopener noreferrer" aria-label="Apple Books">
         <img src=${new URL("../images/shopping-list/books-link_1x.png", import.meta.url)} class="shop-logo" alt="Apple Books" />
         </a>
         <a href=${book.buy_links[4].url} class="shoplist-buy-link" target="_blank" rel="noopener noreferrer" aria-label="Book Shop">
         <img src=${new URL("../images/shopping-list/book-shop-link_1x.png", import.meta.url)} class="shop-logo" alt="Book Shop" />
-        </a></div></div>
+        </a></div></div></div>
         <p class="book-description">${book.description}</p>
       </div></li>`
   }).join("");
@@ -235,7 +235,7 @@ const deleteBook = (id) => {
 
 
 bookListEl.addEventListener("click", (event) => {
-    if (event.target.classList.contains("shoplist-delete-book-icon")) {
+    if (event.target.classList.contains("shoplist-delete-book")) {
         const bookCard = event.target.closest(".shoplist-book-card");
         const bookId = bookCard.getAttribute("id");
         deleteBook(bookId);
