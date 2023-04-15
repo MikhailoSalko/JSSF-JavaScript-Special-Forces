@@ -169,29 +169,29 @@ const books = [
 
 localStorage.setItem("books", JSON.stringify(books));
 
-function removeAsideOnMobile() {
-  if (window.matchMedia("(max-width: 768px)").matches) {
-    const aside = document.getElementsByTagName("aside")[0];
-    aside.remove();
-  }
-};
+// function removeAsideOnMobile() {
+//   if (window.matchMedia("(max-width: 768px)").matches) {
+//     const aside = document.getElementsByTagName("aside")[0];
+//     aside.remove();
+//   }
+// };
 
-window.onload = function() {
-  removeAsideOnMobile();
-};
+// window.onload = function() {
+//   removeAsideOnMobile();
+// };
 
-window.onresize = function() {
-  removeAsideOnMobile();
-};
+// window.onresize = function() {
+//   removeAsideOnMobile();
+// };
 
-const bookListEl = document.querySelector(".shoplist")
+const bookListEl = document.querySelector(".shoplist-main")
 
 const renderBooks = (arr) => {
   const markup = arr.map(book => {
-    return `<div class="shoplist-main"><div class="shoplist-book-card" id=${book._id}>
-        <button class="shoplist-delete-book">
+    return `<li></li><div class="shoplist-book-card" id=${book._id}>
+        <button type="button" class="shoplist-delete-book">
           <svg class="shoplist-delete-book-icon" width="12" height="12">
-            <use href="/src/images/icons.svg#shopping-list"></use>
+            <use href="../images/icons.svg#shopping-list"></use>
           </svg>
         </button>
         <div class="shoplist-book-card-top">
@@ -200,17 +200,16 @@ const renderBooks = (arr) => {
         <div><p class="book-title">${book.title}</p>
         <p class="book-category">${book.list_name}</p>
         <a href=${book.buy_links[0].url} class="shoplist-buy-link" target="_blank" rel="noopener noreferrer" aria-label="Amazon">
-        <img src="/src/images/shopping-list/amaxon-link_1x.png" alt="Amazon" />
+        <img src=${new URL("../images/shopping-list/amaxon-link_1x.png", import.meta.url)} class="shop-logo" alt="Amazon" />
         </a>
         <a href=${book.buy_links[1].url} class="shoplist-buy-link" target="_blank" rel="noopener noreferrer" aria-label="Apple Books">
-        <img src="/src/images/shopping-list/books-link_1x.png" alt="Apple Books" />
+        <img src=${new URL("../images/shopping-list/books-link_1x.png", import.meta.url)} class="shop-logo" alt="Apple Books" />
         </a>
         <a href=${book.buy_links[4].url} class="shoplist-buy-link" target="_blank" rel="noopener noreferrer" aria-label="Book Shop">
-        <img src="/src/images/shopping-list/book-shop-link_1x.png" alt="Book Shop" />
+        <img src=${new URL("../images/shopping-list/book-shop-link_1x.png", import.meta.url)} class="shop-logo" alt="Book Shop" />
         </a></div></div>
         <p class="book-description">${book.description}</p>
-      </div>
-      </div>`
+      </div></li>`
   }).join("");
     
     bookListEl.innerHTML = markup;
