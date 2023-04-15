@@ -1,0 +1,132 @@
+.container {
+  @include mobile {
+    width: 375px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @include tablet {
+    width: 768px;
+  }
+  @include desktop {
+    width: 1440px;
+  }
+  background-color: var(--body-background);
+}
+
+.title-best-sellers {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.19;
+  letter-spacing: -0.04em;
+  text-transform: capitalize;
+  color: var(--main-color);
+  margin-bottom: 40px;
+}
+.title-best-sellers-color {
+  z-index: 1;
+  color: var(--categories-accent);
+}
+.title-category {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.19;
+  letter-spacing: -0.04em;
+  text-transform: capitalize;
+  color: var(--main-color);
+  margin-bottom: 40px;
+}
+.item-category {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.29px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+
+  color: var(--alternative-text);
+  margin-bottom: 18px;
+  margin-top: 40px;
+}
+.img-book {
+  width: 335px;
+  height: 485px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+object-fit: cover;
+  @include tablet {
+    width: 218px;
+    height: 316px;
+    
+  }
+}
+.title-book {
+  //   width: 114px;
+  //   height: 18px;
+
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+
+  color: var(--main-color);
+  margin-bottom: 4px;
+}
+.author-book {
+  font-family: 'DM Sans';
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17px;
+  letter-spacing: -0.04em;
+
+  color: var(--alternative-text);
+  margin-bottom: 8px;
+}
+.author-book-category {
+  font-family: 'DM Sans';
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17px;
+  letter-spacing: -0.04em;
+
+  color: var(--alternative-text);
+  margin-bottom: 40px;
+}
+.see-more {
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  // display: flex;
+  // flex-direction: row;
+  // align-items: flex-start;
+  // padding: 14px 28px;
+  // gap: 10px;
+
+  // position: absolute;
+  width: 124px;
+  height: 46px;
+  // left: 231px;
+  // top: 1421px;
+  margin-left: auto;
+  border: 2px solid var(--categories-accent);
+  border-radius: 40px;
+}
+.box-category {
+  @include tablet {
+    display: flex;
+    gap: 25px;
+    justify-content: space-between;
+  }
+}

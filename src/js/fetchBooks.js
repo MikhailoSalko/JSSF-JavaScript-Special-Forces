@@ -9,7 +9,7 @@ export class FetchBooks {
 
   fetchCategoryList() {
     return axios
-      .get(`${this.#BASE_URL}/category-list`)
+      .get(`${this.#BASE_URL}category-list`)
       .then(response => {
         response.json();
       })
@@ -18,9 +18,9 @@ export class FetchBooks {
 
   fetchTopBooks() {
     return axios
-      .get(`${this.#BASE_URL}/top-books`)
+      .get(`${this.#BASE_URL}top-books`)
       .then(response => {
-        response.json();
+        return response;
       })
       .catch(console.error);
   }
@@ -34,11 +34,7 @@ export class FetchBooks {
   }
 
   fetchCategoryOfBooks() {
-    return axios
-      .get(`${this.#BASE_URL}${this.category}`)
-      .then(response => {
-        response.json();
-      })
-      .catch(console.error);
-  }
+return axios.get(`${this.#BASE_URL}category?category=${this.category}`)
+      .then(response => response)
+      .catch(error => console.error(error));  }
 }
