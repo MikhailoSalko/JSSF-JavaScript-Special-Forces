@@ -3,6 +3,7 @@ import { activateThemeToggle } from './js/theme-toggle';
 import { changeTheme } from './js/theme-toggle';
 import { currentPageSwitcher } from './js/current-page-switcher';
 import './js/support-ukraine';
+import './js/authorization-modal';
 
 const pageEl = document.querySelector('html');
 // На сторінці Shop List шукати за класом ".shop-link"

@@ -1,0 +1,135 @@
+<div class="backdrop-auth is-hidden" data-modal-auth>
+  <div class="auth modal-auth" data-modal-auth-window>
+    <button class="modal_btn" data-modal-auth-close>
+      <svg class="modal__cross js-modal-close">
+        <use href="./images/icons.svg#close"></use>
+      </svg>
+    </button>
+
+    <div class="auth-container">
+      <div class="card">
+        <div class="inner-box" id="card">
+          <div class="card-front">
+            <form class="auth_form" name="contact_form" id="form">
+              <div class="auth_wrap">
+                <input
+                  class="auth_field"
+                  type="text"
+                  name="name"
+                  id="name-auth"
+                  placeholder=" "
+                  pattern="[A-Za-z]{2,}"
+                  title="Please, write your name and surname"
+                  required
+                />
+                <label class="auth_label" for="name-auth">NAME</label>
+              </div>
+
+              <div class="auth_wrap">
+                <input
+                  class="auth_field"
+                  type="email"
+                  name="mail"
+                  id="mail-auth"
+                  placeholder=" "
+                  pattern="([\x1F-\xBF]*)@([A-z0-9_.-]{1,}).([A-z]{2,8})"
+                  title="Please, write your email"
+                  minlength="10"
+                  required
+                />
+                <label class="auth_label" for="mail-auth">EMAIL</label>
+              </div>
+              <div class="auth_pass">
+                <input
+                  class="auth_field"
+                  type="password"
+                  name="authpass"
+                  id="userPassword"
+                  placeholder=" "
+                  pattern="[0-9a-fA-F]{6,18}"
+                  title="Please, enter password"
+                  minlength="6"
+                  required
+                />
+                <label class="auth_label" for="userPassword">PASSWORD</label>
+              </div>
+              <button type="submit" class="auth_btn" id="submitBtn">
+                SIGN UP
+              </button>
+            </form>
+
+            <div class="buttons-wrapper">
+              <button type="button" class="option_btn" disabled>SIGN UP</button>
+              <button
+                type="button"
+                class="option_btn"
+                id="signinBtn"
+                onclick="openRegister()"
+              >
+                SIGN IN
+              </button>
+            </div>
+          </div>
+
+          <div class="card-back">
+            <form class="auth_form" name="contact_form">
+              <div class="auth_wrap">
+                <input
+                  class="auth_field"
+                  type="email"
+                  name="mail"
+                  id="mail-auth"
+                  placeholder=" "
+                  pattern="([\x1F-\xBF]*)@([A-z0-9_.-]{1,}).([A-z]{2,8})"
+                  title="Please, write your email"
+                  minlength="10"
+                  required
+                />
+                <label class="auth_label" for="mail-auth">EMAIL</label>
+              </div>
+              <div class="auth_pass">
+                <input
+                  class="auth_field"
+                  type="password"
+                  name="authpass"
+                  id="userPassword"
+                  placeholder=" "
+                  pattern="[0-9a-fA-F]{6,18}"
+                  title="Please, enter password"
+                  minlength="6"
+                  required
+                />
+                <label class="auth_label" for="userPassword">PASSWORD</label>
+              </div>
+              <button type="submit" class="auth_btn">SIGN IN</button>
+            </form>
+
+            <div class="buttons-wrapper">
+              <button
+                type="button"
+                class="option_btn"
+                id="signupBtn"
+                onclick="openLogin()"
+              >
+                SIGN UP
+              </button>
+              <button type="button" class="option_btn" disabled>SIGN IN</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const card = document.getElementById('card');
+
+  function openRegister() {
+    card.style.transform = 'rotateY(-180deg)';
+  }
+
+  function openLogin() {
+    card.style.transform = 'rotateY(0deg)';
+  }
+</script>
