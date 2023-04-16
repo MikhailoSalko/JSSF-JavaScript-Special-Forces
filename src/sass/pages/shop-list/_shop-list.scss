@@ -15,6 +15,8 @@
     @include tablet {
         width: 704px;
         padding: 24px;
+        display: flex;
+        gap: 24px;
     }
 
     @include desktop {
@@ -41,11 +43,12 @@
     @include tablet {
         width: 116px;
         height: 165px;
+        margin-bottom: 0;
     }
 
 }
 
-.shoplist-delete-book {
+.shoplist-delete-book-btn {
     position: absolute;
     right: 14px;
     top: 14px;
@@ -54,18 +57,28 @@
     height: 28px;
     border-radius: 50%;
     border: none;
+
+    @include tablet {
+        right: 24px;
+            top: 24px;
+    }
 }
 
-.book-author {
+.shoplist-book-author {
     color: var(--alternative-text);
     font-style: italic;
     font-weight: 400;
     font-size: 12px;
     line-height: calc(14/12);
     letter-spacing: -0.04em;
+
+    @include tablet {
+        position: absolute;
+        bottom: 24px;
+    }
 }
 
-.book-title {
+.shoplist-book-title {
     color: var(--main-color);
     font-weight: 700;
         font-size: 16px;
@@ -73,23 +86,38 @@
         letter-spacing: -0.04em;
             text-transform: uppercase;
             margin-bottom: 4px;
+            width: 144px;
+
+            @include tablet {
+                width: 100%;
+            }
 }
 
-.book-category {
+.shoplist-book-category {
     font-weight: 400;
         font-size: 12px;
         line-height: calc(14/12);
         color: var(--alternative-text);
         letter-spacing: 0.03em;
         margin-bottom: 24px;
+        width: 144px;
+
+        @include tablet {
+            margin-bottom: 14px;
+            width: 100%;
+        }
 }
 
-.book-description {
+.shoplist-book-description {
     font-weight: 400;
         font-size: 14px;
         line-height: 18px;
         color: var(--main-color);
         letter-spacing: -0.04em;
+        
+        @include tablet {
+            width: 508px;
+        }
 }
 
 .shop-logo {
@@ -103,4 +131,11 @@
 .shops-logo {
     display: flex;
     align-items: center;
+    gap: 14px;
+
+    @include tablet {
+        position: absolute;
+        right: 24px;
+            bottom: 24px;
+    }
 }
