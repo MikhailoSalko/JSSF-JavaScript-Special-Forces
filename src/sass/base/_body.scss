@@ -9,11 +9,12 @@ body {
 }
 
 .page {
+  min-height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 
   margin-bottom: 0;
   padding-top: 104px;
