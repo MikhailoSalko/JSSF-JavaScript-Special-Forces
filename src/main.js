@@ -4,8 +4,7 @@ import { currentPageSwitcher } from './js/current-page-switcher';
 import { changeMobileMenuIcon } from './js/mobile-menu-icon-switcher';
 import './js/support-ukraine';
 import './js/authorization-modal';
-
-const pageEl = document.querySelector('html');
+import './js/firebase';
 
 // Початкові налаштування теми
 setTheme(pageEl);

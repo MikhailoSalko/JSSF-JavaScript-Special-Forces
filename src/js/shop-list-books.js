@@ -15,7 +15,7 @@ const books = [
   "contributor": "by Barbara O'Connor",
   "contributor_note": "",
   "created_date": "2023-04-05 23:10:17",
-  "description": "Lorem ipsum dolor",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada, nibh a bibendum varius, enim tortor dictum felis, vel tristique tellus justo ac sem. Duis quis magna vel sapien euismod vestibulum.",
   "first_chapter_link": "",
   "price": "0.00",
   "primary_isbn10": "1250144051",
@@ -188,28 +188,53 @@ const bookListEl = document.querySelector(".shoplist-main")
 
 const renderBooks = (arr) => {
   const markup = arr.map(book => {
-    return `<li><div class="shoplist-book-card" id=${book._id}>
-        <button type="button" class="shoplist-delete-book">
+    if (window.matchMedia("(max-width: 376px)").matches) {
+      return `<li><div class="shoplist-book-card" id=${book._id}>
+        <button type="button" class="shoplist-delete-book-btn">
           <svg class="shoplist-delete-book-icon" width="12" height="12">
-            <use href="../images/icons.svg#shopping-list"></use>
+            <use href="/src/images/icons.svg#shopping-list"></use>
           </svg>
         </button>
         <div class="shoplist-book-card-top">
-        <div><img class="shoplist-book-cover" src=${book.book_image} alt="" width=${book.book_image_width} height=${book.book_image_height}/>
-        <p class="book-author">${book.author}</p></div>
-        <div><p class="book-title">${book.title}</p>
-        <p class="book-category">${book.list_name}</p>
+        <div><img class="shoplist-book-cover" src=${book.book_image} alt="book cover" width=${book.book_image_width} height=${book.book_image_height}/>
+        <p class="shoplist-book-author">${book.author}</p></div>
+        <div><p class="shoplist-book-title">${book.title}</p>
+        <p class="shoplist-book-category">${book.list_name}</p>
         <div class="shops-logo"><a href=${book.buy_links[0].url} class="shoplist-buy-link" target="_blank" rel="noopener noreferrer" aria-label="Amazon">
-        <img src=${new URL("../images/shopping-list/amazon-link_1x.png", import.meta.url)} class="shop-logo" alt="Amazon" />
+        <img src=${new URL("../images/shopping-list/amazon-link_2x.png", import.meta.url)} class="shop-logo" width="48" height="15" alt="Amazon" />
         </a>
         <a href=${book.buy_links[1].url} class="shoplist-buy-link" target="_blank" rel="noopener noreferrer" aria-label="Apple Books">
-        <img src=${new URL("../images/shopping-list/books-link_1x.png", import.meta.url)} class="shop-logo" alt="Apple Books" />
+        <img src=${new URL("../images/shopping-list/books-link_2x.png", import.meta.url)} class="shop-logo" width="28" height="27" alt="Apple Books" />
         </a>
         <a href=${book.buy_links[4].url} class="shoplist-buy-link" target="_blank" rel="noopener noreferrer" aria-label="Book Shop">
-        <img src=${new URL("../images/shopping-list/book-shop-link_1x.png", import.meta.url)} class="shop-logo" alt="Book Shop" />
+        <img src=${new URL("../images/shopping-list/book-shop-link_2x.png", import.meta.url)} class="shop-logo" width="32" height="30" alt="Book Shop" />
         </a></div></div></div>
-        <p class="book-description">${book.description}</p>
+        <p class="shoplist-book-description">${book.description}</p>
       </div></li>`
+    } else {
+      return `<li><div class="shoplist-book-card" id=${book._id}>
+        <button type="button" class="shoplist-delete-book-btn">
+          <svg class="shoplist-delete-book-icon" width="12" height="12">
+            <use href="/src/images/icons.svg#shopping-list"></use>
+          </svg>
+        </button>
+        <div><img class="shoplist-book-cover" src=${book.book_image} alt="book cover" width=${book.book_image_width} height=${book.book_image_height}/></div>
+        <div><p class="shoplist-book-title">${book.title}</p>
+        <p class="shoplist-book-category">${book.list_name}</p>
+        <p class="shoplist-book-description">${book.description}</p>
+        <p class="shoplist-book-author">${book.author}</p>
+        </div>
+        <div class="shops-logo"><a href=${book.buy_links[0].url} class="shoplist-buy-link" target="_blank" rel="noopener noreferrer" aria-label="Amazon">
+        <img src=${new URL("../images/shopping-list/amazon-link_2x.png", import.meta.url)} class="shop-logo" width="48" height="15" alt="Amazon" />
+        </a>
+        <a href=${book.buy_links[1].url} class="shoplist-buy-link" target="_blank" rel="noopener noreferrer" aria-label="Apple Books">
+        <img src=${new URL("../images/shopping-list/books-link_2x.png", import.meta.url)} class="shop-logo" width="28" height="27" alt="Apple Books" />
+        </a>
+        <a href=${book.buy_links[4].url} class="shoplist-buy-link" target="_blank" rel="noopener noreferrer" aria-label="Book Shop">
+        <img src=${new URL("../images/shopping-list/book-shop-link_2x.png", import.meta.url)} class="shop-logo" width="32" height="30" alt="Book Shop" />
+        </a></div>
+      </div></li>`
+    }
   }).join("");
     
     bookListEl.innerHTML = markup;
@@ -219,7 +244,13 @@ if (localStorage.length > 0) {
   const addedBooks = localStorage.getItem("books");
   try {
   const parsedBooks = JSON.parse(addedBooks);
-    renderBooks(parsedBooks);
+    window.onload = function() {
+  renderBooks(parsedBooks);
+};
+    window.onresize = function() {
+  renderBooks(parsedBooks);
+};
+    
 } catch (error) {
   console.log(error.name); 
   console.log(error.message); 
@@ -235,7 +266,7 @@ const deleteBook = (id) => {
 
 
 bookListEl.addEventListener("click", (event) => {
-    if (event.target.classList.contains("shoplist-delete-book")) {
+    if (event.target.classList.contains("shoplist-delete-book-btn")) {
         const bookCard = event.target.closest(".shoplist-book-card");
         const bookId = bookCard.getAttribute("id");
         deleteBook(bookId);
