@@ -1,4 +1,4 @@
-export { setTheme, activateThemeToggle, changeTheme };
+export { setTheme, activateThemeToggle };
 
 const storageKeyLibrary = 'isDark';
 const toggleClass = 'theme-toggle-js';

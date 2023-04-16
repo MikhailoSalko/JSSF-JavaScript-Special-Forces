@@ -6,6 +6,8 @@ import './js/support-ukraine';
 import './js/authorization-modal';
 import './js/firebase';
 
+const pageEl = document.querySelector('html');
+
 // Початкові налаштування теми
 setTheme(pageEl);
 
