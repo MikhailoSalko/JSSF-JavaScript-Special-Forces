@@ -1,14 +1,9 @@
-export { setTheme, activateThemeToggle, changeTheme };
+export { setTheme, activateThemeToggle };
 
-const toggleClass = "theme-toggle-js";
+const storageKeyLibrary = 'isDark';
+const toggleClass = 'theme-toggle-js';
 
-function setTheme(pageElement, isDark) {
-  if (isDark) {
-    pageElement.setAttribute("data-theme", "dark");
-  } else {
-    pageElement.setAttribute("data-theme", "light");
-  }
-}
+const checkboxEl = document.querySelector(`.${toggleClass}`);
 
 function activateThemeToggle(event, pageEl) {
   const isInput = event.target.classList.contains(toggleClass);
@@ -18,11 +13,23 @@ function activateThemeToggle(event, pageEl) {
   }
 }
 
-function changeTheme(pageEl, checkboxEl) {
+function changeTheme(pageEl) {
   if (checkboxEl.checked) {
-    pageEl.setAttribute("data-theme", "dark");
+    localStorage.setItem(storageKeyLibrary, 'true');
+    setTheme(pageEl, checkboxEl);
   }
   if (!checkboxEl.checked) {
-    pageEl.setAttribute("data-theme", "light");
+    localStorage.removeItem(storageKeyLibrary);
+    setTheme(pageEl, checkboxEl);
+  }
+}
+
+function setTheme(pageEl) {
+  if (localStorage.getItem(storageKeyLibrary)) {
+    pageEl.setAttribute('data-theme', 'dark');
+    checkboxEl.checked = true;
+  } else {
+    pageEl.setAttribute('data-theme', 'light');
+    checkboxEl.checked = false;
   }
 }
