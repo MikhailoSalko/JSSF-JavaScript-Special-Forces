@@ -5,6 +5,7 @@ import { currentPageSwitcher } from "./js/current-page-switcher";
 import { changeMobileMenuIcon } from "./js/mobile-menu-icon-switcher";
 import "./js/support-ukraine";
 import "./js/authorization-modal";
+import "./js/firebase";
 
 const pageEl = document.querySelector("html");
 
