@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="en-US" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,18 +19,19 @@
     <!-- Parcel script -->
     <script type="module" src="./index.js" defer></script>
   </head>
-  <body>
+
+  <body class="page">
     <include src="./partials/header.html"></include>
-    <aside class="sidebar">
-      <include src="./partials/all-categories.html"></include>
+    <aside class="sidebar sidebar__in-shop-list">
       <include src="./partials/support-ukraine.html"></include>
     </aside>
     <main>
-      <include src="./partials/pages/shop-list/shop-list.html"></include>
+      <include src="./partials/pages/shop-list/basket.html"></include>
     </main>
     <include src="./partials/footer.html"></include>
     <!-- base js -->
     <!-- <script type="module" src="./index.js"></script> -->
     <script type="module" src="./main.js"></script>
+    <script type="module" src="./js/shop-list-books.js"></script>
   </body>
 </html>
