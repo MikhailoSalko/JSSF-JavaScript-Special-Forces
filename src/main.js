@@ -15,6 +15,14 @@ setTheme(pageEl);
 const currentPage = document.querySelector(".nav__link");
 currentPageSwitcher(currentPage);
 
+const userAutherizedBtnRef = document.querySelector(".user-authorized__btn");
+const logOutBtnRef = document.querySelector(".user-log-out");
+
+userAutherizedBtnRef.addEventListener("click", () => {
+  console.log(1);
+  logOutBtnRef.classList.toggle(".lo-open");
+});
+
 // Build Categories list
 renderCategories();
 
@@ -32,3 +40,5 @@ pageEl.addEventListener("click", event => {
 //Змінює іконку відкриття/закриття модалки на мобілкі. Пізніше привʼяжемо ще відкриття і закриття самої модалки
 const mobileMenuButtonIconRef = document.querySelector(".mobile-menu__icon");
 mobileMenuButtonIconRef.addEventListener("click", changeMobileMenuIcon);
+
+console.log(logOutClickHandler);
