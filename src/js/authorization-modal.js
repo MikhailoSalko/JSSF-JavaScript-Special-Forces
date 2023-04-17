@@ -7,12 +7,36 @@
     modalWindow: document.querySelector('[data-modal-auth-window]'),
   };
 
-  refs.openModalBtn.addEventListener('click', toggleModal);
-  refs.closeModalBtn.addEventListener('click', toggleModal);
+  refs.openModalBtn.addEventListener('click', onOpenModal);
+  refs.closeModalBtn.addEventListener('click', onCloseModal);
 
-  function toggleModal() {
-    refs.modal.classList.toggle('is-hidden');
+  refs.modal.addEventListener('click', onBackdropClick);
 
-    refs.modalWindow.classList.toggle('modal-animation');
+  function onOpenModal() {
+    window.addEventListener('keydown', onEscKeyPress);
+    refs.modal.classList.remove('is-hidden');
+    refs.modalWindow.classList.add('modal-animation');
   }
+
+  function onCloseModal() {
+    window.removeEventListener('keydown', onEscKeyPress);
+    refs.modal.classList.add('is-hidden');
+    refs.modalWindow.classList.add('modal-animation');
+  }
+
+  // add features =================================
+
+  function onBackdropClick(event) {
+    if (event.currentTarget === event.target) {
+      onCloseModal();
+    }
+  }
+
+  function onEscKeyPress(event) {
+    const ESC_KEY_CODE = 'Escape';
+    if (event.code === ESC_KEY_CODE) {
+      onCloseModal();
+    }
+  }
+  // ===============================================
 })();

@@ -1,27 +1,27 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getDatabase, set, ref, update } from "firebase/database";
+import { initializeApp } from 'firebase/app';
+import { getDatabase, set, ref, update } from 'firebase/database';
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-} from "firebase/auth";
+} from 'firebase/auth';
 
-import Notiflix from "notiflix";
+import Notiflix from 'notiflix';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA-_OfsYzJ0IruGwuB0MjrKn8CM_GP4gaw",
-  authDomain: "jssf-bookstore.firebaseapp.com",
-  databaseURL: "https://jssf-bookstore-default-rtdb.firebaseio.com",
-  projectId: "jssf-bookstore",
-  storageBucket: "jssf-bookstore.appspot.com",
-  messagingSenderId: "159533621369",
-  appId: "1:159533621369:web:49b6ecc78de1b0dd90f4a8",
+  apiKey: 'AIzaSyA-_OfsYzJ0IruGwuB0MjrKn8CM_GP4gaw',
+  authDomain: 'jssf-bookstore.firebaseapp.com',
+  databaseURL: 'https://jssf-bookstore-default-rtdb.firebaseio.com',
+  projectId: 'jssf-bookstore',
+  storageBucket: 'jssf-bookstore.appspot.com',
+  messagingSenderId: '159533621369',
+  appId: '1:159533621369:web:49b6ecc78de1b0dd90f4a8',
 };
 
 // Initialize Firebase
@@ -33,21 +33,21 @@ console.log(app);
 console.log(database);
 console.log(auth);
 
-signinBtn.addEventListener("click", e => {
-  const nameAuth = document.getElementById("name-auth").value;
-  const mailAuth = document.getElementById("mail-auth").value;
-  const userPassword = document.getElementById("userPassword").value;
+signinBtn.addEventListener('click', e => {
+  const nameAuth = document.getElementById('name-auth').value;
+  const mailAuth = document.getElementById('mail-auth').value;
+  const userPassword = document.getElementById('userPassword').value;
 
   createUserWithEmailAndPassword(auth, mailAuth, userPassword)
     .then(userCredential => {
       // Signed in
       const user = userCredential.user;
 
-      set(ref(database, "users/" + user.uid), {
+      set(ref(database, 'users/' + user.uid), {
         nameAuth: nameAuth,
         mailAuth: mailAuth,
       });
-      Notiflix.Notify.success("user created!");
+      Notiflix.Notify.success('user created!');
       // ...
     })
     .catch(error => {
@@ -59,10 +59,10 @@ signinBtn.addEventListener("click", e => {
     });
 });
 
-signupBtn.addEventListener("click", e => {
-  const nameAuth = document.getElementById("name-auth").value;
-  const mailAuth = document.getElementById("mail-auth").value;
-  const userPassword = document.getElementById("userPassword").value;
+signupBtn.addEventListener('click', e => {
+  const nameAuth = document.getElementById('name-auth').value;
+  const mailAuth = document.getElementById('mail-auth').value;
+  const userPassword = document.getElementById('userPassword').value;
 
   signInWithEmailAndPassword(auth, mailAuth, userPassword)
     .then(userCredential => {
@@ -70,11 +70,11 @@ signupBtn.addEventListener("click", e => {
       const user = userCredential.user;
 
       const dt = new Date();
-      update(ref(database, "users/" + user.uid), {
+      update(ref(database, 'users/' + user.uid), {
         last_login: dt,
       });
 
-      Notiflix.Notify.success("User longed in!");
+      Notiflix.Notify.success('User longed in!');
       // ...
     })
     .catch(error => {
