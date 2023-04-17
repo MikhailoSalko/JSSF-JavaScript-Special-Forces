@@ -10,7 +10,7 @@
 
     <nav class="nav">
       <ul class="nav__list">
-        <li class="nav__item">
+        <li class="nav__item current-page">
           <a href="./index.html" class="nav__link">Home</a>
         </li>
         <li class="nav__item">
@@ -26,13 +26,13 @@
     <input type="checkbox" class="theme-toggle-js" />
 
     <button class="mobile-menu__button">
-      <svg width="28" height="28">
-        <use href="./images/icons.svg#burger-menu"></use>
+      <svg class="mobile-menu__icon" width="28" height="28">
+        <use href="./images/icons.svg#burger-menu" is-opened="false"></use>
       </svg>
     </button>
 
     <button class="user" data-modal-auth-open>
-      <svg class="" width="19" height="19">
+      <svg width="19" height="19">
         <use href="./images/icons.svg#icon-user"></use>
       </svg>
     </button>
