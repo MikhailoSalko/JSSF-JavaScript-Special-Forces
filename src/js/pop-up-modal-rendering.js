@@ -1,13 +1,30 @@
-<div class="backdrop backdrop__modal backdrop--is-hidden js-book-modal">
-  <div class="modal book-card__modal scrollable">
-    <button class="modal-close__btn js-book-close">
-      <svg class="close__icon">
-        <use href="./images/icons.svg#close"></use>
-      </svg>
-    </button>
-    <div class="book-card">
+import { FetchBooks } from './fetchBooks';
+export { renderBookCard };
+
+const fetchBook = new FetchBooks();
+const bookCardEL = document.querySelector('.book-card');
+const bookMarkup = renderBookInfo(book);
+
+function renderBookCard() {
+  fetchBook.fetchBookId().then(data => {
+    bookCardEL.insertAdjacentHTML('beforeend', renderBookInfo(data));
+  });
+}
+
+function renderBookInfo(bookId) {
+  const markup = bookId
+    .map(book => {
+      const {
+        book_image,
+        title,
+        author,
+        description,
+        buy_links: [url],
+      } = book;
+
+      return `<div class="book-card">
       <div class="book-card__thumb">
-        <!-- <img class="book-card__img" src="../" alt="book_image" loading="lazy" /> -->
+        <img class="book-card__img" src="${book_image}" alt="book_image" loading="lazy" />
       </div>
       <div class="book-info">
         <h2 class="book-title">${title}</h2>
@@ -17,7 +34,7 @@
           <li class="shops-item">
             <a
               class="buy-links"
-              href="https://google.com"
+              href="${buy_links.find(link => link.name === 'Amazon')}"
               aria-label="amazon-shop icon"
               target="_blank"
               rel="noopener noreferrer"
@@ -33,7 +50,7 @@
           <li class="shops-item">
             <a
               class="buy-links"
-              href="https://google.com"
+              href="${buy_links.find(link => link.name === 'Apple Books')}"
               aria-label="apple-book icon"
               target="_blank"
               rel="noopener noreferrer"
@@ -49,7 +66,7 @@
           <li class="shops-item">
             <a
               class="buy-links"
-              href="https://google.com"
+              href="${buy_links.find(link => link.name === 'Bookshop')}"
               aria-label="bookshop icon"
               target="_blank"
               rel="noopener noreferrer"
@@ -64,9 +81,9 @@
           </li>
         </ul>
       </div>
-    </div>
-    <div class="book-card__btn">
-      <button class="card__btn btn">add to shop list</button>
-    </div>
-  </div>
-</div>
+    </div>`;
+    })
+    .join('');
+  bookCardEL.innerHTML = '';
+  bookCardEL.insertAdjacentHTML('beforeend', markup);
+}

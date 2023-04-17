@@ -125,7 +125,7 @@
 }
 
 .shoplist-delete-book-icon {
-    fill: #fff;
+    margin: auto;
 }
 
 .shops-logo {
@@ -136,6 +136,6 @@
     @include tablet {
         position: absolute;
         right: 24px;
-            bottom: 24px;
+        bottom: 24px;
     }
 }
