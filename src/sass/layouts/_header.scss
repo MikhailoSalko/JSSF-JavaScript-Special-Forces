@@ -149,7 +149,7 @@
   transition-timing-function: var(--transition-timing-function);
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 1;
     left: 1;
@@ -203,15 +203,19 @@
 .user {
   display: none;
 
-  width: 37px;
-  height: 37px;
-  border: none;
-  border-radius: 50%;
-  background-color: #f6f6f6;
+  // width: 37px;
+  // height: 37px;
+  padding: 14px;
+
+  border: 1.5px solid #111111;
+  border-radius: 18px;
+  background-color: var(--accent-color);
+  color: var(--caritas-txt);
 
   @include tablet {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 90px;
   }
 }
