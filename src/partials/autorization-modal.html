@@ -1,7 +1,7 @@
 <div class="backdrop-auth is-hidden js-backdrop" data-modal-auth>
   <div class="auth modal-auth" data-modal-auth-window>
-    <button class="modal_btn" data-modal-auth-close>
-      <svg class="modal__cross js-modal-close">
+    <button class="auth-modal-btn" data-modal-auth-close>
+      <svg class="modal_cross js-modal-close">
         <use href="./images/icons.svg#close"></use>
       </svg>
     </button>
@@ -22,7 +22,7 @@
                   type="text"
                   name="name"
                   id="name-auth"
-                  placeholder=" "
+                  placeholder="_"
                   title="Please, write your name and surname"
                   minlength="2"
                   required
@@ -38,7 +38,7 @@
                   type="email"
                   name="mail"
                   id="mail-auth"
-                  placeholder=" "
+                  placeholder="_"
                   pattern="([\x1F-\xBF]*)@([A-z0-9_.-]{1,}).([A-z]{2,8})"
                   title="Please, write your email"
                   required
@@ -55,7 +55,7 @@
                   type="password"
                   name="authpass"
                   id="userPassword"
-                  placeholder=" "
+                  placeholder="_"
                   title="Please, enter password"
                   required
                 />
@@ -96,7 +96,7 @@
                   type="email"
                   name="mail"
                   id="mail-auth"
-                  placeholder=" "
+                  placeholder="_"
                   pattern="([\x1F-\xBF]*)@([A-z0-9_.-]{1,}).([A-z]{2,8})"
                   title="Please, write your email"
                   required
@@ -113,7 +113,7 @@
                   type="password"
                   name="authpass"
                   id="userPassword"
-                  placeholder=" "
+                  placeholder="_"
                   title="Please, enter password"
                   required
                 />
@@ -123,7 +123,9 @@
                 </svg>
                 <div class="error"></div>
               </div>
-              <button type="submit" class="auth_btn">SIGN IN</button>
+              <button type="submit" id="submitBtn-copy" class="auth_btn">
+                SIGN IN
+              </button>
             </form>
 
             <div class="buttons-wrapper">
