@@ -46,7 +46,7 @@
   pointer-events: none;
 }
 
-.modal_btn {
+.auth-modal-btn {
   position: absolute;
   top: 14px;
   right: 14px;
@@ -61,6 +61,8 @@
   outline: 0;
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
+  z-index: 102;
+
   @include tablet {
     width: 28px;
     height: 28px;
@@ -69,7 +71,7 @@
   }
 }
 
-.modal__cross {
+.modal_cross {
   width: 10px;
   height: 10px;
   fill: var(--nav-link-hovered);
@@ -130,6 +132,11 @@
   @include tablet {
     margin-bottom: 28px;
   }
+}
+
+::placeholder {
+  color: var(--body-background);
+  // color: #f31414;
 }
 
 .auth_icon {
