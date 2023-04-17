@@ -38,9 +38,13 @@ body {
 
   & .desktop-layout {
     @include desktop {
+      width: 1280px;
       display: flex;
       flex-direction: row;
       gap: 40px;
+      padding-left: 24px;
+      padding-right: 24px;
+      padding-bottom: 40px;
     }
   }
 

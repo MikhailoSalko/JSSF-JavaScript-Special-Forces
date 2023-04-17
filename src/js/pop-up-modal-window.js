@@ -1,14 +1,19 @@
 (() => {
   const refs = {
-    // openBookEL: document.querySelector('.checked-category'),
+    openBookEL: document.querySelector('.checked-category'),
     bookModal: document.querySelector('.js-book-modal'),
     closeBookBtn: document.querySelector('.js-book-close'),
     bookcardEL: document.querySelector('.book-card__modal'),
   };
 
-  refs.openBookEL.addEventListener('click', toggleModal);
+  //Перевірка, чи елемент існує
+  if (refs.openBookEL) {
+    // виконання дії над елементом після перевірки
+    refs.openBookEL.addEventListener('click', toggleModal);
+  }
+
   refs.closeBookBtn.addEventListener('click', toggleModal);
-  // refs.bookModal.addEventListener('click', toggleModal);
+  refs.bookModal.addEventListener('click', toggleModal);
 
   function toggleModal() {
     refs.bookModal.classList.toggle('backdrop--is-hidden');

@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getDatabase, set, ref, update } from "firebase/database";
+import { initializeApp } from 'firebase/app';
+import { getDatabase, set, ref, update } from 'firebase/database';
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -15,13 +15,13 @@ import Notiflix from "notiflix";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA-_OfsYzJ0IruGwuB0MjrKn8CM_GP4gaw",
-  authDomain: "jssf-bookstore.firebaseapp.com",
-  databaseURL: "https://jssf-bookstore-default-rtdb.firebaseio.com",
-  projectId: "jssf-bookstore",
-  storageBucket: "jssf-bookstore.appspot.com",
-  messagingSenderId: "159533621369",
-  appId: "1:159533621369:web:49b6ecc78de1b0dd90f4a8",
+  apiKey: 'AIzaSyA-_OfsYzJ0IruGwuB0MjrKn8CM_GP4gaw',
+  authDomain: 'jssf-bookstore.firebaseapp.com',
+  databaseURL: 'https://jssf-bookstore-default-rtdb.firebaseio.com',
+  projectId: 'jssf-bookstore',
+  storageBucket: 'jssf-bookstore.appspot.com',
+  messagingSenderId: '159533621369',
+  appId: '1:159533621369:web:49b6ecc78de1b0dd90f4a8',
 };
 
 // Initialize Firebase

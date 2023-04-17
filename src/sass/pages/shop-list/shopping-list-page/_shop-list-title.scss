@@ -1,0 +1,24 @@
+@media screen and (min-width: 375px) {
+    .title-list {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 38px;
+        letter-spacing: -0.04em;
+        margin-bottom: 120px;
+    
+        color: var(--main-color);
+    }
+
+    .title-list-span { 
+        color: var(--accent-color);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .title-list {
+        font-size: 48px;
+        line-height: 52px;
+        margin-bottom: 140px;
+    }
+}
