@@ -202,13 +202,17 @@
 
 .user {
   display: none;
-
-  // width: 37px;
-  // height: 37px;
   padding: 14px;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+
+  letter-spacing: -0.04em;
 
   border: 1.5px solid #111111;
   border-radius: 18px;
+
   background-color: var(--accent-color);
   color: var(--caritas-txt);
 
@@ -217,5 +221,34 @@
     justify-content: center;
     align-items: center;
     gap: 90px;
+  }
+
+  &-authorized {
+    display: flex;
+    display: none;
+    align-items: center;
+    padding: 4px 12px;
+
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 36px;
+
+    &__image {
+      border-radius: 50%;
+    }
+
+    &__name {
+      margin-left: 9px;
+      margin-right: 4px;
+      font-family: var(--main-font-family);
+
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 131.818182%; /* 29/22 */
+
+      letter-spacing: -0.02em;
+
+      color: var(--caritas-txt);
+    }
   }
 }
