@@ -2,6 +2,8 @@
   padding-left: 10px;
   padding-right: 10px;
 
+  color: var(--categories-main);
+
   @include mobile {
     padding-left: 20px;
     padding-right: 20px;
@@ -78,8 +80,6 @@
 
   letter-spacing: -0.02em;
 
-  color: var(--categories-main);
-
   cursor: pointer;
 
   transition-duration: 250ms;
@@ -91,7 +91,6 @@
     line-height: 1.33;
   }
 
-  //delete if bed)
   &:hover,
   &:focus {
     font-size: 17px;
