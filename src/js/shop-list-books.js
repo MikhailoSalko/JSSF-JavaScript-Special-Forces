@@ -233,7 +233,7 @@ const renderBooks = arr => {
         return `<li><div class="shoplist-book-card" id=${book._id}>
         <button type="button" class="shoplist-delete-book-btn">
           <img src=${new URL(
-            '../images/shopping-list/icon.svg',
+            '../images/shopping-list/Icon.svg',
             import.meta.url
           )} class="shoplist-delete-book-icon" alt="Delete book" width="14" height="14" />
         </button>
