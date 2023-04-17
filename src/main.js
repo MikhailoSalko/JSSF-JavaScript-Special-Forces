@@ -10,6 +10,10 @@ import './js/pop-up-modal-window';
 import './js/firebase';
 
 const pageEl = document.querySelector('html');
+
+// Початкові налаштування теми
+setTheme(pageEl);
+
 const burger = document.getElementById('burger-btn');
 
 // На сторінці Shop List шукати за класом ".shop-link"
