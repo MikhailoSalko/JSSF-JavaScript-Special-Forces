@@ -1,6 +1,6 @@
 (() => {
   const refs = {
-    openBookEL: document.querySelector('.checked-category'),
+    // openBookEL: document.querySelector('.checked-category'),
     bookModal: document.querySelector('.js-book-modal'),
     closeBookBtn: document.querySelector('.js-book-close'),
     bookcardEL: document.querySelector('.book-card__modal'),

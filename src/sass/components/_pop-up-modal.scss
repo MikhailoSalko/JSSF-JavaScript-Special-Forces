@@ -31,10 +31,10 @@
   transition-timing-function: var(--transition-timing-function);
   transition-property: transform, opacity;
 
-  // .backdrop--is-hidden & {
-  //   transform: translate(-50%, 0);
-  //   opacity: 0;
-  // }
+  .backdrop--is-hidden & {
+    transform: translate(-50%, 0);
+    opacity: 0;
+  }
 }
 
 .book-card__modal {
