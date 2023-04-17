@@ -1,53 +1,141 @@
 .shoplist-book-card {
     position: relative;
-    background-color: #fff;
-    border: 2px solid rgba(79, 46, 232, 0.4);
+    background-color: var(--card-background);
+    border: 2px solid var(--shopping-list-border);
     border-radius: 16px;
     margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
 
-    @media screen and (min-width: 375px) {
+    @include mobile {
         width: 335px;
         padding: 20px;
     }
 
-    @media screen and (min-width: 768px) {
+    @include tablet {
         width: 704px;
         padding: 24px;
+        display: flex;
+        gap: 24px;
     }
 
-    @media screen and (min-width: 1200px) {
+    @include desktop {
         width: 996px;
+        margin-right: 0;
     }
 }
 
 .shoplist-book-card-top {
     display: flex;
     gap: 20px;
+    margin-bottom: 20px;
 }
 
 .shoplist-book-cover {
     border-radius: 8px;
+    margin-bottom: 4px;
 
-    @media screen and (min-width: 375px) {
+    @include mobile {
         width: 98px;
         height: 139px;
     }
 
-    @media screen and (min-width: 768px) {
+    @include tablet {
         width: 116px;
         height: 165px;
+        margin-bottom: 0;
     }
 
 }
 
-.shoplist-delete-book {
+.shoplist-delete-book-btn {
     position: absolute;
     right: 14px;
     top: 14px;
-    background: #4F2EE8;
+    background: var(--accent-color);
     width: 28px;
     height: 28px;
     border-radius: 50%;
+    border: none;
+
+    @include tablet {
+        right: 24px;
+            top: 24px;
+    }
+}
+
+.shoplist-book-author {
+    color: var(--alternative-text);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: calc(14/12);
+    letter-spacing: -0.04em;
+
+    @include tablet {
+        position: absolute;
+        bottom: 24px;
+    }
+}
+
+.shoplist-book-title {
+    color: var(--main-color);
+    font-weight: 700;
+        font-size: 16px;
+        line-height: calc(18/16);
+        letter-spacing: -0.04em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            width: 144px;
+
+            @include tablet {
+                width: 100%;
+            }
+}
+
+.shoplist-book-category {
+    font-weight: 400;
+        font-size: 12px;
+        line-height: calc(14/12);
+        color: var(--alternative-text);
+        letter-spacing: 0.03em;
+        margin-bottom: 24px;
+        width: 144px;
+
+        @include tablet {
+            margin-bottom: 14px;
+            width: 100%;
+        }
+}
+
+.shoplist-book-description {
+    font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        color: var(--main-color);
+        letter-spacing: -0.04em;
+        
+        @include tablet {
+            width: 508px;
+        }
+}
+
+.shop-logo {
+    filter: grayscale(100%);
+}
+
+.shoplist-delete-book-icon {
+    margin: auto;
+}
+
+.shops-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    @include tablet {
+        position: absolute;
+        right: 24px;
+        bottom: 24px;
+    }
 }

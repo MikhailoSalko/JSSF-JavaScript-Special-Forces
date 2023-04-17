@@ -9,8 +9,13 @@
 // components
 @import './components/module';
 
+
 // layot
 @import './layouts/module';
+@import './layouts/header';
 
 // pages
 @import './pages/module';
+
+//spinner
+@import './components/spinner';

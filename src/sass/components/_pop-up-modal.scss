@@ -4,12 +4,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 30;
+  z-index: 100;
 
   background-color: rgba(17, 17, 17, 0.4);
 
-  transition-duration: var(--normal-transition-duration);
-  transition-timing-function: var(--normal-transition-timing-function);
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
   transition-property: visibility, opacity;
 
   &--is-hidden {
@@ -27,8 +27,8 @@
 .backdrop__modal {
   opacity: 1;
 
-  transition-duration: var(--normal-transition-duration);
-  transition-timing-function: var(--normal-transition-timing-function);
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
   transition-property: transform, opacity;
 
   .backdrop--is-hidden & {
@@ -42,21 +42,25 @@
   top: 10vh;
   left: 50%;
   transform: translate(-50%);
-  max-height: 80vh;
+  z-index: 1000;
 
   display: flex;
   flex-direction: column;
   padding: 40px 24px;
   width: 287px;
 
-  outline: 2px solid #111111;
+  outline: 2px solid var(--main-color);
   border-radius: 18px;
-  background-color: #ffffff;
+  background-color: var(--card-background);
 
   @include tablet {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
     max-width: 579px;
     width: 100%;
-    height: 465px;
+    // height: 465px;
   }
 }
 
@@ -65,21 +69,15 @@
   top: 12px;
   right: 12px;
 
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
   width: 24px;
   height: 24px;
-  padding: 0;
 
-  background-color: none;
-
-  align-items: center;
-  justify-content: center;
-
+  background-color: var(--card-background);
   border: none;
-  fill: #111111;
-
-  transition-property: fill;
-  transition-duration: var(--normal-transition-duration);
-  transition-timing-function: var(--normal-transition-timing-function);
 
   @include tablet {
     width: 28px;
@@ -87,15 +85,26 @@
     top: 24px;
     right: 24px;
   }
-
-  &:hover {
-    fill: var(--button-hover-color);
-  }
 }
 
 .close__icon {
-  width: 100%;
-  height: 100%;
+  width: 24px;
+  height: 24px;
+
+  fill: var(--back-btn-background);
+  transition-property: fill;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+
+  &:hover,
+  &:focus {
+    fill: var(--categories-accent);
+  }
+
+  @include tablet {
+    width: 28px;
+    height: 28px;
+  }
 }
 
 .book-card {
@@ -111,28 +120,30 @@
 }
 
 .book-card__thumb {
-  width: 287px;
+  max-width: 287px;
   height: 408px;
-  margin: 0 auto;
   margin-bottom: 14px;
   overflow: hidden;
 
-  /* @include tablet {
-    max-width: 579px;
+  @media screen and (max-width) {
+    margin: 0 auto;
+  }
+
+  @include tablet {
+    max-width: 192px;
     width: 100%;
-    height: 465px;
-  } */
+    height: 281px;
+    margin-right: 24px;
+    margin-bottom: 40px;
+  }
 }
 
 .book-card__img {
-  width: 100%;
-  height: 100%;
   border-radius: 8px;
   overflow: hidden;
 }
 
 .book-title {
-  margin-top: 0;
   margin-bottom: 4px;
   font-style: normal;
   font-weight: 700;
@@ -141,54 +152,90 @@
   letter-spacing: -0.04em;
   text-transform: uppercase;
 
-  color: #111111;
+  color: var(--main-color);
 
   @include tablet {
+    font-size: 24px;
+    line-height: calc(28 / 24);
+    margin-bottom: 8px;
   }
 }
 
 .book-author {
-  margin-top: 0;
-  margin-bottom: 18px;
   font-style: italic;
   font-weight: 400;
   font-size: 12px;
   line-height: calc(14 / 12);
   letter-spacing: -0.04em;
-  color: #b4afaf;
+  margin-bottom: 18px;
+
+  color: var(--alternative-text);
+
+  @include tablet {
+    font-size: 14px;
+    line-height: calc(18 / 14);
+    margin-bottom: 20px;
+  }
 }
 
 .book-description {
-  margin-top: 0;
   margin-bottom: 23px;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: calc(18 / 14);
   letter-spacing: -0.04em;
-  color: #111111;
+
+  color: var(--main-color);
+
+  @include tablet {
+    margin-bottom: 29px;
+  }
 }
 
 .shops-list {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  margin-top: 0;
+  gap: 20px;
   margin-bottom: 40px;
-  padding: 0;
 }
 
 // .shops-item {
 // }
 
 .buy-links {
-  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.book-shop__icon {
-  fill: var(--footer-icon-color);
+.book-shop__icons {
+  filter: grayscale(100%);
+
+  &:hover,
+  &:focus {
+    box-shadow: (0px 3px 3px rgba(0, 0, 0, 0.15));
+  }
+}
+
+.amazon-shop__icon {
+  width: 62px;
+  height: 19px;
+
+  &:hover,
+  &:focus {
+    fill: var(--categories-accent);
+  }
+}
+
+.apple-book__icon {
+  width: 33px;
+  height: 32px;
+}
+
+.bookshop-icon {
+  width: 38px;
+  height: 36px;
 }
 
 .book-card__btn {
@@ -198,9 +245,9 @@
 .card__btn {
   width: 211px;
   height: 46px;
-  border: 2px solid #4f2ee8;
+  border: 2px solid var(--categories-accent);
   border-radius: 40px;
-  background-color: #ffffff;
+  background-color: var(--card-background);
 
   font-style: normal;
   font-weight: 700;
@@ -209,16 +256,21 @@
   letter-spacing: -0.01em;
   text-transform: uppercase;
 
-  transition-property: color;
-  transition-duration: var(--normal-transition-duration);
-  transition-timing-function: var(--normal-transition-timing-function);
+  transition-property: color, background-color;
+
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
 
   &:hover,
   &:focus {
-    background-color: var(--button-hover-color);
+    background-color: var(--categories-accent);
+    color: var(--nav-link-hovered);
   }
 
-  &:focus {
-    color: var(--button-text-inverse-color);
+  @include tablet {
+    width: 499px;
+    height: 64px;
+    font-size: 18px;
+    line-height: calc(24 / 18);
   }
 }
