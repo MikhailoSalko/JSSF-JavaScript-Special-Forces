@@ -4,6 +4,7 @@ import { changeTheme } from './js/theme-toggle';
 import { currentPageSwitcher } from './js/current-page-switcher';
 import './js/support-ukraine';
 import './js/authorization-modal';
+import './js/authorization-form';
 
 const pageEl = document.querySelector('html');
 // На сторінці Shop List шукати за класом ".shop-link"
