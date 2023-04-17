@@ -67,7 +67,6 @@
 .shoplist-book-author {
     color: var(--alternative-text);
     font-style: italic;
-    font-weight: 400;
     font-size: 12px;
     line-height: calc(14/12);
     letter-spacing: -0.04em;
@@ -81,20 +80,18 @@
 .shoplist-book-title {
     color: var(--main-color);
     font-weight: 700;
-        font-size: 16px;
-        line-height: calc(18/16);
-        letter-spacing: -0.04em;
-            text-transform: uppercase;
-            margin-bottom: 4px;
-            width: 144px;
+    line-height: calc(18/16);
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    width: 144px;
 
-            @include tablet {
-                width: 100%;
-            }
+        @include tablet {
+            width: 100%;
+        }
 }
 
 .shoplist-book-category {
-    font-weight: 400;
         font-size: 12px;
         line-height: calc(14/12);
         color: var(--alternative-text);
@@ -109,7 +106,7 @@
 }
 
 .shoplist-book-description {
-    font-weight: 400;
+
         font-size: 14px;
         line-height: 18px;
         color: var(--main-color);
@@ -122,6 +119,10 @@
 
 .shop-logo {
     filter: grayscale(100%);
+}
+
+.shop-logo:hover {
+    filter: grayscale(100%) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
 }
 
 .shoplist-delete-book-icon {
