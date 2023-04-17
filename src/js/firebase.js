@@ -1,14 +1,14 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getDatabase, set, ref, update } from "firebase/database";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
+// import { initializeApp } from "firebase/app";
+// import { getDatabase, set, ref, update } from "firebase/database";
+// import {
+//   getAuth,
+//   createUserWithEmailAndPassword,
+//   signInWithEmailAndPassword,
+//   onAuthStateChanged,
+// } from "firebase/auth";
 
-import Notiflix from "notiflix";
+// import Notiflix from "notiflix";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries

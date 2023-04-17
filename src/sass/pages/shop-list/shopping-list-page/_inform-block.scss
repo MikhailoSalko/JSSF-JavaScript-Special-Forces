@@ -1,19 +1,12 @@
 @media screen and (min-width: 375px) {
-    .inform-block {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0px;
-    }
-
     .information-text {
-        font-family: 'DM Sans';
         font-style: normal;
         font-weight: 400;
         font-size: 14px;
         line-height: 18px;
-        margin: 0;
         margin-bottom: 14px;
+        margin-left: auto;
+        margin-right: auto;
         
         width: 244px;
         text-align: center;
@@ -25,6 +18,9 @@
     .book_img {
         width: 265px;
         height: 198px;
+        margin-left: auto;
+        margin-right: auto;
+        
         background-image: url('../images/shopping-list-page/bg-book_mob@1x.png');
         background-size: cover;
     }
