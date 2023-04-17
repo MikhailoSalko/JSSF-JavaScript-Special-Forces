@@ -190,6 +190,7 @@ const renderBooks = arr => {
         <button type="button" class="shoplist-delete-book-btn">
         <img src=${new URL(
           '../images/shopping-list/icon.svg',
+
           import.meta.url
         )} class="shoplist-delete-book-icon" alt="Delete book" width="15" height="15" />
         </button>
