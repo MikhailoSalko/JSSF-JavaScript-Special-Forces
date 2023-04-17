@@ -1,4 +1,4 @@
-.container {
+.container-books-card {
   @include mobile {
     width: 375px;
     padding-left: 20px;
@@ -8,10 +8,19 @@
   }
   @include tablet {
     width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
-  @include desktop {
-    width: 1440px;
+  @include desktop{
+    width: 942px;
+    padding-left: 32px;
+    padding-right: 12px;
   }
+//   @include desktop {
+//     width: 1060px;
+//     padding-left: 40px;
+//     padding-right: 24px;
+//   }
   background-color: var(--body-background);
 }
 
@@ -24,23 +33,24 @@
   letter-spacing: -0.04em;
   text-transform: capitalize;
   color: var(--main-color);
+  margin-top: 40px;
   margin-bottom: 40px;
+  @include tablet {
+    margin-top: 100px;
+    font-size: 48px;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+  }
 }
+
 .title-best-sellers-color {
-  z-index: 1;
   color: var(--categories-accent);
 }
-.title-category {
-  font-family: 'DM Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 1.19;
-  letter-spacing: -0.04em;
-  text-transform: capitalize;
-  color: var(--main-color);
-  margin-bottom: 40px;
+
+.title-last-word-color {
+  color: var(--categories-accent);
 }
+
 .item-category {
   font-family: 'DM Sans';
   font-style: normal;
@@ -49,27 +59,52 @@
   line-height: 1.29px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-
+  text-overflow: ellipsis;
   color: var(--alternative-text);
   margin-bottom: 18px;
   margin-top: 40px;
+  display: block;
 }
-.img-book {
-  width: 335px;
-  height: 485px;
-  margin-bottom: 14px;
-  border-radius: 8px;
-object-fit: cover;
-  @include tablet {
+.img-card-book {
+  @include mobile {
+    width: 335px;
+    height: 485px;
+    margin-bottom: 14px;
+  }
+  @include tablet{
     width: 218px;
     height: 316px;
-    
+  }
+  @include desktop{
+    width: 170px;
+    height: 241px;
   }
 }
-.title-book {
-  //   width: 114px;
-  //   height: 18px;
 
+.img-book {
+  width: 100%;
+  height: 100%;
+  //   height: 485px;
+  border-radius: 8px;
+  object-fit: cover;
+  //   @include tablet {
+  //     width: 218px;
+  //     height: 316px;
+  //   }
+}
+.box-text-book {
+  width: 335px;
+  @include tablet{
+    width: 218px;
+  }
+  @include desktop{
+    width: 170px;
+  }
+}
+
+.title-book {
+  //   //   width: 114px;
+  //   //   height: 18px;
   font-family: 'DM Sans';
   font-style: normal;
   font-weight: 700;
@@ -77,10 +112,14 @@ object-fit: cover;
   line-height: 1.12;
   letter-spacing: -0.04em;
   text-transform: uppercase;
-
+  text-overflow: ellipsis;
   color: var(--main-color);
   margin-bottom: 4px;
+  //   @include tablet {
+  //     width: 218px;
+  //   }
 }
+
 .author-book {
   font-family: 'DM Sans';
   font-style: italic;
@@ -88,10 +127,30 @@ object-fit: cover;
   font-size: 12px;
   line-height: 1.17px;
   letter-spacing: -0.04em;
-
+  text-overflow: ellipsis;
   color: var(--alternative-text);
   margin-bottom: 8px;
 }
+
+// .title-category {
+//   font-family: 'DM Sans';
+//   font-style: normal;
+//   font-weight: 700;
+//   font-size: 32px;
+//   line-height: 1.19;
+//   letter-spacing: -0.04em;
+//   text-transform: capitalize;
+//   color: var(--main-color);
+//   margin-top: 40px;
+//   margin-bottom: 40px;
+//   @include tablet {
+//     margin-top: 100px;
+//     font-size: 48px;
+//     line-height: 1.08;
+//     letter-spacing: -0.04em;
+//   }
+// }
+
 .author-book-category {
   font-family: 'DM Sans';
   font-style: italic;
@@ -99,34 +158,115 @@ object-fit: cover;
   font-size: 12px;
   line-height: 1.17px;
   letter-spacing: -0.04em;
-
+  text-overflow: ellipsis;
   color: var(--alternative-text);
+  //   //   тут немає кнопки сі мо тому більший маржин до наступної лі
   margin-bottom: 40px;
 }
 .see-more {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+
+  color: var(--main-color);
   box-sizing: border-box;
-
-  /* Auto layout */
-
-  // display: flex;
-  // flex-direction: row;
-  // align-items: flex-start;
-  // padding: 14px 28px;
-  // gap: 10px;
-
-  // position: absolute;
   width: 124px;
   height: 46px;
-  // left: 231px;
-  // top: 1421px;
   margin-left: auto;
-  border: 2px solid var(--categories-accent);
+  border: 2px solid var(--accent-color);
   border-radius: 40px;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    background: var(--categories-accent);
+    color: var(--nav-link-hovered);
+  }
 }
+
 .box-category {
   @include tablet {
     display: flex;
     gap: 25px;
     justify-content: space-between;
   }
+  @include desktop{
+    gap: 12px;
+  }
+//       @include desktop {
+//         display: grid;
+//         grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+//         grid-auto-rows: 291px;
+//         grid-gap: 12px 40px;
+//       }
+    }
+
+.top-books {
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: space-between;
+  }
+//   @include desktop {
+//     gap: 24px;
+//   }
+}
+
+// .item-category-book {
+//   @include tablet {
+//     width: calc((100% - 50px) / 3);
+//   }
+//   @include desktop {
+//     width: calc((940px - 160px) / 5);
+//     width: 180px;
+//     //     height: 306px;
+//   }
+// }
+// .card-book {
+//   @include mobile {
+//     width: 335px;
+//   }
+//   @include tablet {
+//     width: 180px;
+//   }
+//   @include desktop {
+//     width: 156px;
+//   }
+// }
+// .box-text-book {
+//   @include mobile {
+//     width: 335px;
+//   }
+
+//   @include tablet {
+//     width: 180px;
+//   }
+
+//   @include desktop {
+//     width: 156px;
+//   }
+// }
+.btn-up {
+  position: fixed;
+  right: 30px;
+  bottom: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 5px solid var(--border-btn-up-color);
+  background-color: var(--accent-color);
+  box-shadow: 0 0 0 5px rgba(79, 46, 232, 0.3);
+  cursor: pointer;
+}
+
+.icon-up {
+  width: 11px;
+  height: 19px;
 }
