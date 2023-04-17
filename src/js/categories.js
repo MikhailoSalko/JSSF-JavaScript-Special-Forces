@@ -1,14 +1,30 @@
 import { FetchBooks } from './fetchBooks';
 
 export { renderCategories, changeCategoryStyle };
+
+const errorMessadge =
+  'Ooops! Something goes wrong... <br>We can`t download caregories. ';
+
 const categoriesEl = document.querySelector('.categories-list');
 
 const fetch = new FetchBooks();
 
 function renderCategories() {
-  fetch.fetchCategoryList().then(data => {
-    categoriesEl.insertAdjacentHTML('beforeend', renderList(data.data));
-  });
+  fetch
+    .fetchCategoryList()
+    .then(data => {
+      if (categoriesEl) {
+        categoriesEl.insertAdjacentHTML('beforeend', renderList(data.data));
+      }
+    })
+    .catch(error => {
+      if (categoriesEl) {
+        categoriesEl.insertAdjacentHTML(
+          'beforeend',
+          renderErrorMsg(errorMessadge, error)
+        );
+      }
+    });
 }
 
 function changeCategoryStyle(event) {
@@ -25,15 +41,21 @@ function changeCategoryStyle(event) {
 }
 
 function renderList(categories) {
-  return categories
-    .map(category => {
-      return renderCategory(category['list_name']);
-    })
-    .join('');
+  let listMarkup = `<li class="category checked-category">All categories</li>`;
+
+  categories.map(category => {
+    listMarkup += renderCategory(category['list_name']);
+  });
+
+  return listMarkup;
 }
 
 function renderCategory(category) {
   return `<li class="category">
         ${category.trim()}
       </li>`;
+}
+
+function renderErrorMsg(messadge, error) {
+  return `<p class="category-error">${messadge}${error}</p>`;
 }

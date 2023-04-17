@@ -7,3 +7,86 @@ body {
 
   background-color: var(--body-background);
 }
+
+.page {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 0;
+  padding-top: 104px;
+
+  /* Hide scrollbar for IE and Edge */
+  -ms-overflow-style: none;
+  /* Hide scrollbar for Firefox */
+  scrollbar-width: none;
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & .header {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
+  }
+
+  & .desktop-layout {
+    @include desktop {
+      display: flex;
+      flex-direction: row;
+      gap: 40px;
+    }
+  }
+
+  & .sidebar {
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    // gap: 40px;
+    margin-bottom: 40px;
+
+    @include tablet {
+      flex-direction: row;
+      // gap: 32px;
+      margin-bottom: 100px;
+    }
+
+    @include desktop {
+      flex-direction: column;
+      // gap: 86px;
+    }
+
+    &__in-shop-list {
+      display: none;
+
+      @include desktop {
+        display: flex;
+      }
+    }
+
+    & .categories {
+      margin-bottom: 40px;
+
+      @include tablet {
+        margin-bottom: 0;
+        margin-right: 32px;
+      }
+
+      @include desktop {
+        margin-right: 0;
+        margin-bottom: 86px;
+      }
+    }
+  }
+
+  & .footer {
+    margin-top: 40px;
+  }
+}
