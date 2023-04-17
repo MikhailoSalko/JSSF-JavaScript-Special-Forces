@@ -5,6 +5,7 @@ let isOpened;
 
 function changeMobileMenuIcon(e) {
   const mobileMenuButtonUseRef = e.currentTarget.firstElementChild;
+  const modal = document;
   const SPRITE_PATH = mobileMenuButtonUseRef.getAttribute("href").split("#")[0];
 
   isOpened = !isOpened;
@@ -14,6 +15,7 @@ function changeMobileMenuIcon(e) {
   mobileMenuButtonUseRef.setAttribute("href", `${SPRITE_PATH}#${currentIcon}`);
 
   mobileMenuButtonUseRef.setAttribute("is-opened", isOpened);
+  modal.classList.toggle(".active");
 }
 
 export { changeMobileMenuIcon };
