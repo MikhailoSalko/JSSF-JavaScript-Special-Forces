@@ -11,7 +11,7 @@ function changeMobileMenuIcon(e) {
 
   isOpened = !isOpened;
 
-  currentIcon = isOpened ? MOBILE_MENU_OPEN_ICON : MOBILE_MENU_CLOSE_ICON;
+  const currentIcon = isOpened ? MOBILE_MENU_OPEN_ICON : MOBILE_MENU_CLOSE_ICON;
 
   mobileMenuButtonUseRef.setAttribute("href", `${SPRITE_PATH}#${currentIcon}`);
 
