@@ -26,14 +26,12 @@ async function renderingBooksCategories() {
       markup += `<li>
     <h3 class="item-category">${list_name}</h3>
         <ul class="box-book">
-      <li>
-        <a href="">
+      <li class = "js-book-modal">
             <div>
                 <img src="${books[0].book_image}" alt="book" class="img-book">
                 <p class="title-book">${books[0].title}</p>
                 <p class="author-book">${books[0].author}</p>
             </div>
-        </a>
       </li>
     </ul>
         <button type="button" class="see-more">See more</button>
@@ -47,33 +45,27 @@ async function renderingBooksCategories() {
 <li>
     <h3 class="item-category">${list_name}</h3>
         <ul class="box-category">
-      <li>
-        <a href="">
+      <li class = "js-book-modal">
             <div>
                 <img src="${books[0].book_image}" alt="book" class="img-book">
                 <p class="title-book">${books[0].title}</p>
                 <p class="author-book">${books[0].author}</p>
             </div>
-        </a>
       </li>
-            <li>
-        <a href="">
+            <li class = "js-book-modal">
             <div>
                 <img src="${books[1].book_image}" alt="book" class="img-book">
                 <p class="title-book">${books[1].title}</p>
                 <p class="author-book">${books[1].author}</p>
             </div>
-        </a>
       </li>
 
-            <li>
-        <a href="">
+            <li class = "js-book-modal">
             <div>
                 <img src="${books[2].book_image}" alt="book" class="img-book">
                 <p class="title-book">${books[2].title}</p>
                 <p class="author-book">${books[2].author}</p>
             </div>
-        </a>
 </li>
     </ul>
         <button type="button" class="see-more">See more</button>
@@ -86,52 +78,42 @@ async function renderingBooksCategories() {
 <li>
     <h3 class="item-category">${list_name}</h3>
         <ul>
-      <li>
-        <a href="">
+      <li class = "js-book-modal" data-book-id="${books[0]._id}">
             <div>
                 <img src="${books[0].book_image}" alt="book" class="img-book">
                 <p class="title-book">${books[0].title}</p>
                 <p class="author-book">${books[0].author}</p>
             </div>
-        </a>
       </li>
-            <li>
-        <a href="">
+            <li class = "js-book-modal" data-book-id="${books[1]._id}">
             <div>
                 <img src="${books[1].book_image}" alt="book" class="img-book">
                 <p class="title-book">${books[1].title}</p>
                 <p class="author-book">${books[1].author}</p>
             </div>
-        </a>
       </li>
-            <li>
-        <a href="">
+            <li class = "js-book-modal" data-book-id="${books[2]._id}">
             <div>
                 <img src="${books[2].book_image}" alt="book" class="img-book">
                 <p class="title-book">${books[2].title}</p>
                 <p class="author-book">${books[2].author}</p>
             </div>
-        </a>
       </li>
 
-            <li>
-        <a href="">
+            <li class = "js-book-modal" data-book-id="${books[3]._id}">
             <div>
                 <img src="${books[3].book_image}" alt="book" class="img-book">
                 <p class="title-book">${books[3].title}</p>
                 <p class="author-book">${books[3].author}</p>
             </div>
-        </a>
       </li>
 
-            <li>
-        <a href="">
+            <li class = "js-book-modal" data-book-id="${books[4]._id}">
             <div>
                 <img src="${books[4].book_image}" alt="book" class="img-book">
                 <p class="title-book">${books[4].title}</p>
                 <p class="author-book">${books[4].author}</p>
             </div>
-        </a>
       </li>
 
     </ul>
@@ -155,20 +137,18 @@ btnSeeMore.forEach(btn => {
 });
 let category = '';
 async function handleLoadMore(e) {
-  category = e.target.closest('li').querySelector('h3').textContent;
+  category = e.target.closest('li').querySelector('.title-book').textContent;
   console.log(category);
 
   const renderCategory = await renderingCategory();
   let markup = '';
   renderCategory.forEach(({ book_image, title, author }) => {
-    markup += `<li>
-        <a href="">
+    markup += `<li class = "js-book-modal">
             <div>
                 <img src="${book_image}" alt="book" class="img-book">
                 <p class="title-book">${title}</p>
                 <p class="author-book-category">${author}</p>
             </div>
-        </a>
       </li>`;
   });
   console.log(renderCategory.list_name);
