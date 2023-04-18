@@ -1,8 +1,8 @@
 import { supportUkraineItems } from './array-support-ukraine';
 
 const supportContainerEl = document.querySelector('.js-support__container');
-const supportListEl = document.querySelector('.js_support_list');
-const supportBtnEl = document.querySelector('.js_support_btn');
+const supportListEl = document.querySelector('.js-support_list');
+const supportBtnEl = document.querySelector('.js-support_btn');
 
 supportBtnEl.addEventListener('click', renderMoreMarkup);
 
