@@ -1,64 +1,64 @@
 <header class="header">
-  <div class="container header__container">
-    <a class="logo" href="./index.html">
-      <svg class="logo__icon" width="25" height="25">
-        <use href="./images/icons.svg#logo"></use>
-      </svg>
-      <svg class="logo__text" width="53" height="17">
-        <use href="./images/icons.svg#logo-text"></use></svg
-    ></a>
+  <div class="header__wrapper">
+    <div class="container header__container">
+      <a class="logo" href="./index.html">
+        <svg class="logo__icon" width="25" height="25">
+          <use href="./images/icons.svg#logo"></use>
+        </svg>
+        <svg class="logo__text" width="53" height="17">
+          <use href="./images/icons.svg#logo-text"></use></svg
+      ></a>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="./index.html" class="nav__link">Home</a>
+          </li>
+          <li class="nav__item">
+            <a href="./shop-list.html" class="nav__link shop-mob"
+              >Shopping list
+              <svg class="nav__icon" width="20" height="20">
+                <use href="./images/icons.svg#shopping-list"></use></svg
+            ></a>
+          </li>
+        </ul>
+      </nav>
 
-    <nav class="nav">
-      <ul class="nav__list">
-        <li class="nav__item current-page">
-          <a href="./index.html" class="nav__link">Home</a>
-        </li>
-        <li class="nav__item">
-          <a href="./shop-list.html" class="nav__link shop-link"
-            >Shopping list
-            <svg class="nav__icon" width="20" height="20">
-              <use href="./images/icons.svg#shopping-list"></use></svg
-          ></a>
-        </li>
-      </ul>
-    </nav>
+      <input type="checkbox" class="theme-toggle-js" />
 
-    <input type="checkbox" class="theme-toggle-js" />
-
-    <button class="mobile-menu__button">
-      <svg class="mobile-menu__icon" width="28" height="28">
-        <use href="./images/icons.svg#burger-menu" is-opened="false"></use>
-      </svg>
-    </button>
-
-    <button class="user" data-modal-auth-open>
-      Sign Up
-      <svg class="user__icon" width="20" height="20">
-        <use href="./images/icons.svg#arrow-to-right"></use>
-      </svg>
-    </button>
-
-    <div class="user-authorized">
-      <button class="user-authorized__btn">
-        <img
-          width="37"
-          height="37"
-          src="./images/stephen.jpg"
-          alt="user-authorized__image"
-          class="user-authorized__image"
-        />
-        <p class="user-authorized__name">Stephen</p>
-        <svg class="user-authorized__icon" width="23" height="26">
-          <use href="./images/icons.svg#user-arrow-down"></use>
+      <button class="mobile-menu__button">
+        <svg class="mobile-menu__icon" width="28" height="28">
+          <use href="./images/icons.svg#burger-menu" is-opened="false"></use>
         </svg>
       </button>
 
-      <button class="user-log-out">
-        Log Out
+      <button class="user" data-modal-auth-open>
+        Sign Up
         <svg class="user__icon" width="20" height="20">
           <use href="./images/icons.svg#arrow-to-right"></use>
         </svg>
       </button>
+
+      <div class="user-authorized">
+        <button class="user-authorized__btn">
+          <img
+            width="37"
+            height="37"
+            src="./images/stephen.jpg"
+            alt="user-authorized__image"
+            class="user-authorized__image"
+          />
+          <p class="user-authorized__name">Stephen</p>
+          <svg class="user-authorized__icon" width="23" height="26">
+            <use href="./images/icons.svg#user-arrow-down"></use>
+          </svg>
+        </button>
+        <button class="user-log-out">
+          Log Out
+          <svg class="user__icon" width="20" height="20">
+            <use href="./images/icons.svg#arrow-to-right"></use>
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 </header>

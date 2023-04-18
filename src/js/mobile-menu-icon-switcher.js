@@ -7,15 +7,25 @@ function changeMobileMenuIcon(e) {
   const mobileMenuButtonUseRef = e.currentTarget.firstElementChild;
   const modal = document;
   const SPRITE_PATH = mobileMenuButtonUseRef.getAttribute("href").split("#")[0];
+  const menu = document.querySelector(".mobile-menu");
 
-  isOpened = !isOpened;
+  function changeMobileMenuIcon(e) {
+    const mobileMenuButtonUseRef = e.currentTarget.firstElementChild;
+    const SPRITE_PATH = mobileMenuButtonUseRef
+      .getAttribute("href")
+      .split("#")[0];
 
-  currentIcon = isOpened ? MOBILE_MENU_OPEN_ICON : MOBILE_MENU_CLOSE_ICON;
+    isOpened = !isOpened;
 
-  mobileMenuButtonUseRef.setAttribute("href", `${SPRITE_PATH}#${currentIcon}`);
+    currentIcon = isOpened ? MOBILE_MENU_OPEN_ICON : MOBILE_MENU_CLOSE_ICON;
 
-  mobileMenuButtonUseRef.setAttribute("is-opened", isOpened);
-  modal.classList.toggle(".active");
+    mobileMenuButtonUseRef.setAttribute(
+      "href",
+      `${SPRITE_PATH}#${currentIcon}`
+    );
+
+    mobileMenuButtonUseRef.setAttribute("is-opened", isOpened);
+
+    menu.classList.toggle("active");
+  }
 }
-
-export { changeMobileMenuIcon };
