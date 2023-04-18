@@ -1,17 +1,17 @@
 @media screen and (min-width: 375px) {
-    .shop-list-container {
-        padding: 40px 20px;
+    .shop-container {
+        min-width: 335px;
     }
 }
 
 @media screen and (min-width: 768px) {
-    .shop-list-container {
-        padding: 40px 32px;
+    .shop-container {
+        min-width: 704px;
     }
 }
 
 @media screen and (min-width: 1280px) {
-    .shop-list-container {
-        padding: 40px 40px;
+    .shop-container {
+        min-width: 836px;
     }
 }
