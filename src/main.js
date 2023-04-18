@@ -17,15 +17,14 @@ setTheme(pageEl);
 
 const burger = document.getElementById("burger-btn");
 
-// На сторінці Shop List шукати за класом ".shop-link"
 const currentPage = document.querySelector(".nav__link");
 currentPageSwitcher(currentPage);
 
 const userAutherizedBtnRef = document.querySelector(".user-authorized__btn");
-const logOutBtnRef = document.querySelector(".user-log-out");
+
 
 userAutherizedBtnRef.addEventListener("click", () => {
-  console.log(1);
+  const logOutBtnRef = document.querySelector(".user-log-out");
   logOutBtnRef.classList.toggle("lo-open");
 });
 
