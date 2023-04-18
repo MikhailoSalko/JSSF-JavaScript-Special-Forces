@@ -1,14 +1,8 @@
 .support__container {
-  // position: relative;
-  // margin: 0 auto;
+  height: 352px;
   padding: 24px 40px 20px 40px;
   box-shadow: 0px 10px 10px rgba(245, 245, 247, 0.1);
   border-radius: 16px;
-  // max-width: 335px;
-  height: 352px;
-  // height: 100%;
-  // overflow-y: scroll;
-  // overflow-y: hidden;
   background-image: linear-gradient(to bottom, var(--accent-color), #b8abf6);
 
   @include small-mobile {
@@ -25,16 +19,13 @@
   }
 
   @include desktop {
-    height: 490px;
     width: 338px;
+    height: 490px;
     padding-bottom: 24px;
   }
 }
 
 .support__header {
-  // position: fixed;
-  // top: 24px;
-  // left: 40px;
   display: inline-flex;
   margin-bottom: 40px;
   color: var(--caritas-txt);
@@ -47,7 +38,6 @@
 }
 
 .support__list {
-  // padding-top: 72px;
   margin-bottom: 16px;
 
   @include tablet {
@@ -83,12 +73,12 @@
 
 .support__btn {
   display: flex;
+  padding: 6px;
   margin-left: auto;
   margin-right: auto;
   border: none;
   border-radius: 50%;
   background-color: var(--caritas-txt);
-  padding: 6px;
   animation: bounce 3s infinite;
 
   @include tablet {
