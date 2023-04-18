@@ -41,18 +41,6 @@ function renderMoreMarkup() {
   }
 }
 
-let currentRenderWidth = window.innerWidth;
-addEventListener('resize', event => {
-  if (
-    (window.innerWidth > 767 && currentRenderWidth < 768) ||
-    (window.innerWidth > 1279 && currentRenderWidth < 1280) ||
-    (window.innerWidth < 1280 && currentRenderWidth > 1279) ||
-    (window.innerWidth < 768 && currentRenderWidth > 767)
-  ) {
-    currentRenderWidth = window.innerWidth;
-    location.reload();
-  }
-});
 
 function findEndIndex(value) {
   if (window.innerWidth < 768) {
