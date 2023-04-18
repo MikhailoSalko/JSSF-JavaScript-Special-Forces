@@ -19,3 +19,5 @@ function changeMobileMenuIcon(e) {
 
   menu.classList.toggle("active");
 }
+
+export { changeMobileMenuIcon };
