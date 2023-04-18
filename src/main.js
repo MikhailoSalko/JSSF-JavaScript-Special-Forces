@@ -3,7 +3,6 @@ import { renderCategories, changeCategoryStyle } from './js/categories';
 import { currentPageSwitcher } from './js/current-page-switcher';
 import { changeMobileMenuIcon } from './js/mobile-menu-icon-switcher';
 import { activateThemeToggle } from './js/theme-toggle';
-import { changeTheme } from './js/theme-toggle';
 import './js/support-ukraine';
 import './js/authorization-modal';
 import './js/authorization-form';

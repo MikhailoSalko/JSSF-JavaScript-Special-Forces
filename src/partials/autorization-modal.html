@@ -21,7 +21,7 @@
                   class="auth_field"
                   type="text"
                   name="name"
-                  id="name-auth"
+                  id="nameAuth"
                   placeholder="_"
                   title="Please, write your name and surname"
                   minlength="2"
@@ -37,9 +37,9 @@
                   class="auth_field"
                   type="email"
                   name="mail"
-                  id="mail-auth"
+                  id="signupMail"
                   placeholder="_"
-                  pattern="([\x1F-\xBF]*)@([A-z0-9_.-]{1,}).([A-z]{2,8})"
+                  pattern="\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$"
                   title="Please, write your email"
                   required
                 />
@@ -54,7 +54,7 @@
                   class="auth_field"
                   type="password"
                   name="authpass"
-                  id="userPassword"
+                  id="signupPassword"
                   placeholder="_"
                   title="Please, enter password"
                   required
@@ -95,9 +95,9 @@
                   class="auth_field"
                   type="email"
                   name="mail"
-                  id="mail-auth"
+                  id="signinMail"
                   placeholder="_"
-                  pattern="([\x1F-\xBF]*)@([A-z0-9_.-]{1,}).([A-z]{2,8})"
+                  pattern="\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$"
                   title="Please, write your email"
                   required
                 />
@@ -112,7 +112,7 @@
                   class="auth_field"
                   type="password"
                   name="authpass"
-                  id="userPassword"
+                  id="signinPassword"
                   placeholder="_"
                   title="Please, enter password"
                   required
@@ -123,7 +123,7 @@
                 </svg>
                 <div class="error"></div>
               </div>
-              <button type="submit" id="submitBtn-copy" class="auth_btn">
+              <button type="submit" id="submitBtnCopy" class="auth_btn">
                 SIGN IN
               </button>
             </form>
