@@ -27,7 +27,7 @@ async function renderingBooksCategories() {
       markup += `<li>
     <h3 class="item-category">${list_name}</h3>
         <ul class="box-category">
-      <li class="item-category-book">
+      <li class="item-category-book js-book-modal" data-book-id="${books[0]._id}">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${books[0].book_image}" alt="book" class="img-book">
@@ -53,7 +53,7 @@ async function renderingBooksCategories() {
 <li>
     <h3 class="item-category">${list_name}</h3>
         <ul class="box-category">
-      <li class="item-category-book">
+      <li class="item-category-book js-book-modal" data-book-id="${books[0]._id}">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${books[0].book_image}" alt="book" class="img-book">
@@ -68,7 +68,7 @@ async function renderingBooksCategories() {
               </div>
           </div>
       </li>
-            <li class="item-category-book">
+            <li class="item-category-book js-book-modal" data-book-id="${books[1]._id}">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${books[1].book_image}" alt="book" class="img-book">
@@ -83,7 +83,7 @@ async function renderingBooksCategories() {
               </div>
           </div>
       </li>
-          <li class="item-category-book">
+          <li class="item-category-book js-book-modal" data-book-id="${books[2]._id}">
            <div class="card-book">
             <div class="img-card-book">
             <img src="${books[2].book_image}" alt="book" class="img-book">
@@ -109,7 +109,7 @@ async function renderingBooksCategories() {
 <li>
     <h3 class="item-category">${list_name}</h3>
         <ul class="box-category">
-      <li class="item-category-book">
+      <li class="item-category-book js-book-modal" data-book-id="${books[0]._id}">
           <div class="card-book">
             <div class="img-card-book">
                 <img src="${books[0].book_image}" alt="book" class="img-book">
@@ -124,7 +124,7 @@ async function renderingBooksCategories() {
             </div>
           </div>
       </li>
-            <li class="item-category-book">
+            <li class="item-category-book js-book-modal" data-book-id="${books[1]._id}">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${books[1].book_image}" alt="book" class="img-book">
@@ -139,7 +139,7 @@ async function renderingBooksCategories() {
               </div>
           </div>
       </li>
-            <li class="item-category-book">
+            <li class="item-category-book js-book-modal" data-book-id="${books[2]._id}">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${books[2].book_image}" alt="book" class="img-book">
@@ -154,7 +154,7 @@ async function renderingBooksCategories() {
               </div>
           </div>
       </li>
-            <li class="item-category-book">
+            <li class="item-category-book js-book-modal" data-book-id="${books[3]._id}">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${books[3].book_image}" alt="book" class="img-book">
@@ -169,7 +169,7 @@ async function renderingBooksCategories() {
               </div>
           </div>
       </li>
-            <li class="item-category-book">
+            <li class="item-category-book js-book-modal" data-book-id="${books[4]._id}">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${books[4].book_image}" alt="book" class="img-book">
@@ -211,7 +211,7 @@ async function handleLoadMore(e) {
   const renderCategory = await renderingCategory();
   let markup = '';
   renderCategory.forEach(({ book_image, title, author }) => {
-    markup += `<li class="item-category-book">
+    markup += `<li class="item-category-book js-book-modal">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${book_image}" alt="book" class="img-book">
@@ -288,7 +288,7 @@ async function handleCategoryMarkup(e) {
     const renderCategory = await renderingCategory();
     let markup = '';
     renderCategory.forEach(({ book_image, title, author }) => {
-      markup += `<li class="item-category-book">
+      markup += `<li class="item-category-book js-book-modal">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${book_image}" alt="book" class="img-book">
@@ -312,7 +312,7 @@ async function handleCategoryMarkup(e) {
       `<h2 class="title-category">${category}</h2>`
     );
     scrollToTitle();
-      const titleLastWord = listTopBooks.previousElementSibling;
+    const titleLastWord = listTopBooks.previousElementSibling;
     function lastWordForTitle() {
       if (titleLastWord.classList.contains('title-category')) {
         const textTitle = titleLastWord.textContent.trim();
@@ -332,7 +332,7 @@ async function handleCategoryMarkup(e) {
       if (window.screen.width < 768) {
         for (let i = 0; i < categories.length; i += 1) {
           const { list_name, books } = categories[i];
-          markup += `<li class="item-category-book>
+          markup += `<li class="item-category-book js-book-modal" data-book-id="${books[0]._id}">
     <h3 class="item-category">${list_name}</h3>
         <ul class="box-category">
       <li class="item-category-book">
@@ -362,7 +362,7 @@ async function handleCategoryMarkup(e) {
 <li>
     <h3 class="item-category">${list_name}</h3>
         <ul class="box-category">
-      <li class="item-category-book">
+      <li class="item-category-book js-book-modal" data-book-id="${books[0]._id}">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${books[0].book_image}" alt="book" class="img-book">
@@ -377,7 +377,7 @@ async function handleCategoryMarkup(e) {
               </div>
           </div>
       </li>
-            <li class="item-category-book">
+            <li class="item-category-book js-book-modal" data-book-id="${books[1]._id}">
           <div class="card-book">
             <div class="img-card-book-best">
             <img src="${books[1].book_image}" alt="book" class="img-book">
@@ -392,7 +392,7 @@ async function handleCategoryMarkup(e) {
               </div>
           </div>
       </li>
-            <li class="item-category-book">
+            <li class="item-category-book js-book-modal" data-book-id="${books[2]._id}">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${books[2].book_image}" alt="book" class="img-book">
@@ -418,7 +418,7 @@ async function handleCategoryMarkup(e) {
 <li>
     <h3 class="item-category">${list_name}</h3>
         <ul class="box-category">
-      <li class="item-category-book">
+      <li class="item-category-book js-book-modal" data-book-id="${books[0]._id}">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${books[0].book_image}" alt="book" class="img-book">
@@ -433,7 +433,7 @@ async function handleCategoryMarkup(e) {
               </div>
           </div>
       </li>
-            <li class="item-category-book">
+            <li class="item-category-book js-book-modal" data-book-id="${books[1]._id}">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${books[1].book_image}" alt="book" class="img-book">
@@ -448,7 +448,7 @@ async function handleCategoryMarkup(e) {
               </div>
           </div>
       </li>
-            <li class="item-category-book">
+            <li class="item-category-book js-book-modal" data-book-id="${books[2]._id}">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${books[2].book_image}" alt="book" class="img-book">
@@ -463,7 +463,7 @@ async function handleCategoryMarkup(e) {
               </div>
           </div>
       </li>
-            <li class="item-category-book">
+            <li class="item-category-book js-book-modal" data-book-id="${books[3]._id}">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${books[3].book_image}" alt="book" class="img-book">
@@ -478,7 +478,7 @@ async function handleCategoryMarkup(e) {
               </div>
           </div>
       </li>
-            <li class="item-category-book">
+            <li class="item-category-book js-book-modal" data-book-id="${books[4]._id}">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${books[4].book_image}" alt="book" class="img-book">

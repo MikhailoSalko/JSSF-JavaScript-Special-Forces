@@ -123,7 +123,6 @@
   max-width: 287px;
   height: 408px;
   margin-bottom: 14px;
-  overflow: hidden;
 
   @media screen and (max-width) {
     margin: 0 auto;
@@ -144,6 +143,7 @@
 }
 
 .book-title {
+  max-width: 300px;
   margin-bottom: 4px;
   font-style: normal;
   font-weight: 700;
@@ -215,7 +215,7 @@
 
   &:hover,
   &:focus {
-    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
+    filter: grayscale(100%) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
   }
 }
 
@@ -246,9 +246,10 @@
 .card__btn {
   width: 211px;
   height: 46px;
-  border: 2px solid var(--categories-accent);
+  border: 2px solid var(--accent-color);
   border-radius: 40px;
   background-color: var(--card-background);
+  color: var(--main-color);
 
   font-style: normal;
   font-weight: 700;
