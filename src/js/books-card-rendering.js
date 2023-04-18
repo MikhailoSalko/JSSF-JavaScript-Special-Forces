@@ -511,7 +511,6 @@ async function handleCategoryMarkup(e) {
 }
 // ====Перезавантаження сторінки при зміні розміру екрана=====================
 let currentRenderWidth = 375;
-
 addEventListener('resize', event => {
   if (
     (window.innerWidth > 767 && currentRenderWidth < 768) ||
