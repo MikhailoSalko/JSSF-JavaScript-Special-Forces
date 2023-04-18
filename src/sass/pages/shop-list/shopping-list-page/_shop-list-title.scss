@@ -1,5 +1,5 @@
 @media screen and (min-width: 375px) {
-    .title-list {
+    .shoplist-title {
         font-style: normal;
         font-weight: 700;
         font-size: 32px;
@@ -10,7 +10,7 @@
         color: var(--main-color);
     }
 
-    .title-list-span { 
+    .shoplist-title-span { 
         color: var(--accent-color);
     }
 }
@@ -21,4 +21,8 @@
         line-height: 52px;
         margin-bottom: 140px;
     }
+}
+
+.title-when-books {
+    margin-bottom: 40px;
 }
