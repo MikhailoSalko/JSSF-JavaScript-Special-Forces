@@ -26,7 +26,7 @@ const logOutBtnRef = document.querySelector(".user-log-out");
 
 userAutherizedBtnRef.addEventListener("click", () => {
   console.log(1);
-  logOutBtnRef.classList.toggle(".lo-open");
+  logOutBtnRef.classList.toggle("lo-open");
 });
 
 // Build Categories list
@@ -47,4 +47,4 @@ pageEl.addEventListener("click", event => {
 const mobileMenuButtonIconRef = document.querySelector(".mobile-menu__icon");
 mobileMenuButtonIconRef.addEventListener("click", changeMobileMenuIcon);
 
-console.log(logOutClickHandler);
+// console.log(logOutClickHandler);
