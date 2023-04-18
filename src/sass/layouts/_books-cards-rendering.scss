@@ -1,0 +1,251 @@
+.container-books-card {
+  @include mobile {
+    width: 375px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @include tablet {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  @include desktop {
+    width: 942px;
+    padding-left: 32px;
+    padding-right: 12px;
+  }
+  background-color: var(--body-background);
+}
+
+.title-best-sellers {
+  font-size: 32px;
+  line-height: 1.19;
+  letter-spacing: -0.04em;
+  text-transform: capitalize;
+  color: var(--main-color);
+  margin-top: 40px;
+  margin-bottom: 40px;
+  @include tablet {
+    margin-top: 100px;
+    font-size: 48px;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+  }
+  @include desktop {
+    margin-top: 40px;
+  }
+}
+
+.title-best-sellers-color {
+  color: var(--accent-color);
+}
+
+.title-last-word-color {
+  color: var(--accent-color);
+}
+
+.item-category {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.29px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  color: var(--alternative-text);
+  margin-bottom: 18px;
+  display: block;
+}
+.img-card-book {
+  @include mobile {
+    width: 335px;
+    height: 485px;
+    margin-bottom: 14px;
+  }
+  @include tablet {
+    width: 218px;
+    height: 316px;
+  }
+  @include desktop {
+    width: 170px;
+    height: 241px;
+  }
+}
+
+.img-book {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.box-text-book-best {
+  margin-bottom: 8px;
+  @include tablet {
+    margin-bottom: 20px;
+  }
+  @include desktop {
+    margin-bottom: 32px;
+  }
+}
+.box-text-book-category {
+  margin-bottom: 40px;
+  @include desktop {
+    margin-bottom: 32px;
+    
+  }
+}
+.box-title {
+  width: 335px;
+  height: 18px;
+  margin-bottom: 4px;
+  @include tablet {
+    width: 218px;
+  }
+  @include desktop {
+    width: 170px;
+  }
+}
+
+.box-author {
+  width: 335px;
+  height: 18px;
+
+  @include tablet {
+    width: 218px;
+  }
+
+  @include desktop {
+    width: 170px;
+  }
+}
+
+.title-book {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  color: var(--main-color);
+  margin-bottom: 4px;
+}
+
+.author-book {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17px;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  color: var(--alternative-text);
+}
+
+.title-category {
+  font-size: 32px;
+  line-height: 1.19;
+  letter-spacing: -0.04em;
+  text-transform: capitalize;
+  color: var(--main-color);
+  margin-top: 40px;
+  margin-bottom: 40px;
+  @include tablet {
+    margin-top: 100px;
+    font-size: 48px;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+  }
+  @include desktop {
+    margin-top: 40px;
+  }
+}
+
+.author-book-category {
+  font-style: italic;
+  font-size: 12px;
+  line-height: 1.17px;
+  letter-spacing: -0.04em;
+  text-overflow: ellipsis;
+  color: var(--alternative-text);
+}
+.see-more {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+
+  color: var(--main-color);
+  box-sizing: border-box;
+  width: 124px;
+  height: 46px;
+  margin-left: auto;
+  background: var(--body-background);
+  border: 2px solid var(--accent-color);
+  border-radius: 40px;
+  margin-bottom: 40px;
+  &:hover,
+  &:focus {
+    background: var(--categories-accent);
+    color: var(--nav-link-hovered);
+  }
+  transition-property: color, background-color;
+
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+}
+
+.box-category {
+  @include tablet {
+    display: flex;
+    gap: 25px;
+    justify-content: space-between;
+  }
+  @include desktop {
+    gap: 12px;
+  }
+}
+
+.top-books {
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: space-between;
+  }
+  @include desktop {
+    gap: 12px;
+    row-gap: 50px;
+  }
+}
+.btn-up {
+  position: fixed;
+  right: 30px;
+  bottom: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 5px solid var(--border-btn-up-color);
+  background-color: var(--accent-color);
+  box-shadow: 0 0 0 5px rgba(79, 46, 232, 0.3);
+  transition: transform 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.05);
+    background-color: var(--second-accent);
+  }
+}
+
+.icon-up {
+  width: 24px;
+  height: 24px;
+}
