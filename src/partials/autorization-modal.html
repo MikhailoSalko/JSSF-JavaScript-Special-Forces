@@ -1,7 +1,7 @@
 <div class="backdrop-auth is-hidden js-backdrop" data-modal-auth>
   <div class="auth modal-auth" data-modal-auth-window>
-    <button class="modal_btn" data-modal-auth-close>
-      <svg class="modal__cross js-modal-close">
+    <button class="auth-modal-btn" data-modal-auth-close>
+      <svg class="modal_cross js-modal-close">
         <use href="./images/icons.svg#close"></use>
       </svg>
     </button>
@@ -21,8 +21,8 @@
                   class="auth_field"
                   type="text"
                   name="name"
-                  id="name-auth"
-                  placeholder=" "
+                  id="nameAuth"
+                  placeholder="_"
                   title="Please, write your name and surname"
                   minlength="2"
                   required
@@ -37,9 +37,9 @@
                   class="auth_field"
                   type="email"
                   name="mail"
-                  id="mail-auth"
-                  placeholder=" "
-                  pattern="([\x1F-\xBF]*)@([A-z0-9_.-]{1,}).([A-z]{2,8})"
+                  id="signupMail"
+                  placeholder="_"
+                  pattern="\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$"
                   title="Please, write your email"
                   required
                 />
@@ -54,8 +54,8 @@
                   class="auth_field"
                   type="password"
                   name="authpass"
-                  id="userPassword"
-                  placeholder=" "
+                  id="signupPassword"
+                  placeholder="_"
                   title="Please, enter password"
                   required
                 />
@@ -95,9 +95,9 @@
                   class="auth_field"
                   type="email"
                   name="mail"
-                  id="mail-auth"
-                  placeholder=" "
-                  pattern="([\x1F-\xBF]*)@([A-z0-9_.-]{1,}).([A-z]{2,8})"
+                  id="signinMail"
+                  placeholder="_"
+                  pattern="\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$"
                   title="Please, write your email"
                   required
                 />
@@ -112,8 +112,8 @@
                   class="auth_field"
                   type="password"
                   name="authpass"
-                  id="userPassword"
-                  placeholder=" "
+                  id="signinPassword"
+                  placeholder="_"
                   title="Please, enter password"
                   required
                 />
@@ -123,7 +123,9 @@
                 </svg>
                 <div class="error"></div>
               </div>
-              <button type="submit" class="auth_btn">SIGN IN</button>
+              <button type="submit" id="submitBtnCopy" class="auth_btn">
+                SIGN IN
+              </button>
             </form>
 
             <div class="buttons-wrapper">

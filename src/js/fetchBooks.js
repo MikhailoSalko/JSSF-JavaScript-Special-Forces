@@ -29,9 +29,7 @@ export class FetchBooks {
   }
 
   fetchCategoryOfBooks() {
-    return axios
-      .get(`${this.#BASE_URL}${this.category}`)
+return axios.get(`${this.#BASE_URL}category?category=${this.category}`)
       .then(response => response)
-      .catch(console.error);
-  }
+      .catch(error => console.error(error));  }
 }

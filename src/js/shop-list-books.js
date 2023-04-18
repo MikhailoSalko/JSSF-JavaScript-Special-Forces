@@ -1,4 +1,8 @@
 // import sprite from "../images/icons.svg"
+import { currentPageSwitcher } from "./current-page-switcher";
+const currentPage = document.querySelector(".shop-mob");
+currentPageSwitcher(currentPage);
+
 
 const books = [
   {
@@ -183,6 +187,10 @@ const books = [
 localStorage.setItem('books', JSON.stringify(books));
 
 const bookListEl = document.querySelector('.shoplist-main');
+const shopIsEmpty = document.querySelector('.shoplist-empty');
+const sectionTitle = document.querySelector(".shoplist-title");
+
+let booksInShop = JSON.parse(localStorage.getItem('books'));
 
 const renderBooks = arr => {
   const markup = arr
@@ -278,30 +286,39 @@ const renderBooks = arr => {
     })
     .join('');
 
+  shopIsEmpty.innerHTML = '';
   bookListEl.innerHTML = markup;
+  sectionTitle.classList.add("title-when-books");
 };
 
-if (localStorage.length > 0) {
-  const addedBooks = localStorage.getItem('books');
-  try {
-    const parsedBooks = JSON.parse(addedBooks);
+if (booksInShop.length > 0) {
     window.onload = function () {
-      renderBooks(parsedBooks);
+      renderBooks(booksInShop);
     };
     window.onresize = function () {
-      renderBooks(parsedBooks);
+      renderBooks(booksInShop);
     };
-  } catch (error) {
-    console.log(error.name);
-    console.log(error.message);
-  }
-}
+} else if (booksInShop.length === 0) {
+    shopIsEmpty.innerHTML = `<p class="information-text">
+        This page is empty, add some books and proceed to order.
+      </p>
+      <div class="book_img"></div>`
+  };
 
 const deleteBook = id => {
   const books = JSON.parse(localStorage.getItem('books'));
   const updatedBooks = books.filter(book => book._id !== id);
   localStorage.setItem('books', JSON.stringify(updatedBooks));
-  renderBooks(updatedBooks);
+  if (updatedBooks.length === 0) {
+    shopIsEmpty.innerHTML = `<p class="information-text">
+      This page is empty, add some books and proceed to order.
+    </p>
+    <div class="book_img"></div>`;
+    bookListEl.innerHTML = '';
+    sectionTitle.classList.remove("title-when-books");
+  } else {
+    renderBooks(updatedBooks);
+  }
 };
 
 bookListEl.addEventListener('click', event => {

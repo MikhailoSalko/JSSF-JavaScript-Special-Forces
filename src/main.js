@@ -8,6 +8,7 @@ import './js/authorization-modal';
 import './js/authorization-form';
 import './js/pop-up-modal-window';
 import './js/firebase';
+import './js/books-card-rendering';
 
 const pageEl = document.querySelector('html');
 
@@ -16,9 +17,15 @@ setTheme(pageEl);
 
 const burger = document.getElementById('burger-btn');
 
-// На сторінці Shop List шукати за класом ".shop-link"
 const currentPage = document.querySelector('.nav__link');
 currentPageSwitcher(currentPage);
+
+const userAutherizedBtnRef = document.querySelector('.user-authorized__btn');
+
+userAutherizedBtnRef.addEventListener('click', () => {
+  const logOutBtnRef = document.querySelector('.user-log-out');
+  logOutBtnRef.classList.toggle('lo-open');
+});
 
 // Build Categories list
 renderCategories();
@@ -37,3 +44,5 @@ pageEl.addEventListener('click', event => {
 //Змінює іконку відкриття/закриття модалки на мобілкі. Пізніше привʼяжемо ще відкриття і закриття самої модалки
 const mobileMenuButtonIconRef = document.querySelector('.mobile-menu__icon');
 mobileMenuButtonIconRef.addEventListener('click', changeMobileMenuIcon);
+
+// console.log(logOutClickHandler);
