@@ -1,3 +1,5 @@
+// import sprite from "../images/icons.svg"
+
 const books = [
   {
     _id: '642fd89ac8cf5ee957f12361',
