@@ -1,3 +1,0 @@
-function logOutClickHandler() {}
-
-export { logOutClickHandler };
