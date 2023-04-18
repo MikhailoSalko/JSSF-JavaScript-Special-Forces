@@ -1,8 +1,8 @@
 import { FetchBooks } from './fetchBooks';
 import { renderBookInfo } from './pop-up-modal-rendering';
 
-(() => {
-  const books = document.querySelector('.top-books');
+const books = document.querySelector('.top-books', popup_modal);
+function popup_modal() {
   books.addEventListener('click', async event => {
     const bookId = event.target
       .closest('li.js-book-modal')
@@ -65,11 +65,11 @@ import { renderBookInfo } from './pop-up-modal-rendering';
       event.stopPropagation();
     }
 
-    const STORAGE_BOOKS = 'books';
-    let booksData = {};
-    localStorage.setItem('books', bookId);
-    const addedBooks = localStorage.getItem(STORAGE_BOOKS);
-    const parsedBooks = JSON.parse(addedBooks);
-    localStorage.removeItem(STORAGE_BOOKS);
+    // const STORAGE_BOOKS = 'books';
+    // let booksData = {};
+    // localStorage.setItem('books', bookId);
+    // const addedBooks = localStorage.getItem(STORAGE_BOOKS);
+    // const parsedBooks = JSON.parse(addedBooks);
+    // localStorage.removeItem(STORAGE_BOOKS);
   });
-})();
+}

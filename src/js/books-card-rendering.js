@@ -1,3 +1,4 @@
+import { error } from 'console';
 import { FetchBooks } from './fetchBooks';
 
 const fetchBooks = new FetchBooks();
@@ -206,12 +207,14 @@ btnSeeMore.forEach(btn => {
 });
 
 async function handleLoadMore(e) {
-  category = e.target.closest('li').querySelector('h3').textContent.trim();
+  try {
+    fetchBooks.category = e.target.closest('li').querySelector('h3');
+    // .textContent.trim();
 
-  const renderCategory = await renderingCategory();
-  let markup = '';
-  renderCategory.forEach(({ book_image, title, author }) => {
-    markup += `<li class="item-category-book js-book-modal">
+    const renderCategory = await renderingCategory();
+    let markup = '';
+    renderCategory.forEach(({ book_image, title, author }) => {
+      markup += `<li class="item-category-book js-book-modal">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${book_image}" alt="book" class="img-book">
@@ -226,7 +229,10 @@ async function handleLoadMore(e) {
               </div>
           </div>
       </li>`;
-  });
+    });
+  } catch (error) {
+    console.log(error, fetchBooks.category);
+  }
   // console.log(renderCategory.list_name);
   listTopBooks.innerHTML = '';
   listTopBooks.previousElementSibling.remove();
