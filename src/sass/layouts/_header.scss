@@ -174,11 +174,9 @@
   }
 
   &:checked {
-    background-image: linear-gradient(
-      180deg,
-      var(--accent-color) 0%,
-      #686868 100%
-    );
+    background-image: linear-gradient(180deg,
+          var(--accent-color) 0%,
+        #686868 100%);
 
     &::before {
       transform: translateX(20px);
@@ -202,6 +200,7 @@
   @include desktop {
     width: 1280px;
   }
+font-family: var(--main-font-family);
   z-index: 10;
   margin-top: 64px;
   display: flex;
@@ -212,11 +211,9 @@
   top: 0;
   height: 100vh;
   width: 100vw;
-  background: radial-gradient(
-    183.6% 183.01% at 59.76% -23.42%,
+    background: radial-gradient(183.6% 183.01% at 59.76% -23.42%,
     #4f2ee8 18.03%,
-    #ffffff 100%
-  );
+        #ffffff 100%);
   transition: transform 300ms ease-in;
 
   @include tablet {
@@ -228,7 +225,7 @@
     transition: transform 300ms ease-in;
   }
 
-  & > .background-image {
+    &>.background-image {
     height: 50%;
     background-image: url("../images/mobile-bg.png");
     background-size: cover;
@@ -243,13 +240,10 @@
     transition-duration: var(--transition-duration);
     transition-timing-function: var(--transition-timing-function);
 
-    &:hover {
-      stroke: var(--accent-color);
-    }
 
     .burder-menu__icon {
       display: block;
-      fill: black;
+      fill: var(--main-color);
     }
 
     .close__icon {
@@ -270,15 +264,16 @@
       display: none;
     }
   }
+}
 
-  .content {
-    height: 50%;
+.content {
+  height: 50%;
 
-    .nav {
+  .nav {
       margin-left: 0;
       height: 100%;
 
-      &__list {
+    &__list {
         height: 100%;
         display: flex;
         justify-content: center;
@@ -286,94 +281,94 @@
         flex-direction: column;
       }
 
-      .mob-home {
-        margin-bottom: 16px;
-        font-family: "DM Sans";
-        font-style: normal;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 18px;
-
-        letter-spacing: -0.04em;
-        text-transform: uppercase;
-
-        color: #111111;
+        .mob-home {
+          margin-bottom: 16px;
+      color: #111111;
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         padding: 8px 16px;
         gap: 10px;
-
-        width: 72px;
+      width: 72px;
         height: 34px;
-
-        background: #eac645;
+      background-color: var(--second-accent);
         border-radius: 36px;
 
-        &.shop-link {
+      &.shop-link {
           display: flex;
           align-items: center;
           color: var(--accent-color);
         }
 
-        &.current-page {
-          color: var(--main-color);
-          background-color: #fec700;
-          padding: 8px 16px;
-          border-radius: 36px;
-          font-weight: 700;
+            &.current-page {
+              color: var(--main-color);
+              background-color: #fec700;
+              padding: 8px 16px;
+              border-radius: 36px;
+              font-weight: 700;
 
-          &:hover {
+        &:hover {
             color: var(--nav-link-hovered);
             background-color: #e4b300;
           }
 
-          &:hover .nav__icon {
-            fill: var(--nav-link-hovered);
-          }
+                &:hover .nav__icon {
+                  fill: var(--nav-link-hovered);
+                }
+                }
+                }
+
+        .shop-link {
+          color: var(--caritas-txt);
         }
-      }
 
-      .shop-link {
-        color: var(--caritas-txt);
-      }
-
-      .user-mob {
-        position: absolute;
-        width: 37px;
-        height: 37px;
-        border: none;
-        border-radius: 50%;
-        background-color: #f6f6f6;
+        .user-mob {
+          position: absolute;
+          width: 37px;
+          height: 37px;
+          border: none;
+          border-radius: 50%;
+      background-color: var(--caritas-txt);
         top: 20px;
         left: 20px;
 
-        @include mobile {
+      @include mobile {
           display: flex;
           justify-content: center;
           align-items: center;
         }
       }
 
-      .nav-btn {
-        gap: 4px;
-        font-weight: 500;
-        align-items: center;
+        .nav-btn {
+          gap: 4px;
+      align-items: center;
         display: flex;
         position: absolute;
-
-        height: 48px;
+      height: 48px;
         left: 20px;
         bottom: 80px;
         padding: 14px 24px;
-
-        background: #ffffff;
+      background-color: var(--caritas-txt);
         border: 1.5px solid #111111;
         border-radius: 18px;
       }
-      .nav__icon {
-        fill: white;
-      }
+
+        .nav__icon {
+          fill: white;
+        }
+.user-sing {
+  position: relative;
+  padding: 14px;
+  border: 1.5px solid #111111;
+  border-radius: 18px;
+  background-color: var(--accent-color);
+  color: var(--caritas-txt);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 90px;
+  top: 40px;
+  left: 20px;
     }
   }
 }
@@ -381,16 +376,12 @@
 .user {
   display: none;
   padding: 14px;
-
   font-weight: 500;
   font-size: 14px;
   line-height: 129%;
-
   letter-spacing: -0.04em;
-
   border: 1.5px solid #111111;
   border-radius: 18px;
-
   background-color: var(--accent-color);
   color: var(--caritas-txt);
 
@@ -409,12 +400,12 @@
 
   &-authorized {
     position: relative;
+
     &__btn {
       display: flex;
       display: none;
       align-items: center;
       padding: 4px 12px;
-
       background-color: var(--accent-color);
       border: none;
       border-radius: 36px;
@@ -428,13 +419,10 @@
       margin-left: 9px;
       margin-right: 4px;
       font-family: var(--main-font-family);
-
       font-weight: 700;
       font-size: 22px;
       line-height: 131.818182%;
-
       letter-spacing: -0.02em;
-
       color: var(--caritas-txt);
     }
   }
@@ -442,26 +430,15 @@
   &-log-out {
     opacity: 0;
     position: absolute;
-
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 84px;
-
     padding: 14px;
-
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 129%;
-
-    letter-spacing: -0.04em;
-
     border: 1.5px solid #111111;
     border-radius: 18px;
-
     background-color: var(--caritas-txt);
     color: #111111;
-
     transform: translateY(100%);
     pointer-events: none;
 

@@ -1,11 +1,30 @@
-<div class="mobile-menu">
+<div class="mobile-menu" id="mobileMenu">
   <div class="content">
     <nav class="nav">
-        <button class="user-mob" data-modal-auth-open>
+      <button class="user-sing" id="userMobIn" data-modal-auth-open>
+        Sign Up
+        <svg class="user__icon" width="20" height="20">
+          <use href="./images/icons.svg#arrow-to-right"></use>
+        </svg>
+      </button>
+      <button class="user-mob">
+        <img
+          width="37"
+          height="37"
+          src="./images/stephen.jpg"
+          alt="user-authorized__image"
+          class="user-authorized__image"
+        />
+        <p class="user-authorized__name">Stephen</p>
+        <svg class="user-authorized__icon" width="23" height="26">
+          <use href="./images/icons.svg#user-arrow-down"></use>
+        </svg>
+      </button>
+      <!-- <button class="user-mob" data-modal-auth-open>
         <svg class="" width="19" height="19">
           <use href="./images/icons.svg#icon-user"></use>
         </svg>
-      </button>
+      </button> -->
       <ul class="nav__list">
         <li class="nav__item">
           <a href="./index.html" class="nav__link mob-home">Home</a>
@@ -17,7 +36,7 @@
               <use href="./images/icons.svg#shopping-list"></use></svg></a>
         </li>
       </ul>
-      <button class="nav-btn">
+      <button class="nav-btn" id="logOut">
         Log out
         <svg class="" width="19" height="19">
           <use href="./images/icons.svg#arrow-to-right"></use>
