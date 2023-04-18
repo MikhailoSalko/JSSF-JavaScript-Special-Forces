@@ -175,8 +175,7 @@
   color: var(--alternative-text);
 }
 .see-more {
-  font-family: 'DM Sans';
-  font-style: normal;
+  font-family: inherit;
   font-weight: 700;
   font-size: 14px;
   line-height: 1.29;
@@ -192,7 +191,6 @@
   border: 2px solid var(--accent-color);
   border-radius: 40px;
   margin-bottom: 40px;
-  cursor: pointer;
   &:hover,
   &:focus {
     background: var(--categories-accent);
@@ -240,7 +238,6 @@
   border: 5px solid var(--border-btn-up-color);
   background-color: var(--accent-color);
   box-shadow: 0 0 0 5px rgba(79, 46, 232, 0.3);
-  cursor: pointer;
   transition: transform 0.2s ease-in-out;
   &:hover {
     transform: scale(1.05);

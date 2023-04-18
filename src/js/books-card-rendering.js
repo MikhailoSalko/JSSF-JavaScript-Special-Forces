@@ -509,3 +509,16 @@ async function handleCategoryMarkup(e) {
     })();
   }
 }
+// ====Перезавантаження сторінки при зміні розміру екрана=====================
+let currentRenderWidth = 375;
+
+addEventListener('resize', event => {
+  if (
+    (window.innerWidth > 767 && currentRenderWidth < 768) ||
+    (window.innerWidth > 1279 && currentRenderWidth < 1280) ||
+    (window.innerWidth < 1280 && currentRenderWidth > 1279) ||
+    (window.innerWidth < 768 && currentRenderWidth > 767)
+  ) {
+    location.reload();
+  }
+});
