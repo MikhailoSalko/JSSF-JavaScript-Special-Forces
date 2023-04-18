@@ -51,7 +51,7 @@ mobileMenuButtonIconRef.addEventListener("click", changeMobileMenuIcon);
 
 // перезавантажує сторінку при проходженні через брейкпойнти
 let currentRenderWidth = window.innerWidth;
-addEventListener('resize', event => {
+addEventListener('resize', () => {
   if (
     (window.innerWidth > 767 && currentRenderWidth < 768) ||
     (window.innerWidth > 1279 && currentRenderWidth < 1280) ||
