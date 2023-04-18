@@ -1,16 +1,13 @@
 import { supportUkraineItems } from './array-support-ukraine';
 
-const supportListEl = document.querySelector('.js_support_list');
-const supportBtnEl = document.querySelector('.js_support_btn');
+const supportContainerEl = document.querySelector('.js-support__container');
+const supportListEl = document.querySelector('.js-support_list');
+const supportBtnEl = document.querySelector('.js-support_btn');
 
-supportBtnEl.addEventListener('click', renderMoreFoundations);
+supportBtnEl.addEventListener('click', renderMoreMarkup);
 
 const markup = supportUkraineItems.map(({ img, title, url }, index) => {
   const number = (index + 1).toString().padStart(2, '0');
-  // const src = new URL(`../images/support-ukraine/projech_hope_@1x.png`, import.meta.url);
-  // console.log(src)
-  // console.log(import.meta.url)
-  // console.log(img);
 
   return `<li class="support__item"><a href="${url}" class="support__link" aria-label="${title}" target="_blank" rel="noopener norefferer nofollow">
     <p class="support__number">${number}</p><img class="support__img" src= ${img} alt="${title}"/></a></li>`;
@@ -24,7 +21,7 @@ renderMarkup(markup, startIndex, findEndIndex(startIndex));
 function renderMarkup(arr, itemsCountStart, itemsCountEnd) {
   const markupToRender = arr.slice(itemsCountStart, itemsCountEnd).join('');
   startIndex = findEndIndex(startIndex);
-  // supportListEl.innerHTML = markupToRender;
+
   supportListEl.insertAdjacentHTML('beforeend', markupToRender);
 
   if (markup.length <= itemsCountEnd) {
@@ -33,11 +30,17 @@ function renderMarkup(arr, itemsCountStart, itemsCountEnd) {
   }
 }
 
-function renderMoreFoundations() {
+function renderMoreMarkup() {
   renderMarkup(markup, startIndex, findEndIndex(startIndex));
 
-  // supportListEl.style.overflow = 'scroll';
+  if (window.innerWidth < 1280) {
+    supportContainerEl.style.overflow = 'scroll';
+  } else {
+    supportContainerEl.style.overflow = 'hidden';
+    supportContainerEl.style.height = '100%';
+  }
 }
+
 
 function findEndIndex(value) {
   if (window.innerWidth < 768) {
@@ -47,5 +50,4 @@ function findEndIndex(value) {
   }
 }
 
-// console.log(window.innerWidth);
-// console.log(window.innerHeight);
+

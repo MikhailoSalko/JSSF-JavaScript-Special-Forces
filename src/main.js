@@ -47,3 +47,18 @@ const mobileMenuButtonIconRef = document.querySelector(".mobile-menu__icon");
 mobileMenuButtonIconRef.addEventListener("click", changeMobileMenuIcon);
 
 // console.log(logOutClickHandler);
+
+
+// перезавантажує сторінку при проходженні через брейкпойнти
+let currentRenderWidth = window.innerWidth;
+addEventListener('resize', () => {
+  if (
+    (window.innerWidth > 767 && currentRenderWidth < 768) ||
+    (window.innerWidth > 1279 && currentRenderWidth < 1280) ||
+    (window.innerWidth < 1280 && currentRenderWidth > 1279) ||
+    (window.innerWidth < 768 && currentRenderWidth > 767)
+  ) {
+    currentRenderWidth = window.innerWidth;
+    location.reload();
+  }
+});
