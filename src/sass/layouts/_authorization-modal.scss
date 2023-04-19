@@ -74,17 +74,15 @@
 .modal_cross {
   width: 10px;
   height: 10px;
-  fill: var(--back-btn-background);
+
+  stroke: var(--main-color);
+  fill: var(--body-background);
 
   @include tablet {
     width: 14px;
     height: 14px;
 
     scale: 1.8;
-  }
-
-  &:hover {
-    fill: var(--text-in-logo);
   }
 }
 
@@ -143,9 +141,10 @@
   top: 50%;
   right: 24;
 
-  transform: translateY(-50%);
+  stroke: var(--main-color);
+  fill: var(--body-background);
 
-  transition: fill var(--main-color);
+  transform: translateY(-50%);
 
   @include tablet {
     right: 32;
