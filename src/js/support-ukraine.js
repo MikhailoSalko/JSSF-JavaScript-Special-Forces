@@ -1,6 +1,5 @@
 import { supportUkraineItems } from './array-support-ukraine';
 
-const supportContainerEl = document.querySelector('.js-support__container');
 const supportListEl = document.querySelector('.js-support_list');
 const supportBtnEl = document.querySelector('.js-support_btn');
 
@@ -31,16 +30,12 @@ function renderMarkup(arr, itemsCountStart, itemsCountEnd) {
 }
 
 function renderMoreMarkup() {
-  renderMarkup(markup, startIndex, findEndIndex(startIndex));
-
-  if (window.innerWidth < 1280) {
-    supportContainerEl.style.overflow = 'scroll';
-  } else {
-    supportContainerEl.style.overflow = 'hidden';
-    supportContainerEl.style.height = '100%';
+  if (window.innerWidth < 768) {
+    renderMarkup(markup, startIndex, findEndIndex(startIndex + 1));
+    return;
   }
+  renderMarkup(markup, startIndex, findEndIndex(startIndex));
 }
-
 
 function findEndIndex(value) {
   if (window.innerWidth < 768) {
@@ -49,5 +44,3 @@ function findEndIndex(value) {
     return value + 6;
   }
 }
-
-
