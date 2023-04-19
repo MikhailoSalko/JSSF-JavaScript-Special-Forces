@@ -163,11 +163,9 @@
   }
 
   &:checked {
-    background-image: linear-gradient(
-      180deg,
-      var(--accent-color) 0%,
-      #686868 100%
-    );
+    background-image: linear-gradient(180deg,
+          var(--accent-color) 0%,
+        #686868 100%);
 
     &::before {
       transform: translateX(20px);
@@ -191,6 +189,7 @@
   @include desktop {
     width: 1280px;
   }
+
   z-index: 10;
   margin-top: 64px;
   display: flex;
@@ -201,11 +200,9 @@
   top: 0;
   height: 100vh;
   width: 100vw;
-  background: radial-gradient(
-    183.6% 183.01% at 59.76% -23.42%,
+                                background: radial-gradient(183.6% 183.01% at 59.76% -23.42%,
     #4f2ee8 18.03%,
-    #ffffff 100%
-  );
+                                                                #ffffff 100%);
   transition: transform 300ms ease-in;
 
   @include tablet {
@@ -217,7 +214,7 @@
     transition: transform 300ms ease-in;
   }
 
-  & > .background-image {
+                                &>.background-image {
     height: 50%;
     background-image: url("../images/mobile-bg.png");
     background-size: cover;
@@ -275,24 +272,18 @@
         flex-direction: column;
       }
 
-      .mob-home {
-        margin-bottom: 16px;
+                                                                                                .mob-home {
         font-family: var(--main-font-family);
         font-size: 14px;
-        line-height: 128.571429%; /* 18/14 */
-
+        line-height: 128.571429%;
+          /* 18/14 */
+          margin-bottom: 10px;
         letter-spacing: -0.04em;
         text-transform: uppercase;
 
         color: #111111;
         display: flex;
-        align-items: flex-start;
         padding: 8px 16px;
-        gap: 10px;
-
-        width: 72px;
-        height: 34px;
-
         background: #eac645;
         border-radius: 36px;
 
@@ -324,20 +315,20 @@
         color: var(--caritas-txt);
       }
 
+                                                                                                // дісплей нан
       .user-mob {
         position: absolute;
-        width: 37px;
-        height: 37px;
-        border: none;
-        border-radius: 50%;
-        background-color: #f6f6f6;
+        padding: 15px 14px;
+          color: #ffffff;
+          background: #4F2EE8;
+          border: 1.5px solid #111111;
+          border-radius: 18px;
+          min-width: 184px;
         top: 20px;
         left: 20px;
-
-        @include mobile {
-          display: flex;
+        display: flex;
           align-items: center;
-        }
+        justify-content: space-between;
       }
 
       .nav-btn {
@@ -347,6 +338,7 @@
         display: flex;
         position: absolute;
 
+        display: none;
         height: 48px;
         left: 20px;
         bottom: 80px;
@@ -356,6 +348,7 @@
         border: 1.5px solid #111111;
         border-radius: 18px;
       }
+
       .nav__icon {
         fill: white;
       }
@@ -363,6 +356,9 @@
   }
 }
 
+.user-info-mob {
+  // display: none;
+}
 .user {
   display: none;
   padding: 14px;
@@ -394,6 +390,7 @@
 
   &-authorized {
     position: relative;
+
     &__btn {
       display: none;
       align-items: center;
