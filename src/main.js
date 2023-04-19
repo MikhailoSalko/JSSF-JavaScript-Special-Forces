@@ -47,7 +47,6 @@ mobileMenuButtonIconRef.addEventListener('click', changeMobileMenuIcon);
 
 // console.log(logOutClickHandler);
 
-
 // перезавантажує сторінку при проходженні через брейкпойнти
 let currentRenderWidth = window.innerWidth;
 addEventListener('resize', () => {
