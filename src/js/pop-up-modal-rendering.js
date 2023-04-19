@@ -84,7 +84,5 @@ function renderBookInfo(book, inShoppingList) {
       </div>
       
     </div>
-    <div class="book-card__btn">
-      <button class="card__btn btn">add to shop list</button>
-    </${card__btn}</div>`;
+    <div class="book-card__btn">${card__btn}</div>`;
 }

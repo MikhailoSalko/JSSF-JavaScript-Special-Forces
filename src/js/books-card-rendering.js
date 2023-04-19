@@ -1,10 +1,13 @@
 import { error } from 'console';
 import { FetchBooks } from './fetchBooks';
+import { spinnerPlay } from './spinner';
+import { spinnerStop } from './spinner';
 
 const fetchBooks = new FetchBooks();
 
 const listTopBooks = document.querySelector('.top-books');
 const btnUpEl = document.querySelector('.btn-up');
+btnUpEl.classList.add('is-hidden-up');
 
 let markup = '';
 let category = '';
@@ -18,7 +21,7 @@ async function renderingBooksCategories() {
     console.log(error);
   }
 }
-
+spinnerPlay();
 (async () => {
   const categories = await renderingBooksCategories();
   if (window.screen.width < 768) {
@@ -198,23 +201,20 @@ async function renderingBooksCategories() {
     `<h2 class="title-best-sellers">Best sellers <span class ="title-best-sellers-color">books</span></h2>`
   );
 })();
+spinnerStop();
 // ===========розмітка по категоріям, кнопка SEE-MORE ===========================
-
-const btnSeeMore = document.querySelectorAll('.see-more');
 listTopBooks.addEventListener('click', handleLoadMore);
-btnSeeMore.forEach(btn => {
-  btn.addEventListener('click', handleLoadMore);
-});
 
+spinnerPlay();
 async function handleLoadMore(e) {
   try {
-    fetchBooks.category = e.target.closest('li').querySelector('h3');
-    // .textContent.trim();
+    if (e.target.nodeName === 'BUTTON') {
+      category = e.target.closest('li').querySelector('h3').textContent.trim();
 
-    const renderCategory = await renderingCategory();
-    let markup = '';
-    renderCategory.forEach(({ book_image, title, author }) => {
-      markup += `<li class="item-category-book js-book-modal">
+      const renderCategory = await renderingCategory();
+      let markup = '';
+      renderCategory.forEach(({ _id, book_image, title, author }) => {
+        markup += `<li class="item-category-book js-book-modal" data-book-id="${_id}">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${book_image}" alt="book" class="img-book">
@@ -229,36 +229,39 @@ async function handleLoadMore(e) {
               </div>
           </div>
       </li>`;
-    });
-  } catch (error) {
-    console.log(error, fetchBooks.category);
-  }
-  // console.log(renderCategory.list_name);
-  listTopBooks.innerHTML = '';
-  listTopBooks.previousElementSibling.remove();
-  listTopBooks.insertAdjacentHTML('beforeend', markup);
-  listTopBooks.insertAdjacentHTML(
-    'beforebegin',
-    `<h2 class="title-category">${category}</h2>`
-  );
-  scrollToTitle();
-  // const titleLastWord = document.querySelector('.title-category');
-  const titleLastWord = listTopBooks.previousElementSibling;
-
-  function lastWordForTitle() {
-    if (titleLastWord.classList.contains('title-category')) {
-      const textTitle = titleLastWord.textContent.trim();
-      const allWords = textTitle.split(' ');
-      const lastWord = allWords[allWords.length - 1];
-      titleLastWord.innerHTML = textTitle.replace(
-        lastWord,
-        `<span class="title-last-word-color">${lastWord}</span>`
+      });
+      // console.log(renderCategory.list_name);
+      listTopBooks.innerHTML = '';
+      listTopBooks.previousElementSibling.remove();
+      listTopBooks.insertAdjacentHTML('beforeend', markup);
+      listTopBooks.insertAdjacentHTML(
+        'beforebegin',
+        `<h2 class="title-category">${category}</h2>`
       );
+      scrollToTitle();
+      // const titleLastWord = document.querySelector('.title-category');
+      const titleLastWord = listTopBooks.previousElementSibling;
+
+      function lastWordForTitle() {
+        if (titleLastWord.classList.contains('title-category')) {
+          const textTitle = titleLastWord.textContent.trim();
+          const allWords = textTitle.split(' ');
+          const lastWord = allWords[allWords.length - 1];
+          titleLastWord.innerHTML = textTitle.replace(
+            lastWord,
+            `<span class="title-last-word-color">${lastWord}</span>`
+          );
+        }
+        return;
+      }
+      lastWordForTitle();
     }
     return;
+  } catch (error) {
+    console.log(error);
   }
-  lastWordForTitle();
 }
+spinnerStop();
 
 async function renderingCategory() {
   try {
@@ -271,14 +274,23 @@ async function renderingCategory() {
   }
 }
 // Кнопка ===UP===============
+function handleScroll() {
+  if (window.scrollY > 200) {
+    btnUpEl.classList.remove('is-hidden-up');
+  } else if (window.scrollY == 0) {
+    btnUpEl.classList.add('is-hidden-up');
+  }
+}
+
 function handleScrollUp(e) {
   window.scrollTo({
     top: 0,
     behavior: 'smooth',
   });
 }
-btnUpEl.addEventListener('click', handleScrollUp);
 
+btnUpEl.addEventListener('click', handleScrollUp);
+window.addEventListener('scroll', handleScroll);
 // =========Скрол сторінки до заголовка=========================
 function scrollToTitle() {
   listTopBooks.previousElementSibling.scrollIntoView({ behavior: 'smooth' });
@@ -287,14 +299,15 @@ function scrollToTitle() {
 
 const listCategory = document.querySelector('.categories-list');
 listCategory.addEventListener('click', handleCategoryMarkup);
-
+spinnerPlay();
 async function handleCategoryMarkup(e) {
-  category = e.target.textContent.trim();
-  if (category !== 'All categories') {
-    const renderCategory = await renderingCategory();
-    let markup = '';
-    renderCategory.forEach(({ book_image, title, author }) => {
-      markup += `<li class="item-category-book js-book-modal">
+  if (e.target.nodeName === 'LI') {
+    category = e.target.textContent.trim();
+    if (category !== 'All categories') {
+      const renderCategory = await renderingCategory();
+      let markup = '';
+      renderCategory.forEach(({ _id, book_image, title, author }) => {
+        markup += `<li class="item-category-book js-book-modal" data-book-id="${_id}">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${book_image}" alt="book" class="img-book">
@@ -309,36 +322,40 @@ async function handleCategoryMarkup(e) {
               </div>
           </div>
       </li>`;
-    });
-    listTopBooks.innerHTML = '';
-    listTopBooks.previousElementSibling.remove();
-    listTopBooks.insertAdjacentHTML('beforeend', markup);
-    listTopBooks.insertAdjacentHTML(
-      'beforebegin',
-      `<h2 class="title-category">${category}</h2>`
-    );
-    scrollToTitle();
-    const titleLastWord = listTopBooks.previousElementSibling;
-    function lastWordForTitle() {
-      if (titleLastWord.classList.contains('title-category')) {
-        const textTitle = titleLastWord.textContent.trim();
-        const allWords = textTitle.split(' ');
-        const lastWord = allWords[allWords.length - 1];
-        titleLastWord.innerHTML = textTitle.replace(
-          lastWord,
-          `<span class="title-last-word-color">${lastWord}</span>`
-        );
+      });
+      listTopBooks.innerHTML = '';
+      listTopBooks.previousElementSibling.remove();
+      listTopBooks.insertAdjacentHTML('beforeend', markup);
+      listTopBooks.insertAdjacentHTML(
+        'beforebegin',
+        `<h2 class="title-category">${category}</h2>`
+      );
+      // spinnerStop();
+      // scrollToTitle();
+      const titleLastWord = listTopBooks.previousElementSibling;
+      function lastWordForTitle() {
+        if (titleLastWord.classList.contains('title-category')) {
+          const textTitle = titleLastWord.textContent.trim();
+          const allWords = textTitle.split(' ');
+          const lastWord = allWords[allWords.length - 1];
+          titleLastWord.innerHTML = textTitle.replace(
+            lastWord,
+            `<span class="title-last-word-color">${lastWord}</span>`
+          );
+        }
+        return;
       }
-      return;
-    }
-    lastWordForTitle();
-  } else {
-    (async () => {
-      const categories = await renderingBooksCategories();
-      if (window.screen.width < 768) {
-        for (let i = 0; i < categories.length; i += 1) {
-          const { list_name, books } = categories[i];
-          markup += `<li class="item-category-book js-book-modal" data-book-id="${books[0]._id}">
+      lastWordForTitle();
+      // spinnerStop();
+      scrollToTitle();
+    } else {
+      // spinnerPlay()
+      (async () => {
+        const categories = await renderingBooksCategories();
+        if (window.screen.width < 768) {
+          for (let i = 0; i < categories.length; i += 1) {
+            const { list_name, books } = categories[i];
+            markup += `<li class="item-category-book js-book-modal" data-book-id="${books[0]._id}">
     <h3 class="item-category">${list_name}</h3>
         <ul class="box-category">
       <li class="item-category-book">
@@ -359,12 +376,11 @@ async function handleCategoryMarkup(e) {
     </ul>
         <button type="button" aria-label="Show more" class="see-more">See more</button>
    </li>`;
-        }
-      } else if (window.screen.width >= 768 && window.screen.width < 1280) {
-        for (let i = 0; i < categories.length; i += 1) {
-          const { list_name, books } = categories[i];
-
-          markup += `
+          }
+        } else if (window.screen.width >= 768 && window.screen.width < 1280) {
+          for (let i = 0; i < categories.length; i += 1) {
+            const { list_name, books } = categories[i];
+            markup += `
 <li>
     <h3 class="item-category">${list_name}</h3>
         <ul class="box-category">
@@ -416,11 +432,11 @@ async function handleCategoryMarkup(e) {
     </ul>
         <button type="button" aria-label="Show more" class="see-more">See more</button>
    </li>`;
-        }
-      } else {
-        for (let i = 0; i < categories.length; i += 1) {
-          const { list_name, books } = categories[i];
-          markup += `
+          }
+        } else {
+          for (let i = 0; i < categories.length; i += 1) {
+            const { list_name, books } = categories[i];
+            markup += `
 <li>
     <h3 class="item-category">${list_name}</h3>
         <ul class="box-category">
@@ -503,15 +519,18 @@ async function handleCategoryMarkup(e) {
     </ul>
         <button type="button" aria-label="Show more" class="see-more">See more</button>
    </li>`;
+          }
         }
-      }
-      listTopBooks.innerHTML = '';
-      listTopBooks.previousElementSibling.remove();
-      listTopBooks.insertAdjacentHTML('beforeend', markup);
-      listTopBooks.insertAdjacentHTML(
-        'beforebegin',
-        `<h2 class="title-best-sellers">Best sellers <span class ="title-best-sellers-color">books</span></h2>`
-      );
-    })();
+        listTopBooks.innerHTML = '';
+        listTopBooks.previousElementSibling.remove();
+        listTopBooks.insertAdjacentHTML('beforeend', markup);
+        listTopBooks.insertAdjacentHTML(
+          'beforebegin',
+          `<h2 class="title-best-sellers">Best sellers <span class ="title-best-sellers-color">books</span></h2>`
+        );
+      })();
+    }
   }
+  return;
 }
+spinnerStop();

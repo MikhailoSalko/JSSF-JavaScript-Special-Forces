@@ -1,12 +1,14 @@
 import { FetchBooks } from './fetchBooks';
 import { renderBookInfo } from './pop-up-modal-rendering';
 
-const books = document.querySelector('.top-books', popup_modal);
-function popup_modal() {
+const books = document.querySelector('.top-books');
+if (!!books) {
   books.addEventListener('click', async event => {
-    const bookId = event.target
-      .closest('li.js-book-modal')
-      .getAttribute('data-book-id');
+    const bookCard = event.target.closest('li.js-book-modal');
+    if (!bookCard) {
+      return;
+    }
+    const bookId = bookCard.getAttribute('data-book-id');
     const fetch = new FetchBooks();
     fetch.bookId = bookId;
     const response = await fetch.fetchBookId();
@@ -24,9 +26,9 @@ function popup_modal() {
         ?.url,
     };
 
+    const BOOKS_STORAGE = 'books';
     const popup = document.createElement('div');
-    const inShoppingList = false;
-    popup.innerHTML = renderBookInfo(book_data, inShoppingList);
+    popup.innerHTML = renderBookInfo(book_data, isInShoppingList(bookId));
     document.body.appendChild(popup);
 
     const onEscape = event => {
@@ -37,15 +39,6 @@ function popup_modal() {
     };
 
     document.addEventListener('keyup', onEscape);
-
-    popup.querySelector('.book-card__btn').addEventListener('click', () => {
-      const inShoppingList = localStorage.getItem(BOOKS_STORAGE);
-      if (inShoppingList) {
-        removeFromShoppingList();
-      } else {
-        addToShoppingList();
-      }
-    });
 
     const modalCloseBtnEl = popup.querySelector('.modal-close__btn');
 
@@ -58,45 +51,52 @@ function popup_modal() {
 
     const backDropModalEl = popup.querySelector('.backdrop__modal');
     backDropModalEl.addEventListener('click', closeModalClick);
-    function closeModalClick() {
-      const bookcardEL = document.querySelector('.book-card__modal');
-      if (!event.target.classList.contains('.book-card__modal'));
+    function closeModalClick(evt) {
+      if (evt.target !== backDropModalEl) {
+        return;
+      }
       document.body.removeChild(popup);
       document.removeEventListener('keyup', onEscape);
       event.stopPropagation();
     }
 
-    const BOOKS_STORAGE = 'books';
-    let booksData = {};
+    function isInShoppingList(bookId) {
+      let booksDataJson = localStorage.getItem(BOOKS_STORAGE);
+      if (!booksDataJson) {
+        booksDataJson = '[]';
+      }
+      let booksData = JSON.parse(booksDataJson);
+      return booksData.indexOf(bookId) !== -1;
+    }
 
-    popup.querySelector('.book-card__btn').addEventListener('click', () => {
-      const inShoppingList = localStorage.getItem(BOOKS_STORAGE);
-      if (inShoppingList) {
-        removeFromShoppingList();
+    popup.querySelector('.book-card__btn').addEventListener('click', evt => {
+      if (isInShoppingList(bookId)) {
+        removeFromShoppingList(bookId);
+        evt.target.innerText = 'add to shopping list';
       } else {
-        addToShoppingList();
+        addToShoppingList(bookId);
+        evt.target.innerText = 'remove from the shopping list';
       }
     });
 
     function addToShoppingList(bookId) {
-      bookId = event.target
-        .closest('li.js-book-modal')
-        .getAttribute('data-book-id');
-      booksData = bookId;
+      let booksDataJson = localStorage.getItem(BOOKS_STORAGE);
+      if (!booksDataJson) {
+        booksDataJson = '[]';
+      }
+      const booksData = JSON.parse(booksDataJson);
+      booksData.push(bookId);
       localStorage.setItem(BOOKS_STORAGE, JSON.stringify(booksData));
     }
 
     function removeFromShoppingList(bookId) {
-      bookId = event.target
-        .closest('li.js-book-modal')
-        .getAttribute('data-book-id');
-      bookId = book;
-      const book = JSON.parse(localStorage.getItem(BOOKS_STORAGE));
-      const addedBooks = localStorage.getItem(BOOKS_STORAGE);
-      const parsedBooks = JSON.parse(addedBooks);
-      if (parsedBooks.contains(bookId)) {
-        removeItem(bookId);
+      let booksDataJson = localStorage.getItem(BOOKS_STORAGE);
+      if (booksDataJson === null) {
+        return;
       }
+      let booksData = JSON.parse(booksDataJson);
+      booksData = booksData.filter(it => it !== bookId);
+      localStorage.setItem(BOOKS_STORAGE, JSON.stringify(booksData));
     }
   });
 }
