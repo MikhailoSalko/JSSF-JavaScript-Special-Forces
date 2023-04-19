@@ -25,6 +25,7 @@
                   placeholder="_"
                   title="Please, write your name and surname"
                   minlength="2"
+                  aria-label="name"
                   required
                 />
                 <label class="auth_label" for="name-auth">NAME</label>
@@ -41,6 +42,7 @@
                   placeholder="_"
                   pattern="\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$"
                   title="Please, write your email"
+                  aria-label="email"
                   required
                 />
                 <label class="auth_label" for="mail-auth">EMAIL</label>
@@ -57,6 +59,7 @@
                   id="signupPassword"
                   placeholder="_"
                   title="Please, enter password"
+                  aria-label="password"
                   required
                 />
                 <label class="auth_label" for="userPassword">PASSWORD</label>
@@ -65,7 +68,12 @@
                 </svg>
                 <div class="error"></div>
               </div>
-              <button type="submit" class="auth_btn" id="submitBtn">
+              <button
+                type="submit"
+                class="auth_btn"
+                id="submitBtn"
+                aria-label="sign up"
+              >
                 SIGN UP
               </button>
             </form>
@@ -76,6 +84,7 @@
                 type="button"
                 class="option_btn"
                 id="signinBtn"
+                aria-label="sign in"
                 onclick="openRegister()"
               >
                 SIGN IN
@@ -99,6 +108,7 @@
                   placeholder="_"
                   pattern="\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$"
                   title="Please, write your email"
+                  aria-label="email"
                   required
                 />
                 <label class="auth_label" for="mail-auth">EMAIL</label>
@@ -115,6 +125,7 @@
                   id="signinPassword"
                   placeholder="_"
                   title="Please, enter password"
+                  aria-label="password"
                   required
                 />
                 <label class="auth_label" for="userPassword">PASSWORD</label>
@@ -123,7 +134,12 @@
                 </svg>
                 <div class="error"></div>
               </div>
-              <button type="submit" id="submitBtnCopy" class="auth_btn">
+              <button
+                type="submit"
+                id="submitBtnCopy"
+                class="auth_btn"
+                aria-label="sign in"
+              >
                 SIGN IN
               </button>
             </form>
@@ -133,6 +149,7 @@
                 type="button"
                 class="option_btn"
                 id="signupBtn"
+                aria-label="signup"
                 onclick="openLogin()"
               >
                 SIGN UP
