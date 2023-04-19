@@ -1,4 +1,4 @@
-// Import the functions you need from the SDKs you need
+
 import { initializeApp } from 'firebase/app';
 import { getDatabase, set, ref, update } from 'firebase/database';
 import {
@@ -6,14 +6,15 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  signOut,
+  updateProfile
 } from "firebase/auth";
 
 import Notiflix from "notiflix";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { headerUserBtnAuthHandler, headerUserBtnLogOutHandler } from './header-auth-handler.js'
 
-// Your web app's Firebase configuration
+
 const firebaseConfig = {
   apiKey: 'AIzaSyA-_OfsYzJ0IruGwuB0MjrKn8CM_GP4gaw',
   authDomain: 'jssf-bookstore.firebaseapp.com',
@@ -24,49 +25,68 @@ const firebaseConfig = {
   appId: '1:159533621369:web:49b6ecc78de1b0dd90f4a8',
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
 
-console.log(app);
-console.log(database);
-console.log(auth);
+submitBtn.addEventListener("click", e => {
+  const nameAuth = document.getElementById("nameAuth").value;
+  const mailAuth = document.getElementById("signupMail").value;
+  const userPassword = document.getElementById("signupPassword").value;
+  const nameInput = form.querySelector('.auth_field[type="text"]');
 
-signinBtn.addEventListener("click", e => {
-  const nameAuth = document.getElementById("name-auth").value;
-  const mailAuth = document.getElementById("mail-auth").value;
-  const userPassword = document.getElementById("userPassword").value;
+  
 
   createUserWithEmailAndPassword(auth, mailAuth, userPassword)
     .then(userCredential => {
-      // Signed in
+      
       const user = userCredential.user;
 
       set(ref(database, "users/" + user.uid), {
         nameAuth: nameAuth,
         mailAuth: mailAuth,
+        userPassword: userPassword,
       });
       Notiflix.Notify.success("user created!");
-      // ...
+
+     const displayName = '';
+     const name = nameInput.value;
+     console.log(name);
+
+      updateProfile(user, {
+        displayName: name,
+      });
+
+      console.log(displayName);
+      console.log(user);
+      console.log(database);
+      //saveUserLocalStorage(user);
+
+      headerUserBtnAuthHandler();
+      headerUserBtnLogOutHandler();
+
+    document.getElementById("authModal").style.display = "none";
+    document.getElementById("mobileMenu").style.display = "inline";
     })
     .catch(error => {
       const errorCode = error.code;
       const errorMessage = error.message;
 
       Notiflix.Notify.success(errorMessage);
-      // ..
+      
     });
+    
 });
 
-signupBtn.addEventListener("click", e => {
-  const nameAuth = document.getElementById("name-auth").value;
-  const mailAuth = document.getElementById("mail-auth").value;
-  const userPassword = document.getElementById("userPassword").value;
+submitBtnCopy.addEventListener("click", e => {
+  
+  const mailAuth = document.getElementById("signinMail").value;
+  const userPassword = document.getElementById("signinPassword").value;
 
   signInWithEmailAndPassword(auth, mailAuth, userPassword)
     .then(userCredential => {
-      // Signed in
+     
       const user = userCredential.user;
 
       const dt = new Date();
@@ -75,7 +95,13 @@ signupBtn.addEventListener("click", e => {
       });
 
       Notiflix.Notify.success("User longed in!");
-      // ...
+      //saveUserLocalStorage(user);
+
+      headerUserBtnAuthHandler();
+      headerUserBtnLogOutHandler();
+
+      document.getElementById("authModal").style.display = "none";
+      document.getElementById("mobileMenu").style.display = "inline";
     })
     .catch(error => {
       const errorCode = error.code;
@@ -83,26 +109,45 @@ signupBtn.addEventListener("click", e => {
 
       Notiflix.Notify.success(errorMessage);
     });
+    
 });
 
-// onAuthStateChanged(auth, (user) => {
-//     if (user) {
-//       // User is signed in, see docs for a list of available properties
-//       // https://firebase.google.com/docs/reference/js/firebase.User
-//       const uid = user.uid;
-//       // ...
-//     } else {
-//       // User is signed out
-//       // ...
-//     }
-//   });
+// function saveUserLocalStorage(user, name) {
+//   const userData = { ...user, displayName: name };
+//   localStorage.setItem('user', JSON.stringify(userData));
+// }
 
-// updateProfile(auth.currentUser, {
-//     displayName: "Jane Q. User", photoURL: "https://example.com/jane-q-user/profile.jpg"
-//   }).then(() => {
-//     // Profile updated!
-//     // ...
-//   }).catch((error) => {
-//     // An error occurred
-//     // ...
-//   });
+// function removeUserLocalStorage() {
+//   localStorage.removeItem('user');
+// }
+
+logOut.addEventListener('click',(e) =>{
+signOut(auth).then(() => {
+  const user = userCredential.user;
+  Notiflix.Notify.success('Sign-out successful')
+  removeUserLocalStorage(user);
+}).catch((error) => {
+  
+  const errorCode = error.code;
+    const errorMessage = error.message;
+
+    Notiflix.Notify.success(errorMessage);
+});
+});
+
+
+
+
+// function updateSignUpBtn() {
+//   const user = auth.currentUser;
+//   const singUpBtn = document.querySelector('.user');
+//   const userData = JSON.parse(localStorage.getItem('user'));
+//   if (user || userData) {
+//     const nameAuth = user?.displayName || userData?.displayName;
+//     singUpBtn.textContent = nameAuth ?? 'Sign Up';
+//     document.querySelector('.user-log-out').style.display = 'flex'; // Показываем кнопку log out, если пользователь авторизован
+//   } else {
+//     singUpBtn.textContent = 'Sign Up';
+//     document.querySelector('.user-log-out').style.display = 'none'; // Скрываем кнопку log out, если пользователь не авторизован
+//   }
+// }
