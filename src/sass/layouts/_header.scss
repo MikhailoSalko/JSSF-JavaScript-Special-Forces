@@ -202,22 +202,22 @@
     width: 1280px;
   }
 
-  font-family: var(--main-font-family);
-  z-index: 10;
+    font-family: var(--main-font-family);
   margin-top: 64px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transform: translateY(-150%);
-  position: fixed;
-  top: 0;
+    transform: translateY(-150%);
   height: 100vh;
   width: 100vw;
   background: radial-gradient(183.6% 183.01% at 59.76% -23.42%,
     #4f2ee8 18.03%,
     #ffffff 100%);
   transition: transform 300ms ease-in;
-
+  
+position: fixed;
+z-index: 1;
+top: 0px;
   @include tablet {
     display: none;
   }
