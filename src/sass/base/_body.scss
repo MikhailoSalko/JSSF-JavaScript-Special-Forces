@@ -28,6 +28,10 @@ body {
     display: none;
   }
 
+  @include tablet {
+    padding-top: 112px;
+  }
+
   & .header {
     position: fixed;
     z-index: 10;
@@ -37,34 +41,55 @@ body {
   }
 
   & .desktop-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    @include small-mobile {
+      max-width: 375px;
+    }
+
+    @include mobile {
+      width: 375px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    @include tablet {
+      width: 768px;
+      padding-left: 32px;
+      padding-right: 32px;
+      gap: 100px;
+    }
+
     @include desktop {
       width: 1280px;
-      display: flex;
       flex-direction: row;
-      // gap: 40px;
-      padding-left: 24px;
-      padding-right: 24px;
-      padding-bottom: 40px;
+      gap: 36px;
+      align-items: start;
+      padding-left: 21px;
+      padding-right: 21px;
     }
   }
 
   & .sidebar {
     display: flex;
     flex-direction: column;
-    // justify-content: center;
     align-items: center;
-    // gap: 40px;
-    margin-bottom: 40px;
+    gap: 40px;
 
     @include tablet {
       flex-direction: row;
-      // gap: 32px;
-      margin-bottom: 100px;
+      gap: 32px;
     }
 
     @include desktop {
       flex-direction: column;
-      // gap: 86px;
+      gap: 86px;
     }
 
     &__in-shop-list {
@@ -74,23 +99,5 @@ body {
         display: flex;
       }
     }
-
-    & .categories {
-      margin-bottom: 40px;
-
-      @include tablet {
-        margin-bottom: 0;
-        margin-right: 32px;
-      }
-
-      @include desktop {
-        margin-right: 0;
-        margin-bottom: 86px;
-      }
-    }
-  }
-
-  & .footer {
-    margin-top: 40px;
   }
 }
