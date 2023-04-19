@@ -1,8 +1,7 @@
 // import sprite from "../images/icons.svg"
-import { currentPageSwitcher } from "./current-page-switcher";
-const currentPage = document.querySelector(".shop-mob");
+import { currentPageSwitcher } from './current-page-switcher';
+const currentPage = document.querySelector('.shop-mob');
 currentPageSwitcher(currentPage);
-
 
 const books = [];
 //   {
@@ -188,9 +187,12 @@ localStorage.setItem('books', JSON.stringify(books));
 
 const bookListEl = document.querySelector('.shoplist-main');
 const shopIsEmpty = document.querySelector('.shoplist-empty');
-const sectionTitle = document.querySelector(".shoplist-title");
+const sectionTitle = document.querySelector('.shoplist-title');
 
 let booksInShop = JSON.parse(localStorage.getItem('books'));
+
+let activPage = 1;
+const pageSize = 3;
 
 const renderBooks = arr => {
   const markup = arr
@@ -288,19 +290,27 @@ const renderBooks = arr => {
 
   shopIsEmpty.innerHTML = '';
   bookListEl.innerHTML = markup;
-  sectionTitle.classList.add("title-when-books");
+  sectionTitle.classList.add('title-when-books');
+};
+
+const displayData = (arr, startIndex) => {
+  const pageData = arr.slice(startIndex, startIndex + pageSize);
+  renderBooks(pageData);
 };
 
 if (booksInShop.length > 0) {
-    window.onload = function () {
-      renderBooks(booksInShop);
-    };
+  window.onload = function () {
+    renderBooks(booksInShop.slice(0, 3));
+  };
+  window.onresize = function () {
+    renderBooks(booksInShop.slice(0, 3));
+  };
 } else if (booksInShop.length === 0) {
-    shopIsEmpty.innerHTML = `<p class="information-text">
+  shopIsEmpty.innerHTML = `<p class="information-text">
         This page is empty, add some books and proceed to order.
       </p>
-      <div class="book_img"></div>`
-  };
+      <div class="book_img"></div>`;
+}
 
 const deleteBook = id => {
   const books = JSON.parse(localStorage.getItem('books'));
@@ -312,16 +322,128 @@ const deleteBook = id => {
     </p>
     <div class="book_img"></div>`;
     bookListEl.innerHTML = '';
-    sectionTitle.classList.remove("title-when-books");
+    sectionTitle.classList.remove('title-when-books');
   } else {
     renderBooks(updatedBooks);
   }
 };
 
 bookListEl.addEventListener('click', event => {
-  if (event.target.classList.contains('shoplist-delete-book-icon') || event.target.classList.contains('shoplist-delete-book-btn')) {
+  if (
+    event.target.classList.contains('shoplist-delete-book-icon') ||
+    event.target.classList.contains('shoplist-delete-book-btn')
+  ) {
     const bookCard = event.target.closest('.shoplist-book-card');
     const bookId = bookCard.getAttribute('id');
     deleteBook(bookId);
   }
 });
+
+// \/------- pagination ------\/
+const sectionShoplist = document.querySelector('.shoplist');
+const heading = document.createElement('div');
+heading.className = 'pagination-container';
+sectionShoplist.append(heading);
+
+// const pageSize = 3;
+// let activPage = 1;
+let totalPages = Math.ceil(booksInShop.length / pageSize);
+
+const displayPagination = () => {
+  const containerPagination = document.querySelector('.pagination-container');
+  containerPagination.innerHTML = '';
+
+  const firstPage = document.createElement('button');
+  firstPage.className = 'button-pagination symbols';
+
+  firstPage.innerHTML = '&#171;';
+  firstPage.disabled = activPage === 1;
+  firstPage.addEventListener('click', () => {
+    activPage = 1;
+    displayData(booksInShop, 0);
+    displayPagination();
+  });
+  containerPagination.appendChild(firstPage);
+
+  const prevPage = document.createElement('button');
+  prevPage.className = 'button-pagination symbols';
+  prevPage.innerHTML = '&#8249;';
+  prevPage.disabled = activPage === 1;
+  prevPage.addEventListener('click', () => {
+    activPage--;
+    const startIndex = (activPage - 1) * pageSize;
+    displayData(booksInShop, startIndex);
+    displayPagination();
+  });
+  containerPagination.appendChild(prevPage);
+
+  let startPage =
+    activPage <= 2
+      ? 1
+      : activPage >= totalPages - 1
+      ? totalPages - 2
+      : activPage - 1;
+
+  const dotsStart = startPage > 1;
+  if (dotsStart) {
+    const dots = document.createElement('button');
+    dots.className = 'button-pagination';
+    dots.innerHTML = '&#8230;';
+    containerPagination.appendChild(dots);
+  }
+
+  for (let i = startPage; i < startPage + 3 && i <= totalPages; i++) {
+    const page = document.createElement('button');
+    page.className = 'button-pagination';
+    page.innerHTML = i;
+    page.disabled = i === activPage;
+    page.classList.toggle('active', i === activPage);
+    page.addEventListener('click', () => {
+      activPage = i;
+      const startIndex = (activPage - 1) * pageSize;
+      displayData(booksInShop, startIndex);
+      displayPagination();
+    });
+    containerPagination.appendChild(page);
+  }
+
+  const dotsEnd = startPage + 2 < totalPages;
+  if (dotsEnd) {
+    const dots = document.createElement('button');
+    dots.className = 'button-pagination';
+    const dotsEnd = startPage + 2 < totalPages;
+    if (dotsEnd) {
+      const dots = document.createElement('button');
+      dots.className = 'button-pagination';
+      dots.innerHTML = '&#8230;';
+      containerPagination.appendChild(dots);
+    }
+
+    const nextPage = document.createElement('button');
+    nextPage.className = 'button-pagination symbols';
+    nextPage.innerHTML = '&#8250;';
+    nextPage.disabled = activPage === totalPages;
+    nextPage.addEventListener('click', () => {
+      activPage++;
+      const startIndex = (activPage - 1) * pageSize;
+      displayData(booksInShop, startIndex);
+      displayPagination();
+    });
+    containerPagination.appendChild(nextPage);
+
+    const lastPage = document.createElement('button');
+    lastPage.className = 'button-pagination symbols';
+    lastPage.innerHTML = '&#187;';
+    lastPage.disabled = activPage === totalPages;
+    lastPage.addEventListener('click', () => {
+      activPage = totalPages;
+      const startIndex = (totalPages - 1) * pageSize;
+      displayData(booksInShop, startIndex);
+      displayPagination();
+    });
+    containerPagination.appendChild(lastPage);
+  }
+};
+
+displayPagination();
+// /\------- pagination ------/\
