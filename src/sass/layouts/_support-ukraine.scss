@@ -70,14 +70,14 @@
 .support__img {
   filter: grayscale(100%) brightness(0) invert(100%);
   transition: filter var(--transition-duration) var(--transition-timing-function),
-  transform var(--transition-duration) var(--transition-timing-function);
+    transform var(--transition-duration) var(--transition-timing-function);
 }
 
 .support__link:hover .support__img,
 .support__link:focus .support__img {
-    filter: none;
-    transform: scale(1.1);
-  }
+  filter: none;
+  transform: scale(1.1);
+}
 
 .support__btn {
   display: flex;
@@ -116,7 +116,20 @@
 }
 
 @keyframes bounce {
-	0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-	40% {transform: translateY(-6px);}
-	60% {transform: translateY(-4px);}
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-6px);
+  }
+
+  60% {
+    transform: translateY(-4px);
+  }
 }

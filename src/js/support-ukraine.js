@@ -30,13 +30,12 @@ function renderMarkup(arr, itemsCountStart, itemsCountEnd) {
 }
 
 function renderMoreMarkup() {
-  if(window.innerWidth < 768) {
+  if (window.innerWidth < 768) {
     renderMarkup(markup, startIndex, findEndIndex(startIndex + 1));
-    return
+    return;
   }
   renderMarkup(markup, startIndex, findEndIndex(startIndex));
 }
-
 
 function findEndIndex(value) {
   if (window.innerWidth < 768) {
@@ -45,5 +44,3 @@ function findEndIndex(value) {
     return value + 6;
   }
 }
-
-
