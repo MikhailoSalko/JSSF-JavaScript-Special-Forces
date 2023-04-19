@@ -76,6 +76,9 @@
 
   /* Amazon Logo*/
   --amazon-logo: grayscale(100%);
+
+  //Sign In Modal
+  --icon-color: #111111;
 }
 
 /* Сюди вписуємо кольори-антиподи, але під тими самими назвами! */
@@ -94,4 +97,5 @@
   --non-active-btn-txt: #ffffff;
   --placeholder-card-background: #202024;
   --amazon-logo: brightness(0) invert(1);
+  --icon-color: #f6f6f6;
 }
