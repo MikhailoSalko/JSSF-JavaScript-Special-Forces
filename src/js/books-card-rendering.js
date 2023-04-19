@@ -2,7 +2,6 @@ import { FetchBooks } from './fetchBooks';
 import { spinnerPlay } from './spinner';
 import { spinnerStop } from './spinner';
 
-
 const fetchBooks = new FetchBooks();
 
 const listTopBooks = document.querySelector('.top-books');
@@ -213,8 +212,8 @@ async function handleLoadMore(e) {
 
       const renderCategory = await renderingCategory();
       let markup = '';
-      renderCategory.forEach(({ book_image, title, author }) => {
-        markup += `<li class="item-category-book js-book-modal">
+      renderCategory.forEach(({ _id, book_image, title, author }) => {
+        markup += `<li class="item-category-book js-book-modal" data-book-id="${_id}">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${book_image}" alt="book" class="img-book">
@@ -255,10 +254,10 @@ async function handleLoadMore(e) {
         return;
       }
       lastWordForTitle();
-    } return;
-  }
-  catch (error) {
-    console.log(error)
+    }
+    return;
+  } catch (error) {
+    console.log(error);
   }
 }
 spinnerStop();
@@ -277,7 +276,7 @@ async function renderingCategory() {
 function handleScroll() {
   if (window.scrollY > 200) {
     btnUpEl.classList.remove('is-hidden-up');
-  } else if(window.scrollY == 0 ) {
+  } else if (window.scrollY == 0) {
     btnUpEl.classList.add('is-hidden-up');
   }
 }
@@ -306,8 +305,8 @@ async function handleCategoryMarkup(e) {
     if (category !== 'All categories') {
       const renderCategory = await renderingCategory();
       let markup = '';
-      renderCategory.forEach(({ book_image, title, author }) => {
-        markup += `<li class="item-category-book js-book-modal">
+      renderCategory.forEach(({ _id, book_image, title, author }) => {
+        markup += `<li class="item-category-book js-book-modal" data-book-id="${_id}">
           <div class="card-book">
             <div class="img-card-book">
             <img src="${book_image}" alt="book" class="img-book">
@@ -529,7 +528,8 @@ async function handleCategoryMarkup(e) {
           `<h2 class="title-best-sellers">Best sellers <span class ="title-best-sellers-color">books</span></h2>`
         );
       })();
-    } 
-  } return;
+    }
+  }
+  return;
 }
 spinnerStop();
