@@ -1,32 +1,8 @@
 import { FetchBooks } from './fetchBooks';
 import { renderBookInfo } from './pop-up-modal-rendering';
-// (() => {
-//   const refs = {
-//     bookModal: document.querySelector('.js-book-modal'),
-//     closeBookBtn: document.querySelector('.js-book-close'),
-//     bookcardEL: document.querySelector('.book-card__modal'),
-//     categoryEl: document.querySelector('.checked-category'),
-//   };
 
-//   refs.categoryEl.addEventListener('click', toggleModal);
-//   refs.closeBookBtn.addEventListener('click', toggleModal);
-//   refs.bookModal.addEventListener('click', toggleModal);
-
-//   function toggleModal() {
-//     refs.bookModal.classList.toggle('backdrop--is-hidden');
-//     console.log('hello');
-//   }
-
-//   refs.bookModal.addEventListener('keydown', event => {
-//     if (event.key === 'Escape') {
-//       document.removeEventListener('keydown', event);
-//       toggleModal();
-//     }
-//   });
-// })();
-
-(() => {
-  const books = document.querySelector('.top-books');
+const books = document.querySelector('.top-books', popup_modal);
+function popup_modal() {
   books.addEventListener('click', async event => {
     const bookId = event.target
       .closest('li.js-book-modal')
@@ -63,10 +39,11 @@ import { renderBookInfo } from './pop-up-modal-rendering';
     document.addEventListener('keyup', onEscape);
 
     popup.querySelector('.book-card__btn').addEventListener('click', () => {
+      const inShoppingList = localStorage.getItem(BOOKS_STORAGE);
       if (inShoppingList) {
-        // remove;
+        removeFromShoppingList();
       } else {
-        // add;
+        addToShoppingList();
       }
     });
 
@@ -89,11 +66,37 @@ import { renderBookInfo } from './pop-up-modal-rendering';
       event.stopPropagation();
     }
 
-    const STORAGE_BOOKS = 'books';
+    const BOOKS_STORAGE = 'books';
     let booksData = {};
-    localStorage.setItem('books', bookId);
-    const addedBooks = localStorage.getItem(STORAGE_BOOKS);
-    const parsedBooks = JSON.parse(addedBooks);
-    localStorage.removeItem(STORAGE_BOOKS);
+
+    popup.querySelector('.book-card__btn').addEventListener('click', () => {
+      const inShoppingList = localStorage.getItem(BOOKS_STORAGE);
+      if (inShoppingList) {
+        removeFromShoppingList();
+      } else {
+        addToShoppingList();
+      }
+    });
+
+    function addToShoppingList(bookId) {
+      bookId = event.target
+        .closest('li.js-book-modal')
+        .getAttribute('data-book-id');
+      booksData = bookId;
+      localStorage.setItem(BOOKS_STORAGE, JSON.stringify(booksData));
+    }
+
+    function removeFromShoppingList(bookId) {
+      bookId = event.target
+        .closest('li.js-book-modal')
+        .getAttribute('data-book-id');
+      bookId = book;
+      const book = JSON.parse(localStorage.getItem(BOOKS_STORAGE));
+      const addedBooks = localStorage.getItem(BOOKS_STORAGE);
+      const parsedBooks = JSON.parse(addedBooks);
+      if (parsedBooks.contains(bookId)) {
+        removeItem(bookId);
+      }
+    }
   });
-})();
+}
