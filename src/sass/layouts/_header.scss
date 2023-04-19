@@ -1,6 +1,5 @@
 .header {
   background-color: var(--card-background);
-  // overflow: hidden;
   border: 1.5px solid var(--main-color);
   border-radius: 0px 0px 8px 8px;
 
@@ -29,7 +28,6 @@
 
   &__wrapper {
     position: relative;
-    z-index: 15;
     background-color: var(--card-background);
   }
 }
@@ -279,18 +277,15 @@
 
       .mob-home {
         margin-bottom: 16px;
-        font-family: "DM Sans";
-        font-style: normal;
-        font-weight: 700;
+        font-family: var(--main-font-family);
         font-size: 14px;
-        line-height: 18px;
+        line-height: 128.571429%; /* 18/14 */
 
         letter-spacing: -0.04em;
         text-transform: uppercase;
 
         color: #111111;
         display: flex;
-        flex-direction: row;
         align-items: flex-start;
         padding: 8px 16px;
         gap: 10px;
