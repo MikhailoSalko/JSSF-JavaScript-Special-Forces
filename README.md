@@ -37,6 +37,14 @@ This project was created by the following team members:
 - [Oleksandr Moskaliuk](https://github.com/OleksandrPM)
 - [Eduard Antoshchuk](https://github.com/EAntoshchuk)
 - [Heorhii Markov](https://github.com/GeryMarkury)
+- [Andrii Sachuk](https://github.com/ansachuk)
+- [Roman Ryabchinskiy](https://github.com/RomanOdessa75)
+- [Inna Makarenko](https://github.com/InnaMacksi)
+- [Volodymyr Andreshkiv](https://github.com/andreshkivVC)
+- [Volodymyr Dvorakovskyi](https://github.com/Dvorakovskyi)
+- [Lubov Roi](https://github.com/Luba5555)
+- [Daniil](https://github.com/DAN-IIL)
+
 
 Special thanks to [IvettaDashkova](https://github.com/IvettaDashkova) for their
 guidance and support throughout the project.
