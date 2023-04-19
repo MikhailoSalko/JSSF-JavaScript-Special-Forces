@@ -43,8 +43,7 @@ This project was created by the following team members:
 - [Volodymyr Andreshkiv](https://github.com/andreshkivVC)
 - [Volodymyr Dvorakovskyi](https://github.com/Dvorakovskyi)
 - [Lubov Roi](https://github.com/Luba5555)
-- [Daniil](https://github.com/DAN-IIL)
-
+- [Daniil Pidhornyi](https://github.com/DAN-IIL)
 
 Special thanks to [IvettaDashkova](https://github.com/IvettaDashkova) for their
 guidance and support throughout the project.
