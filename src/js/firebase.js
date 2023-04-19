@@ -6,9 +6,11 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-} from 'firebase/auth';
+  signOut,
+  updateProfile
+} from "firebase/auth";
 
-import Notiflix from 'notiflix';
+import Notiflix from "notiflix";
 
 import { headerUserBtnAuthHandler, headerUserBtnLogOutHandler } from './header-auth-handler.js'
 
@@ -41,7 +43,7 @@ submitBtn.addEventListener("click", e => {
       
       const user = userCredential.user;
 
-      set(ref(database, 'users/' + user.uid), {
+      set(ref(database, "users/" + user.uid), {
         nameAuth: nameAuth,
         mailAuth: mailAuth,
         userPassword: userPassword,
@@ -88,7 +90,7 @@ submitBtnCopy.addEventListener("click", e => {
       const user = userCredential.user;
 
       const dt = new Date();
-      update(ref(database, 'users/' + user.uid), {
+      update(ref(database, "users/" + user.uid), {
         last_login: dt,
       });
 

@@ -2,7 +2,6 @@ import { setTheme, activateThemeToggle } from './js/theme-toggle';
 import { renderCategories, changeCategoryStyle } from './js/categories';
 import { currentPageSwitcher } from './js/current-page-switcher';
 import { changeMobileMenuIcon } from './js/mobile-menu-icon-switcher';
-import { activateThemeToggle } from './js/theme-toggle';
 import './js/support-ukraine';
 import './js/authorization-modal';
 import './js/authorization-form';
@@ -15,6 +14,8 @@ const pageEl = document.querySelector('html');
 
 // Початкові налаштування теми
 setTheme(pageEl);
+
+const burger = document.getElementById('burger-btn');
 
 const currentPage = document.querySelector('.nav__link');
 currentPageSwitcher(currentPage);
