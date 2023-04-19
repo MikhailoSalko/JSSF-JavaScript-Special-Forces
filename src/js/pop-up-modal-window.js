@@ -39,10 +39,11 @@ function popup_modal() {
     document.addEventListener('keyup', onEscape);
 
     popup.querySelector('.book-card__btn').addEventListener('click', () => {
+      const inShoppingList = localStorage.getItem(BOOKS_STORAGE);
       if (inShoppingList) {
-        // remove;
+        removeFromShoppingList();
       } else {
-        // add;
+        addToShoppingList();
       }
     });
 
@@ -65,11 +66,37 @@ function popup_modal() {
       event.stopPropagation();
     }
 
-    // const STORAGE_BOOKS = 'books';
-    // let booksData = {};
-    // localStorage.setItem('books', bookId);
-    // const addedBooks = localStorage.getItem(STORAGE_BOOKS);
-    // const parsedBooks = JSON.parse(addedBooks);
-    // localStorage.removeItem(STORAGE_BOOKS);
+    const BOOKS_STORAGE = 'books';
+    let booksData = {};
+
+    popup.querySelector('.book-card__btn').addEventListener('click', () => {
+      const inShoppingList = localStorage.getItem(BOOKS_STORAGE);
+      if (inShoppingList) {
+        removeFromShoppingList();
+      } else {
+        addToShoppingList();
+      }
+    });
+
+    function addToShoppingList(bookId) {
+      bookId = event.target
+        .closest('li.js-book-modal')
+        .getAttribute('data-book-id');
+      booksData = bookId;
+      localStorage.setItem(BOOKS_STORAGE, JSON.stringify(booksData));
+    }
+
+    function removeFromShoppingList(bookId) {
+      bookId = event.target
+        .closest('li.js-book-modal')
+        .getAttribute('data-book-id');
+      bookId = book;
+      const book = JSON.parse(localStorage.getItem(BOOKS_STORAGE));
+      const addedBooks = localStorage.getItem(BOOKS_STORAGE);
+      const parsedBooks = JSON.parse(addedBooks);
+      if (parsedBooks.contains(bookId)) {
+        removeItem(bookId);
+      }
+    }
   });
 }
