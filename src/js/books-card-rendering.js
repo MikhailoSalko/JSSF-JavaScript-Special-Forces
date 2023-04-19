@@ -1,4 +1,3 @@
-import { error } from 'console';
 import { FetchBooks } from './fetchBooks';
 import { spinnerPlay } from './spinner';
 import { spinnerStop } from './spinner';
