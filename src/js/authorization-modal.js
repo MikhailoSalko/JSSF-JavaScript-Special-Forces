@@ -1,11 +1,19 @@
 (() => {
   const refs = {
+    openModalBtnBurger: document.querySelector('[data-burgermodal-auth-open]'),
+
+    openModalBtnOptions: document.querySelector('[data-optionmodal-auth-open]'),
+
     openModalBtn: document.querySelector('[data-modal-auth-open]'),
     closeModalBtn: document.querySelector('[data-modal-auth-close]'),
     modal: document.querySelector('[data-modal-auth]'),
 
     modalWindow: document.querySelector('[data-modal-auth-window]'),
   };
+
+  refs.openModalBtnBurger.addEventListener('click', onOpenModal);
+
+  refs.openModalBtnOptions.addEventListener('click', onOpenModal);
 
   refs.openModalBtn.addEventListener('click', onOpenModal);
   refs.closeModalBtn.addEventListener('click', onCloseModal);
