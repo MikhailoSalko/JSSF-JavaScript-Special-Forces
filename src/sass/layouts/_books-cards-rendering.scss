@@ -1,21 +1,4 @@
 .container-books-card {
-  @include mobile {
-    width: 375px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  @include tablet {
-    width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-  @include desktop {
-    width: 942px;
-    padding-left: 32px;
-    padding-right: 12px;
-  }
   background-color: var(--body-background);
 }
 
@@ -68,7 +51,7 @@
     height: 316px;
   }
   @include desktop {
-    width: 170px;
+    width: 160px;
     height: 241px;
   }
 }
@@ -92,7 +75,6 @@
   margin-bottom: 40px;
   @include desktop {
     margin-bottom: 32px;
-    
   }
 }
 .box-title {
