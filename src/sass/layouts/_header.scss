@@ -276,6 +276,7 @@
     .mob-home {
       margin-bottom: 16px;
       font-family: var(--main-font-family);
+      font-size: 14px;
       font-weight: 700;
       line-height: 18px;
       margin-bottom: 16px;
@@ -296,79 +297,34 @@
         color: var(--accent-color);
       }
 
-      .mob-home {
-        margin-bottom: 16px;
-        font-family: var(--main-font-family);
-        font-size: 14px;
-        line-height: 128.571429%;
-        /* 18/14 */
-
-        .mob-home {
-          margin-bottom: 16px;
-          font-family: 'DM Sans';
-          font-style: normal;
-          font-weight: 700;
-          font-size: 14px;
-          line-height: 18px;
-
-          color: #111111;
-          display: flex;
-          align-items: flex-start;
-          padding: 8px 16px;
-          gap: 10px;
-
-          color: #111111;
-          display: flex;
-          flex-direction: row;
-          align-items: flex-start;
-          padding: 8px 16px;
-          border-radius: 36px;
-          font-weight: 700;
-
-          &:hover {
-            color: var(--nav-link-hovered);
-            background-color: #e4b300;
-          }
-
-          &:hover .nav__icon {
-            fill: var(--nav-link-hovered);
-          }
         }
-      }
 
-      .shop-link {
-        color: var(--caritas-txt);
-      }
-
-      .user-mob {
-        position: absolute;
-        width: 37px;
-        height: 37px;
-        border: none;
-        border-radius: 50%;
-        background-color: var(--caritas-txt);
-        top: 20px;
-        left: 20px;
-
-        @include mobile {
-          display: flex;
-          align-items: center;
+        .shop-link {
+          color: var(--caritas-txt);
         }
-      }
 
-      .nav-btn {
-        gap: 4px;
-        font-weight: 500;
-        align-items: center;
-        display: flex;
-        align-items: center;
-      }
-    }
+        .user-mob {
+          position: absolute;
+          width: 37px;
+          height: 37px;
+          border: none;
+          border-radius: 50%;
+          background-color: var(--caritas-txt);
+          top: 20px;
+          left: 20px;
 
-    .nav-btn {
-      gap: 4px;
+      @include mobile {
+          display: flex;
+        display: none;
+        align-items: center;
+        }
+        }
+
+        .nav-btn {
+          gap: 4px;
       align-items: center;
-      display: flex;
+        display: flex;
+      display: none;
       position: absolute;
       height: 48px;
       left: 20px;
@@ -377,6 +333,7 @@
       background-color: var(--caritas-txt);
       border: 1.5px solid #111111;
       border-radius: 18px;
+      font-weight: 500;
     }
 
     .nav__icon {
@@ -399,7 +356,6 @@
     }
   }
 }
-
 
 .user {
   display: none;
