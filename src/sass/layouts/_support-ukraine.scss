@@ -69,7 +69,15 @@
 
 .support__img {
   filter: grayscale(100%) brightness(0) invert(100%);
+  transition: filter var(--transition-duration) var(--transition-timing-function),
+  transform var(--transition-duration) var(--transition-timing-function);
 }
+
+.support__link:hover .support__img,
+.support__link:focus .support__img {
+    filter: none;
+    transform: scale(1.1);
+  }
 
 .support__btn {
   display: flex;
@@ -79,22 +87,32 @@
   border: none;
   border-radius: 50%;
   background-color: var(--caritas-txt);
+  transition: background-color var(--transition-duration) var(--transition-timing-function);
   animation: bounce 3s infinite;
 
   @include tablet {
     padding: 8px;
   }
+
+  &:hover {
+    background-color: var(--accent-color);
+  }
 }
 
 .support__btn_icon {
+  stroke: var(--accent-color);
   width: 20px;
   height: 20px;
-  
+  transition: stroke var(--transition-duration) var(--transition-timing-function);
 
   @include tablet {
     width: 22px;
     height: 22px;
   }
+}
+
+.support__btn:hover .support__btn_icon {
+  stroke: var(--caritas-txt);
 }
 
 @keyframes bounce {
