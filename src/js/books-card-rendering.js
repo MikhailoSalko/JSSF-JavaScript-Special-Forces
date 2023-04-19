@@ -275,9 +275,9 @@ async function renderingCategory() {
 // Кнопка ===UP===============
 function handleScroll() {
   if (window.scrollY > 200) {
-    btnUpEl.classList.remove('is-hidden');
+    btnUpEl.classList.remove('is-hidden-up');
   } else if(window.scrollY == 0 ) {
-    btnUpEl.classList.add('is-hidden');
+    btnUpEl.classList.add('is-hidden-up');
   }
 }
 
@@ -287,6 +287,7 @@ function handleScrollUp(e) {
     behavior: 'smooth',
   });
 }
+
 btnUpEl.addEventListener('click', handleScrollUp);
 window.addEventListener('scroll', handleScroll);
 // =========Скрол сторінки до заголовка=========================
