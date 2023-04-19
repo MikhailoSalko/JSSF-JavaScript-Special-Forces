@@ -1,20 +1,23 @@
 .container-books-card {
+  @include small-mobile {
+    max-width: 300px;
+  }
   @include mobile {
     width: 375px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    // padding-left: 20px;
+    // padding-right: 20px;
+    // margin-left: auto;
+    // margin-right: auto;
   }
   @include tablet {
     width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
+    // padding-left: 32px;
+    // padding-right: 32px;
   }
   @include desktop {
-    width: 942px;
-    padding-left: 32px;
-    padding-right: 12px;
+    width: 884px;
+    // padding-left: 36px;
+    // padding-right: 21px;
   }
   background-color: var(--body-background);
 }
@@ -58,6 +61,12 @@
   display: block;
 }
 .img-card-book {
+  @include small-mobile {
+    // width: 300px;
+    width: 100%;
+    height: 485px;
+    margin-bottom: 14px;
+  }
   @include mobile {
     width: 335px;
     height: 485px;
@@ -68,16 +77,16 @@
     height: 316px;
   }
   @include desktop {
-    width: 170px;
-    height: 241px;
+    width: 160px;
+    height: 228px;
   }
 }
 
 .img-book {
   width: 100%;
   height: 100%;
+  overflow: hidden;
   border-radius: 8px;
-  object-fit: cover;
 }
 .box-text-book-best {
   margin-bottom: 8px;
@@ -88,11 +97,11 @@
     margin-bottom: 32px;
   }
 }
-.box-text-book-category {
+// .box-text-book-category {
+  .card-book {
   margin-bottom: 40px;
   @include desktop {
-    margin-bottom: 32px;
-    
+    margin-bottom: 0;
   }
 }
 .box-title {
@@ -103,7 +112,7 @@
     width: 218px;
   }
   @include desktop {
-    width: 170px;
+    width: 160px;
   }
 }
 
@@ -116,7 +125,7 @@
   }
 
   @include desktop {
-    width: 170px;
+    width: 160px;
   }
 }
 
@@ -190,9 +199,8 @@
   background: var(--body-background);
   border: 2px solid var(--accent-color);
   border-radius: 40px;
-  margin-bottom: 40px;
   &:hover,
-  &:focus {
+  :focus {
     background: var(--categories-accent);
     color: var(--nav-link-hovered);
   }
@@ -209,7 +217,7 @@
     justify-content: space-between;
   }
   @include desktop {
-    gap: 12px;
+    gap: 21px;
   }
 }
 
@@ -221,8 +229,8 @@
     justify-content: space-between;
   }
   @include desktop {
-    gap: 12px;
-    row-gap: 50px;
+    gap: 21px;
+    row-gap: 40px;
   }
 }
 .btn-up {
@@ -239,7 +247,8 @@
   background-color: var(--accent-color);
   box-shadow: 0 0 0 5px rgba(79, 46, 232, 0.3);
   transition: transform 0.2s ease-in-out;
-  &:hover {
+  &:hover,
+  :focus {
     transform: scale(1.05);
     background-color: var(--second-accent);
   }
