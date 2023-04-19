@@ -1,4 +1,5 @@
 import { FetchBooks } from './fetchBooks';
+import { spinnerPlay, spinnerStop } from './spinner';
 
 export { renderCategories, changeCategoryStyle };
 
@@ -10,6 +11,7 @@ const categoriesEl = document.querySelector('.categories-list');
 const fetch = new FetchBooks();
 
 function renderCategories() {
+  spinnerPlay();
   fetch
     .fetchCategoryList()
     .then(data => {
@@ -25,6 +27,7 @@ function renderCategories() {
         );
       }
     });
+  spinnerStop();
 }
 
 function changeCategoryStyle(event) {

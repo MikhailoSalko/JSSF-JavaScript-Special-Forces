@@ -8,7 +8,7 @@
     margin-right: auto;
 
    @include small-mobile {
-        width: 295px;
+        width: 300px;
         padding: 10px;
    }
    
@@ -133,10 +133,18 @@
 }
 
 .shop-logo {
-    filter: var(--amazon-logo);
+    filter: grayscale(100%);
 }
 
 .shop-logo:hover {
+    filter: grayscale(100%) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
+}
+
+.amazon {
+    filter: var(--amazon-logo);
+}
+
+.amazon:hover {
     filter: var(--amazon-logo) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
 }
 

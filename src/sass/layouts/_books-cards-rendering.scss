@@ -1,21 +1,4 @@
 .container-books-card {
-  @include mobile {
-    width: 375px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  @include tablet {
-    width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-  @include desktop {
-    width: 942px;
-    padding-left: 32px;
-    padding-right: 12px;
-  }
   background-color: var(--body-background);
 }
 
@@ -27,12 +10,14 @@
   color: var(--main-color);
   margin-top: 40px;
   margin-bottom: 40px;
+
   @include tablet {
-    margin-top: 100px;
+    margin-top: 0;
     font-size: 48px;
     line-height: 1.08;
     letter-spacing: -0.04em;
   }
+
   @include desktop {
     margin-top: 40px;
   }
@@ -57,66 +42,107 @@
   margin-bottom: 18px;
   display: block;
 }
+
 .img-card-book {
+  @include small-mobile {
+    // width: 300px;
+    width: 100%;
+    height: 485px;
+    margin-bottom: 14px;
+  }
+
   @include mobile {
     width: 335px;
     height: 485px;
     margin-bottom: 14px;
   }
+
   @include tablet {
     width: 218px;
     height: 316px;
   }
+
   @include desktop {
-    width: 170px;
-    height: 241px;
+    width: 160px;
+    height: 228px;
   }
 }
 
 .img-book {
   width: 100%;
   height: 100%;
+  overflow: hidden;
   border-radius: 8px;
-  object-fit: cover;
 }
+
 .box-text-book-best {
   margin-bottom: 8px;
+
   @include tablet {
     margin-bottom: 20px;
   }
+
   @include desktop {
     margin-bottom: 32px;
   }
 }
-.box-text-book-category {
-  margin-bottom: 40px;
+
+// .box-text-book-category {
+.card-book {
+  margin-bottom: 8px;
+
+  @include tablet {
+    margin-bottom: 20px;
+  }
+
   @include desktop {
-    margin-bottom: 32px;
-    
+    margin-bottom: 0;
   }
 }
+
 .box-title {
-  width: 335px;
-  height: 18px;
-  margin-bottom: 4px;
+  @include small-mobile {
+    width: 320px;
+    height: 18px;
+    margin-bottom: 4px;
+  }
+
+  @include mobile {
+    width: 335px;
+  }
+
+  // width: 335px;
+  // height: 18px;
+  // margin-bottom: 4px;
   @include tablet {
     width: 218px;
   }
+
   @include desktop {
-    width: 170px;
+    width: 160px;
   }
 }
 
 .box-author {
-  width: 335px;
-  height: 18px;
+  @include small-mobile {
+    width: 320px;
+    height: 18px;
+    // margin-bottom: 4px;
+  }
+
+  @include mobile {
+    width: 335px;
+  }
+
+  // width: 335px;
+  // height: 18px;
 
   @include tablet {
     width: 218px;
   }
 
   @include desktop {
-    width: 170px;
+    width: 160px;
   }
 }
 
@@ -155,12 +181,14 @@
   color: var(--main-color);
   margin-top: 40px;
   margin-bottom: 40px;
+
   @include tablet {
-    margin-top: 100px;
+    margin-top: 0;
     font-size: 48px;
     line-height: 1.08;
     letter-spacing: -0.04em;
   }
+
   @include desktop {
     margin-top: 40px;
   }
@@ -174,6 +202,7 @@
   text-overflow: ellipsis;
   color: var(--alternative-text);
 }
+
 .see-more {
   font-family: inherit;
   font-weight: 700;
@@ -190,13 +219,15 @@
   background: var(--body-background);
   border: 2px solid var(--accent-color);
   border-radius: 40px;
-  margin-bottom: 40px;
+
   &:hover,
-  &:focus {
+  :focus {
     background: var(--categories-accent);
     color: var(--nav-link-hovered);
   }
-  transition-property: color, background-color;
+
+  transition-property: color,
+  background-color;
 
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
@@ -208,23 +239,33 @@
     gap: 25px;
     justify-content: space-between;
   }
+
   @include desktop {
-    gap: 12px;
+    gap: 21px;
   }
 }
 
 .top-books {
+  @include small-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
   @include tablet {
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
+    row-gap: 40px;
     justify-content: space-between;
   }
+
   @include desktop {
-    gap: 12px;
-    row-gap: 50px;
+    gap: 21px;
+    row-gap: 40px;
   }
 }
+
 .btn-up {
   position: fixed;
   right: 30px;
@@ -239,7 +280,9 @@
   background-color: var(--accent-color);
   box-shadow: 0 0 0 5px rgba(79, 46, 232, 0.3);
   transition: transform 0.2s ease-in-out;
-  &:hover {
+
+  &:hover,
+  :focus {
     transform: scale(1.05);
     background-color: var(--second-accent);
   }
@@ -248,4 +291,8 @@
 .icon-up {
   width: 24px;
   height: 24px;
+}
+
+.is-hidden-up {
+  display: none;
 }
