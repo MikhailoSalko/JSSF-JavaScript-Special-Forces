@@ -1,0 +1,17 @@
+.active-pagination {
+    background-color: #111111;
+    color: white;
+  }
+  
+  .button-pagination {
+    height: 44px;
+    width: 44px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #d0d0d0;
+  }
+
+  .pagination-container {
+    display: flex;
+    justify-content: center;
+  }
