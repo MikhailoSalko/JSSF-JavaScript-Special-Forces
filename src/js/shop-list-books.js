@@ -322,7 +322,7 @@ const deleteBook = id => {
 };
 
 bookListEl.addEventListener('click', event => {
-  if (event.target.classList.contains('shoplist-delete-book-icon')) {
+  if (event.target.classList.contains('shoplist-delete-book-icon') || event.target.classList.contains('shoplist-delete-book-btn')) {
     const bookCard = event.target.closest('.shoplist-book-card');
     const bookId = bookCard.getAttribute('id');
     deleteBook(bookId);

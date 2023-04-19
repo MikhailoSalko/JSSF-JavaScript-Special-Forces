@@ -73,6 +73,9 @@
 
   /* Placeholder */
   --placeholder-card-background: #ffffff;
+
+  /* Amazon Logo*/
+  --amazon-logo: grayscale(100%);
 }
 
 /* Сюди вписуємо кольори-антиподи, але під тими самими назвами! */
@@ -90,4 +93,5 @@
   --active-btn-txt: #000000;
   --non-active-btn-txt: #ffffff;
   --placeholder-card-background: #202024;
+  --amazon-logo: brightness(0) invert(1);
 }
