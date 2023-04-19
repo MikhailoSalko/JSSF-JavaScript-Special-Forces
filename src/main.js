@@ -5,6 +5,7 @@ import { changeMobileMenuIcon } from './js/mobile-menu-icon-switcher';
 import './js/support-ukraine';
 import './js/authorization-modal';
 import './js/authorization-form';
+import './js/options-modal';
 import './js/pop-up-modal-window';
 import './js/firebase';
 import './js/books-card-rendering';
