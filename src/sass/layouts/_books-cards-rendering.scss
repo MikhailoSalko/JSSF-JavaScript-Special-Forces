@@ -1,6 +1,6 @@
 .container-books-card {
   @include small-mobile {
-    max-width: 300px;
+    max-width: 335px;
   }
   @include mobile {
     width: 375px;
@@ -257,4 +257,8 @@
 .icon-up {
   width: 24px;
   height: 24px;
+}
+
+.is-hidden {
+  display: none;
 }
