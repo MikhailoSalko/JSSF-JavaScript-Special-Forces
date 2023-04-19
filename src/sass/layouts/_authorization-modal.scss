@@ -74,7 +74,7 @@
 .modal_cross {
   width: 10px;
   height: 10px;
-  fill: var(--nav-link-hovered);
+  fill: var(--back-btn-background);
 
   @include tablet {
     width: 14px;
@@ -84,7 +84,7 @@
   }
 
   &:hover {
-    fill: var(--button-hover-color);
+    fill: var(--text-in-logo);
   }
 }
 
@@ -259,7 +259,8 @@
   height: 64px;
   background-color: var(--main-color);
   border-radius: 40px;
-  color: #f3f3f3;
+  color: var(--text-in-btn);
+  font-size: 18px;
   font-weight: 700;
 }
 
@@ -279,7 +280,7 @@
   font-weight: 700;
 
   &:disabled {
-    color: rgba(17, 17, 17, 0.5);
+    color: var(--signup-btn);
     text-decoration: none;
   }
 }

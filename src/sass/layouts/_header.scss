@@ -1,8 +1,9 @@
 .header {
   background-color: var(--card-background);
-  overflow: hidden;
   border: 1.5px solid var(--main-color);
   border-radius: 0px 0px 8px 8px;
+
+  width: 100%;
 
   @include mobile {
     width: 375px;
@@ -23,23 +24,10 @@
     align-items: center;
 
     margin: 0 auto;
-
-    @media screen and (max-width: 767.67px) {
-      max-width: 375px;
-    }
-
-    @include tablet {
-      width: 768px;
-    }
-
-    @include desktop {
-      width: 1280px;
-    }
   }
 
   &__wrapper {
     position: relative;
-    z-index: 15;
     background-color: var(--card-background);
   }
 }
@@ -156,7 +144,7 @@
   }
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 1;
     left: 1;
@@ -230,7 +218,7 @@
 
   &>.background-image {
     height: 50%;
-    background-image: url('../images/mobile-bg.png');
+    background-image: url("../images/mobile-bg.png");
     background-size: cover;
   }
 
@@ -308,9 +296,12 @@
         color: var(--accent-color);
       }
 
-      &.current-page {
-        color: var(--main-color);
-        background-color: #fec700;
+      .mob-home {
+        margin-bottom: 16px;
+        font-family: var(--main-font-family);
+        font-size: 14px;
+        line-height: 128.571429%;
+        /* 18/14 */
 
         .mob-home {
           margin-bottom: 16px;
@@ -320,8 +311,11 @@
           font-size: 14px;
           line-height: 18px;
 
-          letter-spacing: -0.04em;
-          text-transform: uppercase;
+          color: #111111;
+          display: flex;
+          align-items: flex-start;
+          padding: 8px 16px;
+          gap: 10px;
 
           color: #111111;
           display: flex;
@@ -436,10 +430,16 @@
     position: relative;
 
     &__btn {
-      display: flex;
       display: none;
       align-items: center;
       padding: 4px 12px;
+      font-family: var(--main-font-family);
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 131.818182%;
+      letter-spacing: -0.02em;
+      color: var(--caritas-txt);
+
       background-color: var(--accent-color);
       border: none;
       border-radius: 36px;
@@ -447,17 +447,11 @@
 
     &__image {
       border-radius: 50%;
+      margin-right: 9px;
     }
 
-    &__name {
-      margin-left: 9px;
-      margin-right: 4px;
-      font-family: var(--main-font-family);
-      font-weight: 700;
-      font-size: 22px;
-      line-height: 131.818182%;
-      letter-spacing: -0.02em;
-      color: var(--caritas-txt);
+    &__icon {
+      margin-left: 4px;
     }
   }
 
@@ -467,7 +461,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 84px;
+    gap: 79px;
+
     padding: 14px;
     border: 1.5px solid #111111;
     border-radius: 18px;
