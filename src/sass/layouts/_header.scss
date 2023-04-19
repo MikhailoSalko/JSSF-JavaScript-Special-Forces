@@ -175,7 +175,7 @@
 
   &:checked {
     background-image: linear-gradient(180deg,
-          var(--accent-color) 0%,
+        var(--accent-color) 0%,
         #686868 100%);
 
     &::before {
@@ -200,7 +200,8 @@
   @include desktop {
     width: 1280px;
   }
-font-family: var(--main-font-family);
+
+    font-family: var(--main-font-family);
   z-index: 10;
   margin-top: 64px;
   display: flex;
@@ -270,11 +271,11 @@ font-family: var(--main-font-family);
   height: 50%;
 
   .nav {
-      margin-left: 0;
+    margin-left: 0;
       height: 100%;
 
     &__list {
-        height: 100%;
+      height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -282,20 +283,23 @@ font-family: var(--main-font-family);
       }
 
         .mob-home {
-          margin-bottom: 16px;
+      font-weight: 700;
+        font-size: 14px;
+        line-height: 18px;
+      margin-bottom: 16px;
       color: #111111;
-        display: flex;
+      display: flex;
         flex-direction: row;
         align-items: flex-start;
         padding: 8px 16px;
         gap: 10px;
       width: 72px;
-        height: 34px;
+      height: 34px;
       background-color: var(--second-accent);
-        border-radius: 36px;
+      border-radius: 36px;
 
       &.shop-link {
-          display: flex;
+        display: flex;
           align-items: center;
           color: var(--accent-color);
         }
@@ -308,7 +312,7 @@ font-family: var(--main-font-family);
               font-weight: 700;
 
         &:hover {
-            color: var(--nav-link-hovered);
+          color: var(--nav-link-hovered);
             background-color: #e4b300;
           }
 
@@ -329,46 +333,47 @@ font-family: var(--main-font-family);
           border: none;
           border-radius: 50%;
       background-color: var(--caritas-txt);
-        top: 20px;
+      top: 20px;
         left: 20px;
 
       @include mobile {
-          display: flex;
+        display: flex;
           justify-content: center;
           align-items: center;
         }
-      }
+        }
 
         .nav-btn {
           gap: 4px;
       align-items: center;
-        display: flex;
+      display: flex;
         position: absolute;
       height: 48px;
-        left: 20px;
+      left: 20px;
         bottom: 80px;
         padding: 14px 24px;
       background-color: var(--caritas-txt);
-        border: 1.5px solid #111111;
+      border: 1.5px solid #111111;
         border-radius: 18px;
       }
 
         .nav__icon {
           fill: white;
         }
-.user-sing {
-  position: relative;
-  padding: 14px;
-  border: 1.5px solid #111111;
-  border-radius: 18px;
-  background-color: var(--accent-color);
-  color: var(--caritas-txt);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 90px;
-  top: 40px;
-  left: 20px;
+
+        .user-sing {
+          position: relative;
+          padding: 14px;
+          border: 1.5px solid #111111;
+          border-radius: 18px;
+          background-color: var(--accent-color);
+          color: var(--caritas-txt);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 90px;
+          top: 40px;
+          left: 20px;
     }
   }
 }
