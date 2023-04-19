@@ -6,6 +6,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  signOut,
+  updateProfile
 } from 'firebase/auth';
 
 import Notiflix from 'notiflix';
