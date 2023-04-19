@@ -287,6 +287,7 @@ function handleScrollUp(e) {
     behavior: 'smooth',
   });
 }
+
 btnUpEl.addEventListener('click', handleScrollUp);
 window.addEventListener('scroll', handleScroll);
 // =========Скрол сторінки до заголовка=========================
