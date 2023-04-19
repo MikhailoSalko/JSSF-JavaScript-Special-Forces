@@ -1,13 +1,8 @@
 .support__container {
-  // margin: 0 auto;
+  min-height: 352px;
   padding: 24px 40px 20px 40px;
   box-shadow: 0px 10px 10px rgba(245, 245, 247, 0.1);
   border-radius: 16px;
-  // max-width: 335px;
-  // height: 352px;
-  height: 100%;
-  // overflow-y: scroll;
-  overflow-y: hidden;
   background-image: linear-gradient(to bottom, var(--accent-color), #b8abf6);
 
   @include small-mobile {
@@ -19,14 +14,13 @@
   }
 
   @include tablet {
-    // height: 472px;
+    min-height: 472px;
     padding-bottom: 14px;
   }
 
   @include desktop {
-    // max-width: 356px;
-    width: 356px;
-    // height: 490px;
+    width: 318px;
+    min-height: 490px;
     padding-bottom: 24px;
   }
 }
@@ -58,6 +52,7 @@
 .support__link {
   display: flex;
   align-items: center;
+  height: 32px;
 }
 
 .support__item:not(:last-child) {
@@ -74,28 +69,54 @@
 
 .support__img {
   filter: grayscale(100%) brightness(0) invert(100%);
+  transition: filter var(--transition-duration) var(--transition-timing-function),
+  transform var(--transition-duration) var(--transition-timing-function);
 }
+
+.support__link:hover .support__img,
+.support__link:focus .support__img {
+    filter: none;
+    transform: scale(1.1);
+  }
 
 .support__btn {
   display: flex;
+  padding: 6px;
   margin-left: auto;
   margin-right: auto;
   border: none;
   border-radius: 50%;
   background-color: var(--caritas-txt);
-  padding: 6px;
+  transition: background-color var(--transition-duration) var(--transition-timing-function);
+  animation: bounce 3s infinite;
 
   @include tablet {
     padding: 8px;
   }
+
+  &:hover {
+    background-color: var(--accent-color);
+  }
 }
 
 .support__btn_icon {
+  stroke: var(--accent-color);
   width: 20px;
   height: 20px;
+  transition: stroke var(--transition-duration) var(--transition-timing-function);
 
   @include tablet {
     width: 22px;
     height: 22px;
   }
+}
+
+.support__btn:hover .support__btn_icon {
+  stroke: var(--caritas-txt);
+}
+
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+	40% {transform: translateY(-6px);}
+	60% {transform: translateY(-4px);}
 }
