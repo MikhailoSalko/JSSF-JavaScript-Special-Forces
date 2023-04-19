@@ -136,7 +136,6 @@
 
 ::placeholder {
   color: var(--body-background);
-  // color: #f31414;
 }
 
 .auth_icon {
@@ -262,6 +261,44 @@
   color: var(--text-in-btn);
   font-size: 18px;
   font-weight: 700;
+
+  // ===========
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  &:before {
+    content: '';
+    // background-color: rgba(243, 236, 161, 0.8);
+    background: linear-gradient(
+      90deg,
+      rgba(246, 245, 146, 1) 0%,
+      rgba(246, 250, 173, 1) 31%,
+      rgba(247, 247, 223, 1) 100%
+    );
+    // background: linear-gradient(
+    //   90deg,
+    //   rgba(138, 137, 134, 1) 0%,
+    //   rgba(191, 191, 191, 1) 31%,
+    //   rgba(215, 215, 211, 1) 100%
+    // );
+    height: 100%;
+    width: 4em;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -7em;
+    transform: skewX(-45deg) translateX(o);
+    transition: none;
+  }
+  &:hover {
+    background-color: #111111;
+    color: #fff;
+    // border-bottom: 4px solid darken(#2194e0, 10%);
+    &:before {
+      transform: skewX(-45deg) translateX(40em);
+      transition: all 0.8s ease-in-out;
+    }
+  }
 }
 
 .buttons-wrapper {
