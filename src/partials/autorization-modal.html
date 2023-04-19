@@ -28,7 +28,7 @@
                   aria-label="name"
                   required
                 />
-                <label class="auth_label" for="name-auth">NAME</label>
+                <label class="auth_label" for="nameAuth">NAME</label>
 
                 <div class="error"></div>
               </div>
@@ -40,12 +40,12 @@
                   name="mail"
                   id="signupMail"
                   placeholder="_"
-                  pattern="\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$"
+                  pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
                   title="Please, write your email"
                   aria-label="email"
                   required
                 />
-                <label class="auth_label" for="mail-auth">EMAIL</label>
+                <label class="auth_label" for="signupMail">EMAIL</label>
                 <svg class="auth_icon envelope" width="28" height="28">
                   <use href="./images/icons.svg#email"></use>
                 </svg>
@@ -62,7 +62,7 @@
                   aria-label="password"
                   required
                 />
-                <label class="auth_label" for="userPassword">PASSWORD</label>
+                <label class="auth_label" for="signupPassword">PASSWORD</label>
                 <svg class="auth_icon lock" width="28" height="28">
                   <use href="./images/icons.svg#lock"></use>
                 </svg>
@@ -106,12 +106,12 @@
                   name="mail"
                   id="signinMail"
                   placeholder="_"
-                  pattern="\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$"
+                  pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
                   title="Please, write your email"
                   aria-label="email"
                   required
                 />
-                <label class="auth_label" for="mail-auth">EMAIL</label>
+                <label class="auth_label" for="signinMail">EMAIL</label>
                 <svg class="auth_icon envelope" width="28" height="28">
                   <use href="./images/icons.svg#email"></use>
                 </svg>
@@ -128,7 +128,7 @@
                   aria-label="password"
                   required
                 />
-                <label class="auth_label" for="userPassword">PASSWORD</label>
+                <label class="auth_label" for="signinPassword">PASSWORD</label>
                 <svg class="auth_icon lock" width="28" height="28">
                   <use href="./images/icons.svg#lock"></use>
                 </svg>
