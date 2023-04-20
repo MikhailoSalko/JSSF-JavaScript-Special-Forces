@@ -68,17 +68,17 @@ if (!!books) {
         booksDataJson = '[]';
       }
       let booksData = JSON.parse(booksDataJson);
-      return booksData.indexOf(bookId) !== -1;
+      return booksData.find(book => book._id === bookId) !== undefined;
     }
 
     const congrTextEl = document.querySelector('.congrat-text');
     popup.querySelector('.add-card__bnt').addEventListener('click', evt => {
       if (isInShoppingList(bookId)) {
-        removeFromShoppingList(bookId);
+        removeFromShoppingList(book_json);
         evt.target.innerText = 'add to shopping list';
         congrTextEl.textContent = '';
       } else {
-        addToShoppingList(bookId);
+        addToShoppingList(book_json);
         evt.target.innerText = 'remove from the shopping list';
         congrTextEl.textContent =
           'Сongratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”.';
@@ -119,25 +119,25 @@ if (!!books) {
     //   congrTextEl.classList.toggle('text--is-hidden');
     // }
 
-    function addToShoppingList(book_json) {
+    function addToShoppingList(book) {
+      console.log('adding', book);
       let booksDataJson = localStorage.getItem(BOOKS_STORAGE);
       if (!booksDataJson) {
         booksDataJson = '[]';
       }
       const booksData = JSON.parse(booksDataJson);
-      booksData.push(book_json);
+      booksData.push(book);
       localStorage.setItem(BOOKS_STORAGE, JSON.stringify(booksData));
     }
 
-    function removeFromShoppingList(book_json) {
+    function removeFromShoppingList(book) {
+      console.log('removing', book);
       let booksDataJson = localStorage.getItem(BOOKS_STORAGE);
       if (booksDataJson === null) {
         return;
       }
       let booksData = JSON.parse(booksDataJson);
-      booksData = booksData.filter(
-        item => item._id !== book_json && item !== book_json
-      );
+      booksData = booksData.filter(item => item._id !== book._id);
       localStorage.setItem(BOOKS_STORAGE, JSON.stringify(booksData));
     }
   });

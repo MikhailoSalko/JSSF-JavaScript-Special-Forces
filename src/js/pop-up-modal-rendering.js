@@ -3,7 +3,7 @@ export { renderBookInfo };
 
 function renderBookInfo(book, inShoppingList) {
   const card__btn = inShoppingList
-    ? '<button class="card__btn add-card__bnt btn">remove from shop list</button> <p class = "congrat-text"></p>'
+    ? '<button class="card__btn add-card__bnt btn">remove from shop list</button> <p class = "congrat-text">Congrats!</p>'
     : '<button class="card__btn add-card__bnt btn">add to shop list</button> <p class = "congrat-text"></p>';
   return `<div class="backdrop backdrop__modal js-book-modal">
   <div class="modal book-card__modal scrollable">
