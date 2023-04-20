@@ -119,24 +119,24 @@ if (!!books) {
     //   congrTextEl.classList.toggle('text--is-hidden');
     // }
 
-    function addToShoppingList(bookId) {
+    function addToShoppingList(book_json) {
       let booksDataJson = localStorage.getItem(BOOKS_STORAGE);
       if (!booksDataJson) {
         booksDataJson = '[]';
       }
       const booksData = JSON.parse(booksDataJson);
-      booksData.push(bookId, book_json);
+      booksData.push(book_json);
       localStorage.setItem(BOOKS_STORAGE, JSON.stringify(booksData));
     }
 
-    function removeFromShoppingList(bookId) {
+    function removeFromShoppingList(book_json) {
       let booksDataJson = localStorage.getItem(BOOKS_STORAGE);
       if (booksDataJson === null) {
         return;
       }
       let booksData = JSON.parse(booksDataJson);
       booksData = booksData.filter(
-        item => item._id !== bookId && item !== bookId
+        item => item._id !== book_json && item !== book_json
       );
       localStorage.setItem(BOOKS_STORAGE, JSON.stringify(booksData));
     }
