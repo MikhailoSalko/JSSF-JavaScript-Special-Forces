@@ -8,7 +8,7 @@ const signUpBurgerBtnRef = document.querySelector(
   "[data-burgermodal-auth-open]"
 );
 const userAuthBurgerBtnRef = document.querySelector(".user-mob");
-const userAuthNameBurgerBtnRef = document.querySelector(".user-mob div");
+// const userAuthNameBurgerBtnRef = document.querySelector(".user-mob div");
 const userAuthImgBurgerBtnRef = document.querySelector(".user-mob img");
 const logOutBurgerBtnRef = document.querySelector("#logOut");
 
@@ -21,7 +21,7 @@ function headerUserBtnAuthHandler(name, img) {
 
   if (name) {
     userAuthNameBtnRef.textContent = name;
-    userAuthNameBurgerBtnRef.textContent = name;
+    // userAuthNameBurgerBtnRef.textContent = name;
   }
 
   if (img) {
