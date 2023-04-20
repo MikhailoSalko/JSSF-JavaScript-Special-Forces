@@ -4,7 +4,7 @@ import { spinnerPlay } from './spinner';
 import { spinnerStop } from './spinner';
 
 const fetchBooks = new FetchBooks();
-
+const categoriesListEl = document.querySelector('.categories-list');
 const listTopBooks = document.querySelector('.top-books');
 const btnUpEl = document.querySelector('.btn-up');
 if (btnUpEl) {
@@ -35,7 +35,8 @@ spinnerPlay();
     <h3 class="item-category">${list_name}</h3>
         <ul class="box-category">
       <li class="item-category-book js-book-modal" data-book-id="${books[0]._id}">
-          <div class="card-book">
+        <a class="link-books-render" href="#">  
+      <div class="card-book">
             <div class="img-card-book">
             <img src="${books[0].book_image}" alt="book" class="img-book">
             </div>
@@ -48,7 +49,8 @@ spinnerPlay();
                   </div>
                 </div>
           </div>
-      </li>
+        </a>
+          </li>
     </ul>
         <button type="button" aria-label="Show more" class="see-more">See more</button>
    </li>`;
@@ -61,7 +63,8 @@ spinnerPlay();
     <h3 class="item-category">${list_name}</h3>
         <ul class="box-category">
       <li class="item-category-book js-book-modal" data-book-id="${books[0]._id}">
-          <div class="card-book">
+      <a class="link-books-render" href="#">    
+      <div class="card-book">
             <div class="img-card-book">
             <img src="${books[0].book_image}" alt="book" class="img-book">
             </div>
@@ -74,9 +77,11 @@ spinnerPlay();
                   </div>
               </div>
           </div>
-      </li>
+      </a>
+          </li>
             <li class="item-category-book js-book-modal" data-book-id="${books[1]._id}">
-          <div class="card-book">
+          <a class="link-books-render" href="#"> 
+           <div class="card-book">
             <div class="img-card-book">
             <img src="${books[1].book_image}" alt="book" class="img-book">
             </div>
@@ -89,9 +94,11 @@ spinnerPlay();
                   </div>
               </div>
           </div>
-      </li>
+      </a>
+          </li>
           <li class="item-category-book js-book-modal" data-book-id="${books[2]._id}">
-           <div class="card-book">
+           <a class="link-books-render" href="#">
+          <div class="card-book">
             <div class="img-card-book">
             <img src="${books[2].book_image}" alt="book" class="img-book">
             </div>
@@ -104,7 +111,8 @@ spinnerPlay();
                   </div>
               </div>
            </div>
-          </li>
+          </a>
+           </li>
     </ul>
         <button type="button" aria-label="Show more" class="see-more">See more</button>
    </li>`;
@@ -117,7 +125,8 @@ spinnerPlay();
     <h3 class="item-category">${list_name}</h3>
         <ul class="box-category">
       <li class="item-category-book js-book-modal" data-book-id="${books[0]._id}">
-          <div class="card-book">
+       <a class="link-books-render" href="#">   
+      <div class="card-book">
             <div class="img-card-book">
                 <img src="${books[0].book_image}" alt="book" class="img-book">
             </div>
@@ -130,9 +139,11 @@ spinnerPlay();
                   </div>
             </div>
           </div>
-      </li>
+      </a>
+          </li>
             <li class="item-category-book js-book-modal" data-book-id="${books[1]._id}">
-          <div class="card-book">
+          <a class="link-books-render" href="#">
+            <div class="card-book">
             <div class="img-card-book">
             <img src="${books[1].book_image}" alt="book" class="img-book">
             </div>
@@ -145,9 +156,11 @@ spinnerPlay();
                   </div>
               </div>
           </div>
-      </li>
+      </a>
+          </li>
             <li class="item-category-book js-book-modal" data-book-id="${books[2]._id}">
-          <div class="card-book">
+          <a class="link-books-render" href="#">
+            <div class="card-book">
             <div class="img-card-book">
             <img src="${books[2].book_image}" alt="book" class="img-book">
             </div>
@@ -160,9 +173,11 @@ spinnerPlay();
                   </div>
               </div>
           </div>
-      </li>
+      </a>
+          </li>
             <li class="item-category-book js-book-modal" data-book-id="${books[3]._id}">
-          <div class="card-book">
+          <a class="link-books-render" href="#">
+            <div class="card-book">
             <div class="img-card-book">
             <img src="${books[3].book_image}" alt="book" class="img-book">
             </div>
@@ -175,9 +190,11 @@ spinnerPlay();
                   </div>
               </div>
           </div>
-      </li>
+      </a>
+          </li>
             <li class="item-category-book js-book-modal" data-book-id="${books[4]._id}">
-          <div class="card-book">
+          <a class="link-books-render" href="#">
+            <div class="card-book">
             <div class="img-card-book">
             <img src="${books[4].book_image}" alt="book" class="img-book">
             </div>
@@ -190,7 +207,8 @@ spinnerPlay();
                   </div>
               </div>
           </div>
-      </li>
+      </a>
+          </li>
     </ul>
         <button type="button" aria-label="Show more" class="see-more">See more</button>
    </li>`;
@@ -219,11 +237,28 @@ async function handleLoadMore(e) {
     if (e.target.nodeName === 'BUTTON') {
       category = e.target.closest('li').querySelector('h3').textContent.trim();
 
+      const arrCategories = categoriesListEl.childNodes;
+      arrCategories.forEach(item => {
+  if(item.classList.contains('checked-category')){item.classList.remove('checked-category')}
+  else {
+    return;
+  }
+});
+
+arrCategories.forEach(item => {
+  if (item.textContent.trim() === category) {
+    item.classList.add('checked-category');
+  } else {
+    return;
+  }
+});
+      
       const renderCategory = await renderingCategory();
       let markup = '';
       renderCategory.forEach(({ _id, book_image, title, author }) => {
         markup += `<li class="item-category-book js-book-modal" data-book-id="${_id}">
-          <div class="card-book">
+       <a class="link-books-render" href="#">   
+        <div class="card-book">
             <div class="img-card-book">
             <img src="${book_image}" alt="book" class="img-book">
             </div>
@@ -236,7 +271,8 @@ async function handleLoadMore(e) {
                   </div>
               </div>
           </div>
-      </li>`;
+      </a>
+          </li>`;
       });
       listTopBooks.innerHTML = '';
       listTopBooks.previousElementSibling.remove();
@@ -323,7 +359,8 @@ async function handleCategoryMarkup(e) {
       let markup = '';
       renderCategory.forEach(({ _id, book_image, title, author }) => {
         markup += `<li class="item-category-book js-book-modal" data-book-id="${_id}">
-          <div class="card-book">
+        <a class="link-books-render" href="#">  
+        <div class="card-book">
             <div class="img-card-book">
             <img src="${book_image}" alt="book" class="img-book">
             </div>
@@ -336,7 +373,8 @@ async function handleCategoryMarkup(e) {
                   </div>
               </div>
           </div>
-      </li>`;
+      </a>
+          </li>`;
       });
       listTopBooks.innerHTML = '';
       listTopBooks.previousElementSibling.remove();
@@ -370,7 +408,8 @@ async function handleCategoryMarkup(e) {
     <h3 class="item-category">${list_name}</h3>
         <ul class="box-category">
       <li class="item-category-book">
-          <div class="card-book">
+      <a class="link-books-render" href="#">    
+      <div class="card-book">
             <div class="img-card-book">
             <img src="${books[0].book_image}" alt="book" class="img-book">
             </div>
@@ -383,7 +422,8 @@ async function handleCategoryMarkup(e) {
                   </div>
               </div>
           </div>
-      </li>
+      </a>
+          </li>
     </ul>
         <button type="button" aria-label="Show more" class="see-more">See more</button>
    </li>`;
@@ -396,7 +436,8 @@ async function handleCategoryMarkup(e) {
     <h3 class="item-category">${list_name}</h3>
         <ul class="box-category">
       <li class="item-category-book js-book-modal" data-book-id="${books[0]._id}">
-          <div class="card-book">
+      <a class="link-books-render" href="#">    
+      <div class="card-book">
             <div class="img-card-book">
             <img src="${books[0].book_image}" alt="book" class="img-book">
             </div>
@@ -409,9 +450,11 @@ async function handleCategoryMarkup(e) {
                   </div>
               </div>
           </div>
-      </li>
+      </a>
+          </li>
             <li class="item-category-book js-book-modal" data-book-id="${books[1]._id}">
-          <div class="card-book">
+          <a class="link-books-render" href="#">
+            <div class="card-book">
             <div class="img-card-book-best">
             <img src="${books[1].book_image}" alt="book" class="img-book">
             </div>
@@ -424,9 +467,11 @@ async function handleCategoryMarkup(e) {
                   </div>
               </div>
           </div>
-      </li>
+      </a>
+          </li>
             <li class="item-category-book js-book-modal" data-book-id="${books[2]._id}">
-          <div class="card-book">
+          <a class="link-books-render" href="#">
+            <div class="card-book">
             <div class="img-card-book">
             <img src="${books[2].book_image}" alt="book" class="img-book">
             </div>
@@ -439,7 +484,8 @@ async function handleCategoryMarkup(e) {
                   </div>
               </div>
           </div>
-            </li>
+         </a>   
+          </li>
     </ul>
         <button type="button" aria-label="Show more" class="see-more">See more</button>
    </li>`;
@@ -452,7 +498,8 @@ async function handleCategoryMarkup(e) {
     <h3 class="item-category">${list_name}</h3>
         <ul class="box-category">
       <li class="item-category-book js-book-modal" data-book-id="${books[0]._id}">
-          <div class="card-book">
+        <a class="link-books-render" href="#">  
+      <div class="card-book">
             <div class="img-card-book">
             <img src="${books[0].book_image}" alt="book" class="img-book">
             </div>
@@ -465,9 +512,11 @@ async function handleCategoryMarkup(e) {
                   </div>
               </div>
           </div>
-      </li>
+      </a>
+          </li>
             <li class="item-category-book js-book-modal" data-book-id="${books[1]._id}">
-          <div class="card-book">
+          <a class="link-books-render" href="#">
+            <div class="card-book">
             <div class="img-card-book">
             <img src="${books[1].book_image}" alt="book" class="img-book">
             </div>
@@ -480,9 +529,11 @@ async function handleCategoryMarkup(e) {
                   </div>
               </div>
           </div>
-      </li>
+      </a>
+          </li>
             <li class="item-category-book js-book-modal" data-book-id="${books[2]._id}">
-          <div class="card-book">
+          <a class="link-books-render" href="#">
+            <div class="card-book">
             <div class="img-card-book">
             <img src="${books[2].book_image}" alt="book" class="img-book">
             </div>
@@ -495,9 +546,11 @@ async function handleCategoryMarkup(e) {
                   </div>
               </div>
           </div>
-      </li>
+      </a>
+          </li>
             <li class="item-category-book js-book-modal" data-book-id="${books[3]._id}">
-          <div class="card-book">
+          <a class="link-books-render" href="#">
+            <div class="card-book">
             <div class="img-card-book">
             <img src="${books[3].book_image}" alt="book" class="img-book">
             </div>
@@ -510,9 +563,11 @@ async function handleCategoryMarkup(e) {
                   </div>
               </div>
           </div>
-      </li>
+      </a>
+          </li>
             <li class="item-category-book js-book-modal" data-book-id="${books[4]._id}">
-          <div class="card-book">
+          <a class="link-books-render" href="#">
+            <div class="card-book">
             <div class="img-card-book">
             <img src="${books[4].book_image}" alt="book" class="img-book">
             </div>
@@ -525,7 +580,8 @@ async function handleCategoryMarkup(e) {
                   </div>
               </div>
           </div>
-      </li>
+      </a>
+          </li>
 
     </ul>
         <button type="button" aria-label="Show more" class="see-more">See more</button>
