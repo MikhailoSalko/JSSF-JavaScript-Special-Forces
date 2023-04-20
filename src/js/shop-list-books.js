@@ -3,7 +3,7 @@ import { currentPageSwitcher } from './current-page-switcher';
 const currentPage = document.querySelector('.shop-mob');
 currentPageSwitcher(currentPage);
 
-const books = [];
+// const books = [];
 //   {
 //     _id: '642fd89ac8cf5ee957f12361',
 //     list_name: 'Middle Grade Paperback Monthly',
@@ -183,7 +183,7 @@ const books = [];
 //   },
 // ];
 
-localStorage.setItem('books', JSON.stringify(books));
+// localStorage.setItem('books', JSON.stringify(books));
 
 const bookListEl = document.querySelector('.shoplist-main');
 const shopIsEmpty = document.querySelector('.shoplist-empty');
