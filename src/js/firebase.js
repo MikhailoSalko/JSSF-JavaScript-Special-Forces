@@ -82,7 +82,7 @@ submitBtnCopy.addEventListener("click", e => {
         last_login: dt,
       });
 
-      Notiflix.Notify.success("User long in!");
+      Notiflix.Notify.success("User logged in!");
      
       headerUserBtnAuthHandler(user.displayName);
     
