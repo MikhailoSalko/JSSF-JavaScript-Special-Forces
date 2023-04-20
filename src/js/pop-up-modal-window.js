@@ -8,6 +8,7 @@ if (!!books) {
     if (!bookCard) {
       return;
     }
+
     const bookId = bookCard.getAttribute('data-book-id');
     const fetch = new FetchBooks();
     fetch.bookId = bookId;
@@ -28,6 +29,7 @@ if (!!books) {
 
     const BOOKS_STORAGE = 'books';
     const popup = document.createElement('div');
+
     popup.innerHTML = renderBookInfo(book_data, isInShoppingList(bookId));
     document.body.appendChild(popup);
 
@@ -43,7 +45,7 @@ if (!!books) {
     const modalCloseBtnEl = popup.querySelector('.modal-close__btn');
 
     modalCloseBtnEl.addEventListener('click', closeModal);
-    function closeModal() {
+    function closeModal(event) {
       document.body.removeChild(popup);
       document.removeEventListener('keyup', onEscape);
       event.stopPropagation();
@@ -57,7 +59,7 @@ if (!!books) {
       }
       document.body.removeChild(popup);
       document.removeEventListener('keyup', onEscape);
-      event.stopPropagation();
+      evt.stopPropagation();
     }
 
     function isInShoppingList(bookId) {
@@ -69,15 +71,53 @@ if (!!books) {
       return booksData.indexOf(bookId) !== -1;
     }
 
-    popup.querySelector('.book-card__btn').addEventListener('click', evt => {
+    const congrTextEl = document.querySelector('.congrat-text');
+    popup.querySelector('.add-card__bnt').addEventListener('click', evt => {
       if (isInShoppingList(bookId)) {
         removeFromShoppingList(bookId);
         evt.target.innerText = 'add to shopping list';
+        congrTextEl.textContent = '';
       } else {
         addToShoppingList(bookId);
         evt.target.innerText = 'remove from the shopping list';
+        congrTextEl.textContent =
+          'Сongratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”.';
       }
     });
+
+    // imgBook.addEventListener('click', event => {
+    //   if (isInShoppingList(bookId)) {
+    //     congrTextEl.textContent =
+    //       'Сongratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”.';
+    //   } else {
+    //     congrTextEl.textContent = '';
+    //   }
+    // });
+
+    // function checkBtn(event) {
+    //   if (
+    //     event.target.nodeName === 'BUTTON' &&
+    //     event.target.textContent === 'remove from the shopping list'
+    //   ) {
+    //     event.target.innerText = 'add to shopping list';
+    //     console.log('ok');
+    //     const congrTextEl = document.querySelector('.congrat-text');
+    //     console.log(congrTextEl);
+    //     congrTextEl.classList.toggle('text--is-hidden');
+    //   }
+    // }
+
+    // function showText(event) {
+    //   checkBtn(event);
+    //   if (event.target.nodeName !== 'BUTTON') {
+    //     return;
+    //   }
+
+    //   console.log(event.target.nodeName);
+    //   const congrTextEl = document.querySelector('.congrat-text');
+    //   console.log(congrTextEl);
+    //   congrTextEl.classList.toggle('text--is-hidden');
+    // }
 
     function addToShoppingList(bookId) {
       let booksDataJson = localStorage.getItem(BOOKS_STORAGE);
@@ -85,7 +125,7 @@ if (!!books) {
         booksDataJson = '[]';
       }
       const booksData = JSON.parse(booksDataJson);
-      booksData.push(bookId);
+      booksData.push(bookId, book_json);
       localStorage.setItem(BOOKS_STORAGE, JSON.stringify(booksData));
     }
 
@@ -95,7 +135,9 @@ if (!!books) {
         return;
       }
       let booksData = JSON.parse(booksDataJson);
-      booksData = booksData.filter(it => it !== bookId);
+      booksData = booksData.filter(
+        item => item._id !== bookId && item !== bookId
+      );
       localStorage.setItem(BOOKS_STORAGE, JSON.stringify(booksData));
     }
   });

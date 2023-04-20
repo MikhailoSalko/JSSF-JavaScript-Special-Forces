@@ -19,10 +19,10 @@
   }
 }
 
-/* .scrollable {
+.scrollable {
   overflow-x: hidden;
   overflow-y: auto;
-} */
+}
 
 .backdrop__modal {
   opacity: 1;
@@ -39,7 +39,7 @@
 
 .book-card__modal {
   position: absolute;
-  top: 10vh;
+  top: 5vh;
   left: 50%;
   transform: translate(-50%);
   z-index: 1000;
@@ -91,7 +91,8 @@
   width: 24px;
   height: 24px;
 
-  fill: var(--back-btn-background);
+  stroke: var(--main-color);
+  fill: var(--body-background);
   transition-property: fill;
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
@@ -211,7 +212,7 @@
 }
 
 .book-shop__icons {
-  filter: grayscale(100%);
+  filter: var(--amazon-logo);
 
   &:hover,
   &:focus {
@@ -246,6 +247,8 @@
 .card__btn {
   width: 211px;
   height: 46px;
+  margin-bottom: 10px;
+
   border: 2px solid var(--accent-color);
   border-radius: 40px;
   background-color: var(--card-background);
@@ -263,8 +266,7 @@
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: var(--categories-accent);
     color: var(--nav-link-hovered);
   }
@@ -275,4 +277,23 @@
     font-size: 18px;
     line-height: calc(24 / 18);
   }
+}
+
+.congrat-text {
+  margin: 0 auto;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: rgba(17, 17, 17, 0.5);
+  @include tablet {
+    font-size: 10px;
+    line-height: calc(12 / 10);
+    width: 328px;
+  }
+}
+
+.text--is-hidden {
+  display: block;
+  pointer-events: none;
 }
