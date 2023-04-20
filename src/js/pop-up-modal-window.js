@@ -2,7 +2,7 @@ import { FetchBooks } from './fetchBooks';
 import { renderBookInfo } from './pop-up-modal-rendering';
 
 const books = document.querySelector('.top-books');
-if (!!books) {
+if (books) {
   books.addEventListener('click', async event => {
     const bookCard = event.target.closest('li.js-book-modal');
     if (!bookCard) {
@@ -84,40 +84,6 @@ if (!!books) {
           'Сongratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”.';
       }
     });
-
-    // imgBook.addEventListener('click', event => {
-    //   if (isInShoppingList(bookId)) {
-    //     congrTextEl.textContent =
-    //       'Сongratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”.';
-    //   } else {
-    //     congrTextEl.textContent = '';
-    //   }
-    // });
-
-    // function checkBtn(event) {
-    //   if (
-    //     event.target.nodeName === 'BUTTON' &&
-    //     event.target.textContent === 'remove from the shopping list'
-    //   ) {
-    //     event.target.innerText = 'add to shopping list';
-    //     console.log('ok');
-    //     const congrTextEl = document.querySelector('.congrat-text');
-    //     console.log(congrTextEl);
-    //     congrTextEl.classList.toggle('text--is-hidden');
-    //   }
-    // }
-
-    // function showText(event) {
-    //   checkBtn(event);
-    //   if (event.target.nodeName !== 'BUTTON') {
-    //     return;
-    //   }
-
-    //   console.log(event.target.nodeName);
-    //   const congrTextEl = document.querySelector('.congrat-text');
-    //   console.log(congrTextEl);
-    //   congrTextEl.classList.toggle('text--is-hidden');
-    // }
 
     function addToShoppingList(book) {
       console.log('adding', book);
