@@ -32,8 +32,6 @@
     refs.modalWindow.classList.add('modal-animation');
   }
 
-  // add features =================================
-
   function onBackdropClick(event) {
     if (event.currentTarget === event.target) {
       onCloseModal();
@@ -46,5 +44,4 @@
       onCloseModal();
     }
   }
-  // ===============================================
 })();
