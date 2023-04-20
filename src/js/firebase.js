@@ -28,6 +28,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
+const CURRENT_USER = 'current-user';
 let user;
 
 submitBtn.addEventListener("click", e => {
@@ -35,16 +36,17 @@ submitBtn.addEventListener("click", e => {
   const mailAuth = document.getElementById("signupMail").value;
   const userPassword = document.getElementById("signupPassword").value;
   const nameInput = form.querySelector('.auth_field[type="text"]');
-
+const dataUser = {
+  nameAuth: nameAuth,
+  mailAuth: mailAuth,
+  userPassword: userPassword,
+}
   createUserWithEmailAndPassword(auth, mailAuth, userPassword)
     .then(userCredential => {
       user = userCredential.user;
 
-      set(ref(database, "users/" + user.uid), {
-        nameAuth: nameAuth,
-        mailAuth: mailAuth,
-        userPassword: userPassword,
-      });
+      set(ref(database, "users/" + user.uid), dataUser);
+      localStorage.setItem('user', JSON.stringify(dataUser));
       Notiflix.Notify.success("user created!");
 
       const displayName = "";
@@ -54,7 +56,7 @@ submitBtn.addEventListener("click", e => {
         displayName: name,
       });
 
-      headerUserBtnAuthHandler("An");
+      headerUserBtnAuthHandler("user.displayName");
       
       document.getElementById("authModal").style.display = "none";
       document.getElementById("mobileMenu").style.display = "inline";
@@ -63,7 +65,7 @@ submitBtn.addEventListener("click", e => {
       const errorCode = error.code;
       const errorMessage = error.message;
 
-      Notiflix.Notify.success(errorMessage);
+      Notiflix.Notify.failure(errorMessage);
     });
 });
 
@@ -80,7 +82,7 @@ submitBtnCopy.addEventListener("click", e => {
         last_login: dt,
       });
 
-      Notiflix.Notify.success("User long in!");
+      Notiflix.Notify.success("User logged in!");
      
       headerUserBtnAuthHandler(user.displayName);
     
@@ -91,7 +93,7 @@ submitBtnCopy.addEventListener("click", e => {
       const errorCode = error.code;
       const errorMessage = error.message;
 console.log(error);
-      Notiflix.Notify.success(errorMessage);
+      Notiflix.Notify.failure(errorMessage);
     });
 });
 
@@ -107,7 +109,24 @@ logOut.addEventListener("click", e => {
       const errorCode = error.code;
       const errorMessage = error.message;
 
-      Notiflix.Notify.success(errorMessage);
+      Notiflix.Notify.failure(errorMessage);
+    });
+});
+
+
+logOutMobMenu.addEventListener("click", e => {
+  signOut(auth)
+    .then(() => {
+      
+      Notiflix.Notify.success("Sign-out successful");
+    
+      headerUserBtnLogOutHandler();
+    })
+    .catch(error => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+
+      Notiflix.Notify.failure(errorMessage);
     });
 });
 
