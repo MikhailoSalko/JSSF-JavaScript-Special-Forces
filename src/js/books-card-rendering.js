@@ -6,6 +6,7 @@ const fetchBooks = new FetchBooks();
 
 const listTopBooks = document.querySelector('.top-books');
 const btnUpEl = document.querySelector('.btn-up');
+btnUpEl.classList.add('is-hidden-up');
 
 let markup = '';
 let category = '';

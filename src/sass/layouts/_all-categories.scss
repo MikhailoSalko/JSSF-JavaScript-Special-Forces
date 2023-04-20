@@ -1,21 +1,7 @@
 .categories {
-  padding-left: 10px;
-  padding-right: 10px;
-
   color: var(--categories-main);
 
-  @include mobile {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  @include tablet {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
   &__container {
-    // delete, if it`s in the flexbox
     max-height: 228px;
     padding-right: 28px;
     overflow-y: scroll;
@@ -30,16 +16,13 @@
       width: 335px;
     }
 
-    //see instructions upper
     @include tablet {
       width: 337px;
       max-height: 472px;
     }
 
-    //see instructions upper
     @include desktop {
-      // width: 356px; Зменшила ширину (Інна)
-      width: 338px;
+      width: 318px;
     }
 
     // Scrollbar

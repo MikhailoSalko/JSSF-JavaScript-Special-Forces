@@ -1,24 +1,4 @@
 .container-books-card {
-  @include small-mobile {
-    max-width: 335px;
-  }
-  @include mobile {
-    width: 375px;
-    // padding-left: 20px;
-    // padding-right: 20px;
-    // margin-left: auto;
-    // margin-right: auto;
-  }
-  @include tablet {
-    width: 768px;
-    // padding-left: 32px;
-    // padding-right: 32px;
-  }
-  @include desktop {
-    width: 884px;
-    // padding-left: 36px;
-    // padding-right: 21px;
-  }
   background-color: var(--body-background);
 }
 
@@ -98,7 +78,7 @@
   }
 }
 // .box-text-book-category {
-  .card-book {
+.card-book {
   margin-bottom: 40px;
   @include desktop {
     margin-bottom: 0;
