@@ -43,20 +43,12 @@ const validateForm = formSelector => {
     }
   };
 
-  // Only validate form when submitting
   formElement.addEventListener('submit', event => {
     event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
-    console.log(formData);
-    formData.forEach((value, name) => {
-      console.log(name);
-      console.log(value);
-    });
-
-    const modal = document.querySelector('[data-modal-auth]');
-
     validateAllFormGroups(formElement);
+
+    formElement.reset();
   });
 
   const validateAllFormGroups = formToValidate => {
@@ -67,10 +59,8 @@ const validateForm = formSelector => {
     });
   };
 
-  // Disable HTML Validation
   formElement.setAttribute('novalidate', '');
 
-  // Enable validation for each control whilst updating form
   Array.from(formElement.elements).forEach(element =>
     element.addEventListener('blur', event => {
       validateSingleFormGroup(event.srcElement.parentElement);

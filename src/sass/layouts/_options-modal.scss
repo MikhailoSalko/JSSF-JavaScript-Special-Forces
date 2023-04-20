@@ -3,7 +3,6 @@
   background-color: #4f2ee8;
   position: fixed;
   padding: 10;
-  // right: 50;
   bottom: 20;
   display: flex;
   align-items: center;
@@ -62,4 +61,35 @@
   background: none;
 
   padding: 5px;
+}
+
+.anim-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  &:before {
+    content: '';
+    background: linear-gradient(
+      90deg,
+      rgba(246, 245, 146, 1) 0%,
+      rgba(246, 250, 173, 1) 31%,
+      rgba(247, 247, 223, 1) 100%
+    );
+    height: 100%;
+    width: 3em;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -3em;
+    transform: skewX(-45deg) translateX(o);
+    transition: none;
+  }
+  &:hover {
+    background-color: #221096;
+    color: #fff;
+    &:before {
+      transform: skewX(-45deg) translateX(40em);
+      transition: all 0.7s ease-in-out;
+    }
+  }
 }
