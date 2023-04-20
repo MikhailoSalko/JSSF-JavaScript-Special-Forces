@@ -28,6 +28,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
+const CURRENT_USER = 'current-user';
 let user;
 
 submitBtn.addEventListener("click", e => {
@@ -35,16 +36,17 @@ submitBtn.addEventListener("click", e => {
   const mailAuth = document.getElementById("signupMail").value;
   const userPassword = document.getElementById("signupPassword").value;
   const nameInput = form.querySelector('.auth_field[type="text"]');
-
+const dataUser = {
+  nameAuth: nameAuth,
+  mailAuth: mailAuth,
+  userPassword: userPassword,
+}
   createUserWithEmailAndPassword(auth, mailAuth, userPassword)
     .then(userCredential => {
       user = userCredential.user;
 
-      set(ref(database, "users/" + user.uid), {
-        nameAuth: nameAuth,
-        mailAuth: mailAuth,
-        userPassword: userPassword,
-      });
+      set(ref(database, "users/" + user.uid), dataUser);
+      localStorage.setItem('user', JSON.stringify(dataUser));
       Notiflix.Notify.success("user created!");
 
       const displayName = "";
@@ -112,19 +114,19 @@ logOut.addEventListener("click", e => {
 });
 
 
-// logOutMobMenu.addEventListener("click", e => {
-//   signOut(auth)
-//     .then(() => {
+logOutMobMenu.addEventListener("click", e => {
+  signOut(auth)
+    .then(() => {
       
-//       Notiflix.Notify.success("Sign-out successful");
+      Notiflix.Notify.success("Sign-out successful");
     
-//       headerUserBtnLogOutHandler();
-//     })
-//     .catch(error => {
-//       const errorCode = error.code;
-//       const errorMessage = error.message;
+      headerUserBtnLogOutHandler();
+    })
+    .catch(error => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
 
-//       Notiflix.Notify.failure(errorMessage);
-//     });
-// });
+      Notiflix.Notify.failure(errorMessage);
+    });
+});
 
