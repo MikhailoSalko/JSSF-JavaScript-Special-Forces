@@ -8,7 +8,7 @@
   letter-spacing: -0.04em;
   text-transform: capitalize;
   color: var(--main-color);
-  margin-top: 40px;
+  // margin-top: 40px;
   margin-bottom: 40px;
 
   @include tablet {
@@ -41,6 +41,9 @@
   color: var(--alternative-text);
   margin-bottom: 18px;
   display: block;
+  // @include small-mobile {
+  //   margin-top: 40px;
+  // }
 }
 
 .img-card-book {
@@ -226,8 +229,7 @@
     color: var(--nav-link-hovered);
   }
 
-  transition-property: color,
-  background-color;
+  transition-property: color, background-color;
 
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
@@ -246,14 +248,13 @@
 }
 
 .top-books {
+  display: flex;
+  flex-direction: column;
   @include small-mobile {
-    display: flex;
-    flex-direction: column;
     gap: 40px;
   }
 
   @include tablet {
-    display: flex;
     flex-wrap: wrap;
     gap: 25px;
     row-gap: 40px;
@@ -262,7 +263,6 @@
 
   @include desktop {
     gap: 21px;
-    row-gap: 40px;
   }
 }
 
@@ -295,4 +295,8 @@
 
 .is-hidden-up {
   display: none;
+}
+
+.link-books-render:hover {
+  cursor: pointer;
 }
