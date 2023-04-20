@@ -36,11 +36,11 @@ submitBtn.addEventListener("click", e => {
   const mailAuth = document.getElementById("signupMail").value;
   const userPassword = document.getElementById("signupPassword").value;
   const nameInput = form.querySelector('.auth_field[type="text"]');
-const dataUser = {
-  nameAuth: nameAuth,
-  mailAuth: mailAuth,
-  userPassword: userPassword,
-}
+  const dataUser = {
+    nameAuth: nameAuth,
+    mailAuth: mailAuth,
+    userPassword: userPassword,
+  }
   createUserWithEmailAndPassword(auth, mailAuth, userPassword)
     .then(userCredential => {
       user = userCredential.user;
@@ -51,13 +51,13 @@ const dataUser = {
 
       const displayName = "";
       const name = nameInput.value;
-      
+
       updateProfile(user, {
         displayName: name,
       });
 
-      headerUserBtnAuthHandler("user.displayName");
-      
+      headerUserBtnAuthHandler(user.displayName);
+
       document.getElementById("authModal").style.display = "none";
       document.getElementById("mobileMenu").style.display = "inline";
     })
@@ -83,16 +83,16 @@ submitBtnCopy.addEventListener("click", e => {
       });
 
       Notiflix.Notify.success("User logged in!");
-     
+
       headerUserBtnAuthHandler(user.displayName);
-    
+
       document.getElementById("authModal").style.display = "none";
       document.getElementById("mobileMenu").style.display = "inline";
     })
     .catch(error => {
       const errorCode = error.code;
       const errorMessage = error.message;
-console.log(error);
+      console.log(error);
       Notiflix.Notify.failure(errorMessage);
     });
 });
@@ -100,9 +100,9 @@ console.log(error);
 logOut.addEventListener("click", e => {
   signOut(auth)
     .then(() => {
-      
+
       Notiflix.Notify.success("Sign-out successful");
-    
+
       headerUserBtnLogOutHandler();
     })
     .catch(error => {
@@ -117,9 +117,9 @@ logOut.addEventListener("click", e => {
 logOutMobMenu.addEventListener("click", e => {
   signOut(auth)
     .then(() => {
-      
+
       Notiflix.Notify.success("Sign-out successful");
-    
+
       headerUserBtnLogOutHandler();
     })
     .catch(error => {
