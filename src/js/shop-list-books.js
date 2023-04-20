@@ -7,9 +7,9 @@ const bookListEl = document.querySelector('.shoplist-main');
 const shopIsEmpty = document.querySelector('.shoplist-empty');
 const sectionTitle = document.querySelector('.shoplist-title');
 
-let booksInShop = JSON.parse(localStorage.getItem('books'));
+let booksInShop = JSON.parse(localStorage.getItem('books')) ?? [];
 
-let activPage = 1;
+let activePage = 1;
 const pageSize = 3;
 
 const renderBooks = arr => {
@@ -118,10 +118,10 @@ const displayData = (arr, startIndex) => {
 
 if (booksInShop.length > 0) {
   window.onload = function () {
-    renderBooks(booksInShop.slice(0, 3));
+    renderBooks(booksInShop.slice(0, pageSize));
   };
   window.onresize = function () {
-    renderBooks(booksInShop.slice(0, 3));
+    renderBooks(booksInShop.slice(0, pageSize));
   };
 } else if (booksInShop.length === 0) {
   shopIsEmpty.innerHTML = `<p class="information-text">
@@ -142,8 +142,19 @@ const deleteBook = id => {
     bookListEl.innerHTML = '';
     sectionTitle.classList.remove('title-when-books');
   } else {
-    renderBooks(updatedBooks);
+    if (updatedBooks.length % pageSize === 0) {
+      activePage -= 1;
+    }
+
+    const books = updatedBooks.slice(
+      (activePage - 1) * pageSize,
+      activePage * pageSize
+    );
+
+    renderBooks(books);
   }
+
+  displayPagination();
 };
 
 bookListEl.addEventListener('click', event => {
@@ -164,21 +175,25 @@ heading.className = 'pagination-container';
 sectionShoplist.append(heading);
 
 // const pageSize = 3;
-// let activPage = 1;
+// let activePage = 1;
 let totalPages = Math.ceil(booksInShop.length / pageSize);
 
 const displayPagination = () => {
+  const books = JSON.parse(localStorage.getItem('books')) ?? [];
+
   const containerPagination = document.querySelector('.pagination-container');
   containerPagination.innerHTML = '';
+
+  if (books.length <= pageSize) return;
 
   const firstPage = document.createElement('button');
   firstPage.className = 'button-pagination symbols';
 
   firstPage.innerHTML = '&#171;';
-  firstPage.disabled = activPage === 1;
+  firstPage.disabled = activePage === 1;
   firstPage.addEventListener('click', () => {
-    activPage = 1;
-    displayData(booksInShop, 0);
+    activePage = 1;
+    displayData(books, 0);
     displayPagination();
   });
   containerPagination.appendChild(firstPage);
@@ -186,21 +201,21 @@ const displayPagination = () => {
   const prevPage = document.createElement('button');
   prevPage.className = 'button-pagination symbols';
   prevPage.innerHTML = '&#8249;';
-  prevPage.disabled = activPage === 1;
+  prevPage.disabled = activePage === 1;
   prevPage.addEventListener('click', () => {
-    activPage--;
-    const startIndex = (activPage - 1) * pageSize;
-    displayData(booksInShop, startIndex);
+    activePage--;
+    const startIndex = (activePage - 1) * pageSize;
+    displayData(books, startIndex);
     displayPagination();
   });
   containerPagination.appendChild(prevPage);
 
   let startPage =
-    activPage <= 2
+    activePage <= 2
       ? 1
-      : activPage >= totalPages - 1
+      : activePage >= totalPages - 1
       ? totalPages - 2
-      : activPage - 1;
+      : activePage - 1;
 
   const dotsStart = startPage > 1;
   if (dotsStart) {
@@ -214,12 +229,12 @@ const displayPagination = () => {
     const page = document.createElement('button');
     page.className = 'button-pagination';
     page.innerHTML = i;
-    page.disabled = i === activPage;
-    page.classList.toggle('active', i === activPage);
+    page.disabled = i === activePage;
+    page.classList.toggle('active', i === activePage);
     page.addEventListener('click', () => {
-      activPage = i;
-      const startIndex = (activPage - 1) * pageSize;
-      displayData(booksInShop, startIndex);
+      activePage = i;
+      const startIndex = (activePage - 1) * pageSize;
+      displayData(books, startIndex);
       displayPagination();
     });
     containerPagination.appendChild(page);
@@ -240,11 +255,11 @@ const displayPagination = () => {
     const nextPage = document.createElement('button');
     nextPage.className = 'button-pagination symbols';
     nextPage.innerHTML = '&#8250;';
-    nextPage.disabled = activPage === totalPages;
+    nextPage.disabled = activePage === totalPages;
     nextPage.addEventListener('click', () => {
-      activPage++;
-      const startIndex = (activPage - 1) * pageSize;
-      displayData(booksInShop, startIndex);
+      activePage++;
+      const startIndex = (activePage - 1) * pageSize;
+      displayData(books, startIndex);
       displayPagination();
     });
     containerPagination.appendChild(nextPage);
@@ -252,11 +267,11 @@ const displayPagination = () => {
     const lastPage = document.createElement('button');
     lastPage.className = 'button-pagination symbols';
     lastPage.innerHTML = '&#187;';
-    lastPage.disabled = activPage === totalPages;
+    lastPage.disabled = activePage === totalPages;
     lastPage.addEventListener('click', () => {
-      activPage = totalPages;
+      activePage = totalPages;
       const startIndex = (totalPages - 1) * pageSize;
-      displayData(booksInShop, startIndex);
+      displayData(books, startIndex);
       displayPagination();
     });
     containerPagination.appendChild(lastPage);
@@ -264,4 +279,5 @@ const displayPagination = () => {
 };
 
 displayPagination();
+
 // /\------- pagination ------/\
