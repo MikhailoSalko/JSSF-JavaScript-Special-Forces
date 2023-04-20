@@ -7,7 +7,9 @@ const fetchBooks = new FetchBooks();
 
 const listTopBooks = document.querySelector('.top-books');
 const btnUpEl = document.querySelector('.btn-up');
-btnUpEl.classList.add('is-hidden-up');
+if (btnUpEl) {
+  btnUpEl.classList.add('is-hidden-up');
+}
 
 let markup = '';
 let category = '';
@@ -19,9 +21,7 @@ async function renderingBooksCategories() {
     return data;
   } catch (error) {
     console.log(error);
-    Notiflix.Notify.failure(
-        'Oops! Something went wrong... Please try again.'
-      );
+    Notiflix.Notify.failure('Oops! Something went wrong... Please try again.');
   }
 }
 spinnerPlay();
@@ -197,16 +197,21 @@ spinnerPlay();
     }
   }
 
-  listTopBooks.innerHTML = '';
-  listTopBooks.insertAdjacentHTML('beforeend', markup);
-  listTopBooks.insertAdjacentHTML(
-    'beforebegin',
-    `<h2 class="title-best-sellers">Best sellers <span class ="title-best-sellers-color">books</span></h2>`
-  );
+  if (listTopBooks) {
+    listTopBooks.innerHTML = '';
+    listTopBooks.insertAdjacentHTML('beforeend', markup);
+    listTopBooks.insertAdjacentHTML(
+      'beforebegin',
+      `<h2 class="title-best-sellers">Best sellers <span class ="title-best-sellers-color">books</span></h2>`
+    );
+  }
 })();
 spinnerStop();
+
 // ===========розмітка по категоріям, кнопка SEE-MORE ===========================
-listTopBooks.addEventListener('click', handleLoadMore);
+if (listTopBooks) {
+  listTopBooks.addEventListener('click', handleLoadMore);
+}
 
 spinnerPlay();
 async function handleLoadMore(e) {
@@ -261,10 +266,7 @@ async function handleLoadMore(e) {
     return;
   } catch (error) {
     console.log(error);
-      Notiflix.Notify.failure(
-      'Oops! Something went wrong... Please try again.'
-      );
-
+    Notiflix.Notify.failure('Oops! Something went wrong... Please try again.');
   }
 }
 spinnerStop();
@@ -276,9 +278,7 @@ async function renderingCategory() {
     return data;
   } catch (error) {
     console.log(error);
-    Notiflix.Notify.failure(
-        'Oops! Something went wrong... Please try again.'
-      );
+    Notiflix.Notify.failure('Oops! Something went wrong... Please try again.');
   }
 }
 // Кнопка ===UP===============
@@ -297,7 +297,10 @@ function handleScrollUp(e) {
   });
 }
 
-btnUpEl.addEventListener('click', handleScrollUp);
+if (btnUpEl) {
+  btnUpEl.addEventListener('click', handleScrollUp);
+}
+
 window.addEventListener('scroll', handleScroll);
 // =========Скрол сторінки до заголовка=========================
 function scrollToTitle() {
@@ -306,7 +309,11 @@ function scrollToTitle() {
 // =================Розмітка по кліку на Сашині категорії=====================================
 
 const listCategory = document.querySelector('.categories-list');
-listCategory.addEventListener('click', handleCategoryMarkup);
+
+if (listCategory) {
+  listCategory.addEventListener('click', handleCategoryMarkup);
+}
+
 spinnerPlay();
 async function handleCategoryMarkup(e) {
   if (e.target.nodeName === 'LI') {
