@@ -142,7 +142,7 @@ const deleteBook = id => {
     bookListEl.innerHTML = '';
     sectionTitle.classList.remove('title-when-books');
   } else {
-    if (updatedBooks.length % pageSize === 0) {
+    if (updatedBooks.length % pageSize === 0 && activePage > 1) {
       activePage -= 1;
     }
 
