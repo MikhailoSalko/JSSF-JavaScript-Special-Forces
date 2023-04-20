@@ -1,11 +1,22 @@
 <div class="mobile-menu" id="mobileMenu">
   <div class="content">
     <nav class="nav">
-      <button class="user-mob" data-burgermodal-auth-open>
-        <svg class="" width="19" height="19">
-          <use href="./images/icons.svg#icon-user"></use>
+      <button class="user-mob" id="userMobIn" data-burgermodal-auth-open>
+        Sign Up
+        <svg class="user__icon" width="20" height="20">
+          <use href="./images/icons.svg#arrow-to-right"></use>
         </svg>
       </button>
+      <div class="user-info-mob">
+        <img
+          width="37"
+          height="37"
+          src="./images/user-unauth-common-icon.png"
+          alt="user-foto"
+          class="user-info-mob__image"
+        />
+        <div class="user-info-mob__name">N/a</div>
+      </div>
       <ul class="nav__list">
         <li class="nav__item">
           <a href="./index.html" class="nav__link mob-home">Home</a>
@@ -17,7 +28,7 @@
               <use href="./images/icons.svg#shopping-list"></use></svg></a>
         </li>
       </ul>
-      <button class="nav-btn">
+      <button class="nav-btn" id="logOutMobMenu">
         Log out
         <svg class="" width="19" height="19">
           <use href="./images/icons.svg#arrow-to-right"></use>
