@@ -8,7 +8,6 @@
   letter-spacing: -0.04em;
   text-transform: capitalize;
   color: var(--main-color);
-  // margin-top: 40px;
   margin-bottom: 40px;
 
   @include tablet {
@@ -16,10 +15,6 @@
     font-size: 48px;
     line-height: 1.08;
     letter-spacing: -0.04em;
-  }
-
-  @include desktop {
-    margin-top: 40px;
   }
 }
 
@@ -41,14 +36,10 @@
   color: var(--alternative-text);
   margin-bottom: 18px;
   display: block;
-  // @include small-mobile {
-  //   margin-top: 40px;
-  // }
 }
 
 .img-card-book {
   @include small-mobile {
-    // width: 300px;
     width: 100%;
     height: 485px;
     margin-bottom: 14px;
@@ -90,7 +81,6 @@
   }
 }
 
-// .box-text-book-category {
 .card-book {
   margin-bottom: 8px;
 
@@ -114,9 +104,6 @@
     width: 335px;
   }
 
-  // width: 335px;
-  // height: 18px;
-  // margin-bottom: 4px;
   @include tablet {
     width: 218px;
   }
@@ -130,15 +117,11 @@
   @include small-mobile {
     width: 320px;
     height: 18px;
-    // margin-bottom: 4px;
   }
 
   @include mobile {
     width: 335px;
   }
-
-  // width: 335px;
-  // height: 18px;
 
   @include tablet {
     width: 218px;
