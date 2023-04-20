@@ -54,7 +54,7 @@ submitBtn.addEventListener("click", e => {
         displayName: name,
       });
 
-      headerUserBtnAuthHandler("An");
+      headerUserBtnAuthHandler("user.displayName");
       
       document.getElementById("authModal").style.display = "none";
       document.getElementById("mobileMenu").style.display = "inline";
@@ -63,7 +63,7 @@ submitBtn.addEventListener("click", e => {
       const errorCode = error.code;
       const errorMessage = error.message;
 
-      Notiflix.Notify.success(errorMessage);
+      Notiflix.Notify.failure(errorMessage);
     });
 });
 
@@ -91,7 +91,7 @@ submitBtnCopy.addEventListener("click", e => {
       const errorCode = error.code;
       const errorMessage = error.message;
 console.log(error);
-      Notiflix.Notify.success(errorMessage);
+      Notiflix.Notify.failure(errorMessage);
     });
 });
 
@@ -107,7 +107,24 @@ logOut.addEventListener("click", e => {
       const errorCode = error.code;
       const errorMessage = error.message;
 
-      Notiflix.Notify.success(errorMessage);
+      Notiflix.Notify.failure(errorMessage);
     });
 });
+
+
+// logOutMobMenu.addEventListener("click", e => {
+//   signOut(auth)
+//     .then(() => {
+      
+//       Notiflix.Notify.success("Sign-out successful");
+    
+//       headerUserBtnLogOutHandler();
+//     })
+//     .catch(error => {
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+
+//       Notiflix.Notify.failure(errorMessage);
+//     });
+// });
 
