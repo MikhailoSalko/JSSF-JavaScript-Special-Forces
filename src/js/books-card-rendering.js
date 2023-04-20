@@ -1,4 +1,5 @@
 import { FetchBooks } from './fetchBooks';
+import Notiflix from 'notiflix';
 import { spinnerPlay } from './spinner';
 import { spinnerStop } from './spinner';
 
@@ -18,6 +19,9 @@ async function renderingBooksCategories() {
     return data;
   } catch (error) {
     console.log(error);
+    Notiflix.Notify.failure(
+        'Oops! Something went wrong... Please try again.'
+      );
   }
 }
 spinnerPlay();
@@ -229,7 +233,6 @@ async function handleLoadMore(e) {
           </div>
       </li>`;
       });
-      // console.log(renderCategory.list_name);
       listTopBooks.innerHTML = '';
       listTopBooks.previousElementSibling.remove();
       listTopBooks.insertAdjacentHTML('beforeend', markup);
@@ -258,6 +261,10 @@ async function handleLoadMore(e) {
     return;
   } catch (error) {
     console.log(error);
+      Notiflix.Notify.failure(
+      'Oops! Something went wrong... Please try again.'
+      );
+
   }
 }
 spinnerStop();
@@ -266,10 +273,12 @@ async function renderingCategory() {
   try {
     fetchBooks.category = category;
     const { data } = await fetchBooks.fetchCategoryOfBooks();
-    // console.log(data);
     return data;
   } catch (error) {
     console.log(error);
+    Notiflix.Notify.failure(
+        'Oops! Something went wrong... Please try again.'
+      );
   }
 }
 // Кнопка ===UP===============
@@ -329,8 +338,6 @@ async function handleCategoryMarkup(e) {
         'beforebegin',
         `<h2 class="title-category">${category}</h2>`
       );
-      // spinnerStop();
-      // scrollToTitle();
       const titleLastWord = listTopBooks.previousElementSibling;
       function lastWordForTitle() {
         if (titleLastWord.classList.contains('title-category')) {
@@ -345,10 +352,8 @@ async function handleCategoryMarkup(e) {
         return;
       }
       lastWordForTitle();
-      // spinnerStop();
       scrollToTitle();
     } else {
-      // spinnerPlay()
       (async () => {
         const categories = await renderingBooksCategories();
         if (window.screen.width < 768) {

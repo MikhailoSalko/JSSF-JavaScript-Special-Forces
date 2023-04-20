@@ -1,0 +1,22 @@
+.button-pagination.active,
+.button-pagination.symbols:disabled {
+  background-color: #111111;
+  color: white;
+}
+.button-pagination.symbols {
+  background-color: #eac645;
+  color: #111111;
+  font-size: 30px;
+}
+.button-pagination {
+  height: 44px;
+  width: 44px;
+  margin-right: 5px;
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+}

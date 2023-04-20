@@ -1,34 +1,34 @@
-
-import { initializeApp } from 'firebase/app';
-import { getDatabase, set, ref, update } from 'firebase/database';
+import { initializeApp } from "firebase/app";
+import { getDatabase, set, ref, update } from "firebase/database";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
   signOut,
-  updateProfile
+  updateProfile,
 } from "firebase/auth";
 
 import Notiflix from "notiflix";
 
-import { headerUserBtnAuthHandler, headerUserBtnLogOutHandler } from './header-auth-handler.js'
-
+import {
+  headerUserBtnAuthHandler,
+  headerUserBtnLogOutHandler,
+} from "./header-auth-handler.js";
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyA-_OfsYzJ0IruGwuB0MjrKn8CM_GP4gaw',
-  authDomain: 'jssf-bookstore.firebaseapp.com',
-  databaseURL: 'https://jssf-bookstore-default-rtdb.firebaseio.com',
-  projectId: 'jssf-bookstore',
-  storageBucket: 'jssf-bookstore.appspot.com',
-  messagingSenderId: '159533621369',
-  appId: '1:159533621369:web:49b6ecc78de1b0dd90f4a8',
+  apiKey: "AIzaSyA-_OfsYzJ0IruGwuB0MjrKn8CM_GP4gaw",
+  authDomain: "jssf-bookstore.firebaseapp.com",
+  databaseURL: "https://jssf-bookstore-default-rtdb.firebaseio.com",
+  projectId: "jssf-bookstore",
+  storageBucket: "jssf-bookstore.appspot.com",
+  messagingSenderId: "159533621369",
+  appId: "1:159533621369:web:49b6ecc78de1b0dd90f4a8",
 };
-
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
+let user;
 
 submitBtn.addEventListener("click", e => {
   const nameAuth = document.getElementById("nameAuth").value;
@@ -36,12 +36,9 @@ submitBtn.addEventListener("click", e => {
   const userPassword = document.getElementById("signupPassword").value;
   const nameInput = form.querySelector('.auth_field[type="text"]');
 
-  
-
   createUserWithEmailAndPassword(auth, mailAuth, userPassword)
     .then(userCredential => {
-      
-      const user = userCredential.user;
+      user = userCredential.user;
 
       set(ref(database, "users/" + user.uid), {
         nameAuth: nameAuth,
@@ -50,56 +47,15 @@ submitBtn.addEventListener("click", e => {
       });
       Notiflix.Notify.success("user created!");
 
-     const displayName = '';
-     const name = nameInput.value;
-     console.log(name);
-
+      const displayName = "";
+      const name = nameInput.value;
+      
       updateProfile(user, {
         displayName: name,
       });
 
-      console.log(displayName);
-      console.log(user);
-      console.log(database);
-      //saveUserLocalStorage(user);
-
-      headerUserBtnAuthHandler();
-      headerUserBtnLogOutHandler();
-
-    document.getElementById("authModal").style.display = "none";
-    document.getElementById("mobileMenu").style.display = "inline";
-    })
-    .catch(error => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-
-      Notiflix.Notify.success(errorMessage);
+      headerUserBtnAuthHandler("An");
       
-    });
-    
-});
-
-submitBtnCopy.addEventListener("click", e => {
-  
-  const mailAuth = document.getElementById("signinMail").value;
-  const userPassword = document.getElementById("signinPassword").value;
-
-  signInWithEmailAndPassword(auth, mailAuth, userPassword)
-    .then(userCredential => {
-     
-      const user = userCredential.user;
-
-      const dt = new Date();
-      update(ref(database, "users/" + user.uid), {
-        last_login: dt,
-      });
-
-      Notiflix.Notify.success("User longed in!");
-      //saveUserLocalStorage(user);
-
-      headerUserBtnAuthHandler();
-      headerUserBtnLogOutHandler();
-
       document.getElementById("authModal").style.display = "none";
       document.getElementById("mobileMenu").style.display = "inline";
     })
@@ -109,45 +65,49 @@ submitBtnCopy.addEventListener("click", e => {
 
       Notiflix.Notify.success(errorMessage);
     });
+});
+
+submitBtnCopy.addEventListener("click", e => {
+  const mailAuth = document.getElementById("signinMail").value;
+  const userPassword = document.getElementById("signinPassword").value;
+
+  signInWithEmailAndPassword(auth, mailAuth, userPassword)
+    .then(userCredential => {
+      user = userCredential.user;
+
+      const dt = new Date();
+      update(ref(database, "users/" + user.uid), {
+        last_login: dt,
+      });
+
+      Notiflix.Notify.success("User long in!");
+     
+      headerUserBtnAuthHandler(user.displayName);
     
+      document.getElementById("authModal").style.display = "none";
+      document.getElementById("mobileMenu").style.display = "inline";
+    })
+    .catch(error => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+console.log(error);
+      Notiflix.Notify.success(errorMessage);
+    });
 });
 
-// function saveUserLocalStorage(user, name) {
-//   const userData = { ...user, displayName: name };
-//   localStorage.setItem('user', JSON.stringify(userData));
-// }
+logOut.addEventListener("click", e => {
+  signOut(auth)
+    .then(() => {
+      
+      Notiflix.Notify.success("Sign-out successful");
+    
+      headerUserBtnLogOutHandler();
+    })
+    .catch(error => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
 
-// function removeUserLocalStorage() {
-//   localStorage.removeItem('user');
-// }
-
-logOut.addEventListener('click',(e) =>{
-signOut(auth).then(() => {
-  const user = userCredential.user;
-  Notiflix.Notify.success('Sign-out successful')
-  removeUserLocalStorage(user);
-}).catch((error) => {
-  
-  const errorCode = error.code;
-    const errorMessage = error.message;
-
-    Notiflix.Notify.success(errorMessage);
-});
+      Notiflix.Notify.success(errorMessage);
+    });
 });
 
-
-
-
-// function updateSignUpBtn() {
-//   const user = auth.currentUser;
-//   const singUpBtn = document.querySelector('.user');
-//   const userData = JSON.parse(localStorage.getItem('user'));
-//   if (user || userData) {
-//     const nameAuth = user?.displayName || userData?.displayName;
-//     singUpBtn.textContent = nameAuth ?? 'Sign Up';
-//     document.querySelector('.user-log-out').style.display = 'flex'; // Показываем кнопку log out, если пользователь авторизован
-//   } else {
-//     singUpBtn.textContent = 'Sign Up';
-//     document.querySelector('.user-log-out').style.display = 'none'; // Скрываем кнопку log out, если пользователь не авторизован
-//   }
-// }
