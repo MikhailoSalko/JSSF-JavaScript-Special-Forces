@@ -3,14 +3,15 @@ export { renderBookInfo };
 
 function renderBookInfo(book, inShoppingList) {
   const card__btn = inShoppingList
-    ? '<button class="card__btn remove-card__bnt btn">remove from shop list</button>'
-    : '<button class="card__btn add-card__bnt btn">add to shop list</button>';
+    ? '<button class="card__btn add-card__bnt btn">remove from shop list</button> <p class = "congrat-text"></p>'
+    : '<button class="card__btn add-card__bnt btn">add to shop list</button> <p class = "congrat-text"></p>';
   return `<div class="backdrop backdrop__modal js-book-modal">
   <div class="modal book-card__modal scrollable">
     <button class="modal-close__btn js-book-close">
-      <svg class="close__icon">
-        <use href="./images/icons.svg#close"></use>
-      </svg>
+      <img src=${new URL(
+        '../images/x-close.svg',
+        import.meta.url
+      )} alt="close_icon" width="24" height="24"/>
     </button>
     <div class="book-card">
       <div class="book-card__thumb">
