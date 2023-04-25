@@ -232,6 +232,7 @@ if (listTopBooks) {
 }
 
 spinnerPlay();
+
 async function handleLoadMore(e) {
   try {
     if (e.target.nodeName === 'BUTTON') {
@@ -239,20 +240,21 @@ async function handleLoadMore(e) {
 
       const arrCategories = categoriesListEl.childNodes;
       arrCategories.forEach(item => {
-  if(item.classList.contains('checked-category')){item.classList.remove('checked-category')}
-  else {
-    return;
-  }
-});
+        if (item.classList.contains('checked-category')) {
+          item.classList.remove('checked-category');
+        } else {
+          return;
+        }
+      });
 
-arrCategories.forEach(item => {
-  if (item.textContent.trim() === category) {
-    item.classList.add('checked-category');
-  } else {
-    return;
-  }
-});
-      
+      arrCategories.forEach(item => {
+        if (item.textContent.trim() === category) {
+          item.classList.add('checked-category');
+        } else {
+          return;
+        }
+      });
+
       const renderCategory = await renderingCategory();
       let markup = '';
       renderCategory.forEach(({ _id, book_image, title, author }) => {

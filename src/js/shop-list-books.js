@@ -1,8 +1,3 @@
-// import sprite from "../images/icons.svg"
-import { currentPageSwitcher } from './current-page-switcher';
-const currentPage = document.querySelector('.shop-mob');
-currentPageSwitcher(currentPage);
-
 const bookListEl = document.querySelector('.shoplist-main');
 const shopIsEmpty = document.querySelector('.shoplist-empty');
 const sectionTitle = document.querySelector('.shoplist-title');
