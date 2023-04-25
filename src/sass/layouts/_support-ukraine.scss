@@ -1,5 +1,5 @@
 .support__container {
-  min-height: 352px;
+  height: 352px;
   padding: 24px 40px 20px 40px;
   box-shadow: 0px 10px 10px rgba(245, 245, 247, 0.1);
   border-radius: 16px;
@@ -14,13 +14,13 @@
   }
 
   @include tablet {
-    min-height: 472px;
+    height: 472px;
     padding-bottom: 14px;
   }
 
   @include desktop {
     width: 318px;
-    min-height: 490px;
+    height: 490px;
     padding-bottom: 24px;
   }
 }
@@ -38,9 +38,11 @@
 }
 
 .support__list {
+  height: 190px;
   margin-bottom: 16px;
 
   @include tablet {
+    height: 295px;
     margin-bottom: 32px;
   }
 

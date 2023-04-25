@@ -19,7 +19,7 @@ renderMarkup(markup, startIndex, findEndIndex(startIndex));
 
 function renderMarkup(arr, itemsCountStart, itemsCountEnd) {
   const markupToRender = arr.slice(itemsCountStart, itemsCountEnd).join('');
-  startIndex = findEndIndex(startIndex);
+  startIndex = itemsCountEnd;
 
   supportListEl.insertAdjacentHTML('beforeend', markupToRender);
 
@@ -30,11 +30,11 @@ function renderMarkup(arr, itemsCountStart, itemsCountEnd) {
 }
 
 function renderMoreMarkup() {
-  if(window.innerWidth < 768) {
-    renderMarkup(markup, startIndex, findEndIndex(startIndex + 1));
-    return
-  }
-  renderMarkup(markup, startIndex, findEndIndex(startIndex));
+  // renderMarkup(markup, startIndex, (startIndex + 1));
+  renderMarkup(markup, startIndex, supportUkraineItems.length);
+
+  supportListEl.style.overflowY = 'scroll';
+  supportListEl.scrollTop = supportListEl.scrollHeight;  
 }
 
 
@@ -45,5 +45,3 @@ function findEndIndex(value) {
     return value + 6;
   }
 }
-
-
