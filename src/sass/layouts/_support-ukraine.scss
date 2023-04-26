@@ -49,6 +49,15 @@
   @include desktop {
     margin-bottom: 40px;
   }
+
+  &::-webkit-scrollbar {
+    width: 3px;
+
+    &-thumb {
+      border-radius: 12px;
+      background: var(--categories-scrollbar);
+    }
+  }
 }
 
 .support__link {
