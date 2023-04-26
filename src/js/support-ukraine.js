@@ -30,10 +30,8 @@ function renderMarkup(arr, itemsCountStart, itemsCountEnd) {
 }
 
 function renderMoreMarkup() {
-  // renderMarkup(markup, startIndex, (startIndex + 1));
   renderMarkup(markup, startIndex, supportUkraineItems.length);
 
-  supportListEl.style.overflowY = 'scroll';
   supportListEl.scrollTop = supportListEl.scrollHeight;  
 }
 
@@ -45,3 +43,26 @@ function findEndIndex(value) {
     return value + 6;
   }
 }
+
+// при проходженні через брейкпойнти
+let currentRenderWidth = window.innerWidth;
+addEventListener('resize', () => {
+  if (window.innerWidth > 767 && currentRenderWidth < 768)  {
+    currentRenderWidth = window.innerWidth;
+ 
+    renderMarkup(markup, startIndex, (startIndex + 2));  
+  }
+
+  if (window.innerWidth < 768 && currentRenderWidth > 767) {
+    currentRenderWidth = window.innerWidth;
+ 
+    while (supportListEl.childNodes.length !== 4) {
+      supportListEl.removeChild(supportListEl.lastChild);
+      startIndex = 4;
+    }
+    }
+
+    if(supportListEl.childNodes.length < markup.length) {
+      supportBtnEl.style.display = 'flex';
+    }
+});
