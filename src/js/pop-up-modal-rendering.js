@@ -1,6 +1,7 @@
 import { FetchBooks } from './fetchBooks';
 export { renderBookInfo };
 
+const closeIcon = new URL('../images/icons.svg', import.meta.url);
 function renderBookInfo(book, inShoppingList) {
   const card__btn = inShoppingList
     ? '<button class="card__btn add-card__bnt btn">remove from shop list</button> <p class = "congrat-text">Сongratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”.!</p>'
@@ -8,10 +9,9 @@ function renderBookInfo(book, inShoppingList) {
   return `<div class="backdrop backdrop__modal js-book-modal">
   <div class="modal book-card__modal scrollable">
     <button class="modal-close__btn js-book-close">
-      <img src=${new URL(
-        '../images/x-close.svg',
-        import.meta.url
-      )} alt="close_icon" width="24" height="24"/>
+      <svg class="close__icon">
+        <use href="${closeIcon}#close"></use>
+      </svg>
     </button>
     <div class="book-card">
       <div class="book-card__thumb">

@@ -92,14 +92,13 @@
   height: 24px;
 
   stroke: var(--main-color);
-  fill: var(--body-background);
-  transition-property: fill;
+  transition-property: stroke;
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
 
   &:hover,
   &:focus {
-    fill: var(--categories-accent);
+    stroke: var(--categories-accent);
   }
 
   @include tablet {
