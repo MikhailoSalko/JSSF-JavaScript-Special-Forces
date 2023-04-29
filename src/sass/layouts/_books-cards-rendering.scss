@@ -8,7 +8,6 @@
   letter-spacing: -0.04em;
   text-transform: capitalize;
   color: var(--main-color);
-  margin-top: 40px;
   margin-bottom: 40px;
 
   @include tablet {
@@ -16,10 +15,6 @@
     font-size: 48px;
     line-height: 1.08;
     letter-spacing: -0.04em;
-  }
-
-  @include desktop {
-    margin-top: 40px;
   }
 }
 
@@ -45,7 +40,6 @@
 
 .img-card-book {
   @include small-mobile {
-    // width: 300px;
     width: 100%;
     height: 485px;
     margin-bottom: 14px;
@@ -87,7 +81,6 @@
   }
 }
 
-// .box-text-book-category {
 .card-book {
   margin-bottom: 8px;
 
@@ -111,9 +104,6 @@
     width: 335px;
   }
 
-  // width: 335px;
-  // height: 18px;
-  // margin-bottom: 4px;
   @include tablet {
     width: 218px;
   }
@@ -127,15 +117,11 @@
   @include small-mobile {
     width: 320px;
     height: 18px;
-    // margin-bottom: 4px;
   }
 
   @include mobile {
     width: 335px;
   }
-
-  // width: 335px;
-  // height: 18px;
 
   @include tablet {
     width: 218px;
@@ -179,7 +165,6 @@
   letter-spacing: -0.04em;
   text-transform: capitalize;
   color: var(--main-color);
-  margin-top: 40px;
   margin-bottom: 40px;
 
   @include tablet {
@@ -226,8 +211,7 @@
     color: var(--nav-link-hovered);
   }
 
-  transition-property: color,
-  background-color;
+  transition-property: color, background-color;
 
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
@@ -246,14 +230,14 @@
 }
 
 .top-books {
-  @include small-mobile {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  // @include small-mobile {
+  // }
 
   @include tablet {
-    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     gap: 25px;
     row-gap: 40px;
@@ -262,8 +246,7 @@
 
   @include desktop {
     gap: 21px;
-    row-gap: 40px;
-  }
+    row-gap: 40px;  }
 }
 
 .btn-up {
@@ -295,4 +278,8 @@
 
 .is-hidden-up {
   display: none;
+}
+
+.link-books-render:hover {
+  cursor: pointer;
 }

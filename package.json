@@ -27,7 +27,7 @@
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
     "assert": "^2.0.0",
-    "buffer": "^6.0.3",
+    "buffer": "^5.5.0",
     "console-browserify": "^1.2.0",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
